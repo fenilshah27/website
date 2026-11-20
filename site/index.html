@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fenil Pritesh Shah</title>
+<meta name="description" content="Fenil Pritesh Shah — Building institutions that enable ideas to endure beyond individuals.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#E3A63B;        /* accent on dark */
+    --gold-ink:#A8721A;    /* accent on light */
+    --g4:#8c8c8c; --g5:#b3b3b3;
+    --ease:cubic-bezier(.2,.7,.1,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#000;color:#fff;font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 48px);margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .light .eyebrow{color:var(--gold-ink)}
+  .pad{padding:clamp(96px,14vw,180px) 0}
+  section{position:relative}
+  .light{background:#fff;color:#000}
+  h2.big{font-size:clamp(36px,5.4vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:22px}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+  nav.solid{background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:#1f1f1f}
+  .brand{font-weight:800;font-size:17px;letter-spacing:-.01em;text-decoration:none}
+  .brand i{font-style:normal;color:var(--gold)}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--g5)}
+  .navlinks a{text-decoration:none;transition:color .2s}
+  .navlinks a:hover,.navlinks a.cur{color:#fff}
+  .cta{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid #fff;padding:8px 16px;border-radius:999px;transition:background .3s,color .3s}
+  .cta:hover{background:#fff;color:#000}
+  @media (max-width:900px){.navlinks{display:none}}
+  @media (max-width:520px){nav{padding:14px 18px}}
+
+  /* SCROLL SCENE */
+  #scene{height:500vh;background:#000}
+  #scene .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  #rings{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;pointer-events:none;padding:0 20px}
+  .hero-title .eyebrow{display:block;margin-bottom:26px}
+  .hero-title h1{font-size:clamp(52px,10.5vw,170px);font-weight:900;letter-spacing:-.05em;line-height:.9}
+  .hero-title h1 span{display:block;font-weight:300;letter-spacing:-.04em;color:var(--g5)}
+  .hero-title h1 i{font-style:normal;color:var(--gold)}
+  .hero-title p{margin:30px auto 0;max-width:760px;font-size:clamp(18px,2.1vw,26px);font-weight:300;color:var(--g5)}
+  .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .scrollcue i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+  @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .step{position:absolute;left:0;right:0;bottom:9vh;text-align:center;padding:0 24px;opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:none}
+  .step .eyebrow{display:block;margin-bottom:14px}
+  .step h2{font-size:clamp(26px,4vw,54px);font-weight:700;letter-spacing:-.028em;line-height:1.08;max-width:980px;margin:0 auto;text-shadow:0 2px 30px #000}
+  .step h2 em{font-style:normal;color:var(--gold)}
+  .progress{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .progress span{width:3px;height:26px;background:#2a2a2a;transition:background .4s}
+  .progress span.on{background:var(--gold)}
+  @media (max-width:700px){.progress{display:none}}
+
+  /* REVEAL */
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  /* INTRO */
+  .intro .pairline{font-size:clamp(34px,5.6vw,82px);font-weight:900;letter-spacing:-.045em;line-height:1.02;margin-top:26px}
+  .intro .pairline span{display:block}
+  .intro .pairline span + span{color:#b0b0b0}
+  .intro .pairline em{font-style:normal;color:var(--gold-ink)}
+  .intro .cols{margin-top:clamp(64px,8vw,110px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);border-top:2px solid #000;padding-top:48px}
+  .intro .cols p{color:#4d4d4d}
+  .intro .cols p strong{color:#000;font-weight:600}
+  @media (max-width:800px){.intro .cols{grid-template-columns:1fr}}
+
+  /* STATEMENT */
+  .statement{text-align:center}
+  .statement .bigtxt{margin:28px auto 0;font-size:clamp(32px,5.6vw,80px);font-weight:900;letter-spacing:-.045em;line-height:1.04;max-width:1100px}
+  .statement .bigtxt span{color:#2e2e2e;transition:color .45s}
+  .statement .bigtxt span.lit{color:#fff}
+  .statement .bigtxt span.gold.lit{color:var(--gold)}
+
+  /* WHAT I DO */
+  .do .grid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #000}
+  .dcard{padding:34px 28px 40px 0;border-bottom:1px solid #d9d9d9}
+  .dcard + .dcard{padding-left:28px;border-left:1px solid #d9d9d9}
+  .dcard svg{width:48px;height:48px;display:block}
+  .dcard .n{margin-top:26px;font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--gold-ink)}
+  .dcard h3{margin-top:8px;font-size:clamp(24px,2.2vw,30px);font-weight:800;letter-spacing:-.025em;line-height:1.1}
+  .dcard p{margin-top:12px;font-size:16px;color:#4d4d4d;line-height:1.6}
+  .dcard svg .ln{stroke-dasharray:160;stroke-dashoffset:160;transition:stroke-dashoffset 1.6s var(--ease) .4s}
+  .dcard.in svg .ln{stroke-dashoffset:0}
+  @media (max-width:980px){.do .grid{grid-template-columns:1fr 1fr}.dcard:nth-child(3){padding-left:0;border-left:0}}
+  @media (max-width:560px){.do .grid{grid-template-columns:1fr}.dcard + .dcard{padding-left:0;border-left:0}}
+
+  /* CURRENT WORK */
+  .work .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .work .head p{max-width:440px;color:var(--g5)}
+  .wlist{margin-top:clamp(56px,7vw,96px);border-top:1px solid #333}
+  .wrow{display:grid;grid-template-columns:minmax(150px,1fr) 2.2fr auto;gap:28px;align-items:center;padding:clamp(22px,2.6vw,32px) 0;border-bottom:1px solid #262626;position:relative;transition:padding .5s var(--ease)}
+  .wrow:before{content:"";position:absolute;left:0;bottom:-1px;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+  .wrow:hover:before{transform:scaleX(1)}
+  .wrow:hover{padding-left:14px}
+  .wrow .ab{font-size:clamp(34px,4.6vw,64px);font-weight:900;letter-spacing:-.045em;line-height:1}
+  .wrow:hover .ab{color:var(--gold)}
+  .wrow .nm{font-size:clamp(17px,1.6vw,21px);font-weight:600;line-height:1.35}
+  .wrow .nm small{display:block;margin-top:6px;font-size:15px;font-weight:400;color:var(--g5)}
+  .wrow .role{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g5);text-align:right;max-width:220px}
+  .work .coda{margin-top:56px;text-align:center;font-size:clamp(22px,2.8vw,36px);font-weight:300;color:var(--g5);letter-spacing:-.015em;max-width:900px;margin-left:auto;margin-right:auto}
+  .work .coda strong{color:#fff;font-weight:700}
+  @media (max-width:760px){.wrow{grid-template-columns:1fr;gap:10px}.wrow .role{text-align:left;max-width:none}}
+
+  /* EXPLORE */
+  .explore .grid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ex{display:flex;flex-direction:column;justify-content:space-between;min-height:260px;padding:30px 30px 28px;border:1px solid #000;text-decoration:none;position:relative;overflow:hidden;transition:color .45s}
+  .ex:before{content:"";position:absolute;inset:0;background:#000;transform:translateY(101%);transition:transform .6s var(--ease)}
+  .ex:hover{color:#fff}
+  .ex:hover:before{transform:none}
+  .ex > *{position:relative}
+  .ex .k{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+  .ex:hover .k{color:var(--gold)}
+  .ex h3{margin-top:14px;font-size:clamp(28px,2.8vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+  .ex p{margin-top:12px;font-size:16px;color:#555;line-height:1.55;transition:color .45s}
+  .ex:hover p{color:#bbb}
+  .ex .arr{margin-top:26px;font-size:28px;font-weight:300;transition:transform .5s var(--ease)}
+  .ex:hover .arr{transform:translateX(8px)}
+  @media (max-width:900px){.explore .grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:600px){.explore .grid{grid-template-columns:1fr}.ex{min-height:0}}
+
+  /* CLOSE */
+  .close{text-align:center;overflow:hidden}
+  .close canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+  .close:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,.2));pointer-events:none}
+  .close .inner{position:relative;z-index:1}
+  .close .pre{font-size:clamp(22px,2.6vw,34px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .close h2{margin:18px auto 0;font-size:clamp(40px,7.2vw,108px);font-weight:900;letter-spacing:-.05em;line-height:.98;max-width:1100px}
+  .close h2 em{font-style:normal;color:var(--gold)}
+  .contact{margin:clamp(64px,8vw,110px) auto 0;display:inline-grid;grid-template-columns:auto auto;border:1px solid #fff;text-align:left}
+  .contact a{display:block;padding:26px 38px;text-decoration:none;transition:background .35s,color .35s}
+  .contact a + a{border-left:1px solid #fff}
+  .contact a:hover{background:#fff;color:#000}
+  .contact .lab{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .contact a:hover .lab{color:var(--gold-ink)}
+  .contact .val{margin-top:8px;font-size:clamp(20px,2.4vw,30px);font-weight:800;letter-spacing:-.02em}
+  @media (max-width:640px){.contact{grid-template-columns:1fr}.contact a + a{border-left:0;border-top:1px solid #fff}}
+
+  footer{background:#000;border-top:1px solid #1f1f1f;padding:44px 0 56px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer p{font-size:14px;color:var(--g4)}
+  footer .links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--g5)}
+  footer .links a{text-decoration:none}
+  footer .links a:hover{color:#fff}
+  footer .quote{margin-top:28px;font-size:15px;color:#fff;font-weight:500;max-width:720px}
+
+  @media (prefers-reduced-motion:reduce){
+    .rv,.step{transition:none!important}.rv{opacity:1;transform:none}
+    .scrollcue i{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="/">Fenil Pritesh Shah<i>.</i></a>
+  <div class="navlinks">
+    <a class="cur" href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/philosophy/">Philosophy</a>
+    <a href="/work/">Work</a>
+    <a href="/writing/">Writing</a>
+    <a href="/now/">Now</a>
+  </div>
+  <a class="cta" href="/book/">Book a meeting</a>
+</nav>
+
+<!-- ================= SCROLL SCENE ================= -->
+<section id="scene" aria-label="Building institutions that enable ideas to endure beyond individuals">
+  <div class="stick">
+    <canvas id="rings" aria-hidden="true"></canvas>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="eyebrow">Institution builder · Researcher · Writer</span>
+      <h1><span>Fenil Pritesh</span>Shah<i>.</i></h1>
+      <p>Building institutions that enable ideas to endure beyond individuals.</p>
+    </div>
+
+    <div class="step" data-from=".14" data-to=".33">
+      <span class="eyebrow">The spark</span>
+      <h2>Every institution begins as a single idea.</h2>
+    </div>
+    <div class="step" data-from=".35" data-to=".54">
+      <span class="eyebrow">The moment</span>
+      <h2>Ideas have the power to <em>transform moments.</em></h2>
+    </div>
+    <div class="step" data-from=".56" data-to=".77">
+      <span class="eyebrow">The generations</span>
+      <h2>Institutions have the power to <em>transform generations.</em></h2>
+    </div>
+    <div class="step" data-from=".79" data-to="1.01">
+      <span class="eyebrow">Beyond a lifetime</span>
+      <h2>The founder steps aside. <em>The institution endures.</em></h2>
+    </div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue">Scroll<i></i></div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro light pad">
+  <div class="wrap">
+    <span class="eyebrow rv">The belief</span>
+    <p class="pairline rv d1"><span>Ideas transform moments.</span><span>Institutions transform <em>generations.</em></span></p>
+    <div class="cols">
+      <p class="lead rv">My work is guided by the belief that lasting progress is achieved not only through remarkable individuals, but through <strong>institutions that preserve knowledge, develop people, and continue creating value</strong> long after their founders have stepped aside.</p>
+      <p class="lead rv d2">I work across education, research, governance, and youth leadership to design and strengthen institutions that encourage intellectual inquiry, responsible leadership, meaningful collaboration, and long term societal impact. Whether through research ecosystems, academic journals, conferences, educational initiatives, or public dialogue platforms, <strong>each project contributes to a broader vision of building systems that endure.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATEMENT ================= -->
+<section class="statement pad">
+  <div class="wrap">
+    <span class="eyebrow rv">The principle</span>
+    <p class="bigtxt" id="litText"></p>
+  </div>
+</section>
+
+<!-- ================= WHAT I DO ================= -->
+<section class="do light pad">
+  <div class="wrap">
+    <span class="eyebrow rv">What I do</span>
+    <h2 class="big rv d1">Four disciplines. One purpose.</h2>
+    <div class="grid">
+      <div class="dcard rv">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 42 H42" stroke="#000" stroke-width="2"/><path class="ln" d="M10 42 V18 M20 42 V18 M28 42 V18 M38 42 V18 M6 18 L24 6 L42 18 Z" stroke="#A8721A" stroke-width="2" fill="none"/></svg>
+        <div class="n">01</div><h3>Institution Building</h3>
+        <p>Designing and developing organisations, initiatives, and governance frameworks that strengthen education, research, and civic engagement.</p>
+      </div>
+      <div class="dcard rv d1">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="13" stroke="#000" stroke-width="2" fill="none"/><path class="ln" d="M30.5 30.5 L42 42 M14 21 H28 M21 14 V28" stroke="#A8721A" stroke-width="2" fill="none"/></svg>
+        <div class="n">02</div><h3>Research</h3>
+        <p>Building platforms that support scholarly collaboration, academic publishing, interdisciplinary dialogue, and the advancement of research culture.</p>
+      </div>
+      <div class="dcard rv d2">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 18 L24 8 L44 18 L24 28 Z" stroke="#000" stroke-width="2" fill="none"/><path class="ln" d="M12 22 V34 C18 40 30 40 36 34 V22 M44 18 V32" stroke="#A8721A" stroke-width="2" fill="none"/></svg>
+        <div class="n">03</div><h3>Education</h3>
+        <p>Exploring the future of education through institutional innovation, assessment, leadership development, and knowledge exchange.</p>
+      </div>
+      <div class="dcard rv d3">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 6 H32 L40 14 V42 H8 Z" stroke="#000" stroke-width="2" fill="none"/><path class="ln" d="M15 20 H33 M15 27 H33 M15 34 H26" stroke="#A8721A" stroke-width="2" fill="none"/></svg>
+        <div class="n">04</div><h3>Writing</h3>
+        <p>Essays, reflections, and long form pieces on institutions, governance, education, leadership, technology, and society.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CURRENT WORK ================= -->
+<section class="work pad" id="work">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">Current work</span>
+        <h2 class="big rv d1">The institutions.</h2>
+      </div>
+      <p class="lead rv d2">Leading and contributing to initiatives across research, education, and institution building.</p>
+    </div>
+    <div class="wlist">
+      <a class="wrow rv" href="/work/"><div class="ab">ACRI</div><div class="nm">Ahmedabad Centre for Research and Innovation<small>Strengthening research culture and interdisciplinary collaboration</small></div><div class="role">President</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">ICOY</div><div class="nm">International Conference on Youth<small>A global platform for young people, educators and institutions</small></div><div class="role">Director General</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">IJBMRS</div><div class="nm">International Journal of Business and Management Research Studies<small>Peer reviewed research in business and management</small></div><div class="role">Chairperson</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">IJELF</div><div class="nm">International Journal of Education and Learning Futures<small>Peer reviewed research on the future of education</small></div><div class="role">Chairperson</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">AAIR</div><div class="nm">Association of Indian Researchers<small>Strengthening research culture across India</small></div><div class="role">Member, Interim Governance Council</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">ABR</div><div class="nm">Ahmedabad Business Review<small>Business, entrepreneurship, innovation and leadership</small></div><div class="role">Chairperson</div></a>
+      <a class="wrow rv" href="/work/"><div class="ab">Astitva</div><div class="nm">Student publication<small>Reflective writing, storytelling and intellectual expression</small></div><div class="role">Chairperson</div></a>
+    </div>
+    <p class="coda rv">Each initiative reflects a common purpose: <strong>strengthening the institutions that shape knowledge, opportunity, and society.</strong></p>
+  </div>
+</section>
+
+<!-- ================= EXPLORE ================= -->
+<section class="explore light pad">
+  <div class="wrap">
+    <span class="eyebrow rv">Explore</span>
+    <h2 class="big rv d1">The philosophy, the work, and the ideas behind them.</h2>
+    <div class="grid">
+      <a class="ex rv" href="/about/"><div><div class="k">About</div><h3>Building beyond a lifetime.</h3><p>My journey, areas of work, and the questions that guide it.</p></div><div class="arr">→</div></a>
+      <a class="ex rv d1" href="/philosophy/"><div><div class="k">Philosophy</div><h3>Why institutions matter.</h3><p>The principles that shape how I build.</p></div><div class="arr">→</div></a>
+      <a class="ex rv d2" href="/work/"><div><div class="k">Work</div><h3>The institutions.</h3><p>Research, publishing, conferences and professional associations.</p></div><div class="arr">→</div></a>
+      <a class="ex rv" href="/writing/"><div><div class="k">Writing</div><h3>Where ideas begin.</h3><p>Essays and reflections, before they become institutions.</p></div><div class="arr">→</div></a>
+      <a class="ex rv d1" href="/now/"><div><div class="k">Now</div><h3>What I am focused on today.</h3><p>A snapshot of current work, research and reading.</p></div><div class="arr">→</div></a>
+      <a class="ex rv d2" href="/book/"><div><div class="k">Appointment</div><h3>Let’s talk.</h3><p>Book time for a conversation or collaboration.</p></div><div class="arr">→</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSE ================= -->
+<section class="close pad">
+  <canvas id="closeSky" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="pre rv">Thank you for visiting.</p>
+    <h2 class="rv d1">Let’s build something that <em>outlasts us.</em></h2>
+    <div class="contact rv d2">
+      <a href="mailto:contact@fenilpshah.com"><div class="lab">Write to me</div><div class="val">contact@fenilpshah.com</div></a>
+      <a href="/book/"><div class="lab">Meet</div><div class="val">Book an appointment →</div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand">Fenil Pritesh Shah<i style="font-style:normal;color:var(--gold)">.</i></span>
+      <div class="links">
+        <a href="/about/">About</a>
+        <a href="/philosophy/">Philosophy</a>
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="/now/">Now</a>
+        <a href="/otlo/">Otlo</a>
+        <a href="/book/">Book a meeting</a>
+      </div>
+    </div>
+    <p class="quote">“Ideas may begin with individuals, but they achieve lasting impact through institutions that endure beyond them.”</p>
+    <p style="margin-top:14px">© <span id="yr"></span> Fenil Pritesh Shah</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio||1, 2);
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+  var GOLD='227,166,59';
+
+  /* ============ RINGS OF GENERATIONS ============ */
+  var cv=document.getElementById('rings'), ctx=cv.getContext('2d'), W, H;
+  var RINGS=6, R=rng(20061997), nodes=[{ring:0,r:0,a:0,s:1,parent:-1,tw:0}];
+  var byRing=[[0]];
+  for (var k=1;k<=RINGS;k++){
+    var n=6*k, off=R()*6.283; byRing[k]=[];
+    for (var i=0;i<n;i++){
+      var a=off+i*6.283/n+(R()-.5)*0.22, r=k+(R()-.5)*0.28;
+      // parent: nearest by angle in previous ring
+      var best=-1, bd=9;
+      byRing[k-1].forEach(function(pi){ var d=Math.abs(Math.atan2(Math.sin(a-nodes[pi].a),Math.cos(a-nodes[pi].a))); if(k===1) d=0; if(d<bd){bd=d;best=pi;} });
+      nodes.push({ring:k,r:r,a:a,s:0.8+R()*0.9,parent:best,tw:R()*6.283});
+      byRing[k].push(nodes.length-1);
+    }
+  }
+  var dust=[]; for (var d=0;d<120;d++) dust.push({x:R(),y:R(),s:R()*1.1+.2,tw:R()*6.283});
+
+  function resize(){
+    W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0);
+    sizeClose();
+  }
+
+  var scene=document.getElementById('scene');
+  function sceneProgress(){ var r=scene.getBoundingClientRect(), total=scene.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+
+  var heroTitle=document.getElementById('heroTitle'), cue=document.getElementById('cue');
+  var steps=[].slice.call(document.querySelectorAll('.step')), bars=[].slice.call(document.querySelectorAll('.progress span'));
+
+  function drawScene(p, now){
+    ctx.clearRect(0,0,W,H);
+    var t = reduce?0:now;
+    var cx=W/2, cy=H*0.44;
+    var unit=Math.min(W,H)*(W<700?0.066:0.058);
+    var grow=clamp((p-0.14)/0.62,0,1);
+    var endure=clamp((p-0.79)/0.14,0,1);
+    var rot=p*0.9 + t*0.00003;
+
+    // dust
+    for (var i=0;i<dust.length;i++){
+      var ds=dust[i], tw=reduce?1:0.5+0.5*Math.sin(t*0.001+ds.tw);
+      ctx.fillStyle='rgba(255,255,255,'+(0.28*tw)+')';
+      ctx.fillRect(ds.x*W, ds.y*H, ds.s, ds.s);
+    }
+
+    function pos(nd){ return {x:cx+Math.cos(nd.a+rot)*nd.r*unit, y:cy+Math.sin(nd.a+rot)*nd.r*unit}; }
+    var P=nodes.map(pos);
+
+    // generation rings
+    for (var k=1;k<=RINGS;k++){
+      var loc=clamp(grow*RINGS-(k-1),0,1);
+      if (loc<=0) continue;
+      var outer = (k===RINGS);
+      ctx.strokeStyle = outer && endure>0 ? 'rgba('+GOLD+','+(0.08+0.22*endure)*loc+')' : 'rgba(255,255,255,'+(0.07*loc)+')';
+      ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(cx,cy,k*unit,rot,rot+6.283*ease(loc)); ctx.stroke();
+    }
+
+    // edges (growth from parent)
+    for (var e=1;e<nodes.length;e++){
+      var nd=nodes[e], local=clamp(grow*RINGS-(nd.ring-1),0,1);
+      if (local<=0) continue;
+      var A=P[nd.parent], B=P[e], ex=A.x+(B.x-A.x)*local, ey=A.y+(B.y-A.y)*local;
+      var fromSpark = nd.ring===1;
+      var a1 = fromSpark ? 0.85*(1-endure*0.6) : 0.26+0.18*endure;
+      ctx.strokeStyle = fromSpark ? 'rgba('+GOLD+','+a1*local+')' : 'rgba(255,255,255,'+a1*local+')';
+      ctx.lineWidth = fromSpark?1.4:1;
+      ctx.beginPath(); ctx.moveTo(A.x,A.y); ctx.lineTo(ex,ey); ctx.stroke();
+    }
+
+    // nodes
+    for (var m=1;m<nodes.length;m++){
+      var q=nodes[m], lc=clamp(grow*RINGS-(q.ring-1)-0.6,0,0.4)/0.4;
+      if (lc<=0) continue;
+      var tw2=reduce?1:0.75+0.25*Math.sin(t*0.0016+q.tw);
+      var outerRing = q.ring===RINGS;
+      var rad=(1.3+q.s)*lc*(1+endure*0.35);
+      ctx.fillStyle = outerRing && endure>0 ? 'rgba('+GOLD+','+(0.5+0.5*endure)*tw2+')' : 'rgba(255,255,255,'+(0.55+0.4*tw2)*(0.6+0.4*endure)+')';
+      ctx.beginPath(); ctx.arc(P[m].x,P[m].y,rad,0,6.283); ctx.fill();
+    }
+
+    // the spark (the founder's idea) — bright, then steps aside
+    var sparkA = clamp(0.35+p*6,0,1)*(1-endure*0.75);
+    var pulse = reduce?0:Math.sin(t*0.0022);
+    var g=ctx.createRadialGradient(cx,cy,0,cx,cy,unit*1.1);
+    g.addColorStop(0,'rgba('+GOLD+','+(0.45*sparkA)+')'); g.addColorStop(1,'rgba('+GOLD+',0)');
+    ctx.fillStyle=g; ctx.beginPath(); ctx.arc(cx,cy,unit*1.1,0,6.283); ctx.fill();
+    ctx.fillStyle='rgba('+GOLD+','+sparkA+')';
+    ctx.beginPath(); ctx.arc(cx,cy,5+pulse*0.8,0,6.283); ctx.fill();
+    ctx.strokeStyle='rgba('+GOLD+','+(0.4*sparkA)+')';
+    ctx.beginPath(); ctx.arc(cx,cy,13+pulse*3,0,6.283); ctx.stroke();
+
+    // UI state
+    heroTitle.style.opacity=clamp(1-p/0.1,0,1);
+    heroTitle.style.transform='translateY(calc(-50% - '+(p*260)+'px)) scale('+(1-p*0.4)+')';
+    cue.style.opacity=clamp(1-p/0.04,0,1);
+    steps.forEach(function(el){ el.classList.toggle('on', p>=+el.dataset.from && p<+el.dataset.to); });
+    var idx=p<.14?0:p<.35?1:p<.56?2:p<.79?3:4;
+    bars.forEach(function(b,i){ b.classList.toggle('on', i<=idx); });
+  }
+
+  /* ============ CLOSING FIELD ============ */
+  var closeCv=document.getElementById('closeSky'), cctx=closeCv.getContext('2d'), CW, CH;
+  var R2=rng(314), cn=[];
+  for (var c=0;c<48;c++) cn.push({x:R2(),y:R2(),vx:(R2()-.5)*0.00005,vy:(R2()-.5)*0.00005,s:R2()*1.3+.5});
+  function sizeClose(){ CW=closeCv.clientWidth; CH=closeCv.clientHeight; closeCv.width=CW*DPR; closeCv.height=CH*DPR; cctx.setTransform(DPR,0,0,DPR,0,0); }
+  function drawClose(dt){
+    cctx.clearRect(0,0,CW,CH);
+    var lim=Math.min(CW,CH)*0.22;
+    cn.forEach(function(n){ if(!reduce){ n.x+=n.vx*dt; n.y+=n.vy*dt; if(n.x<0||n.x>1)n.vx*=-1; if(n.y<0||n.y>1)n.vy*=-1; } });
+    for (var a=0;a<cn.length;a++) for (var b=a+1;b<cn.length;b++){
+      var A=cn[a],B=cn[b],dx=(A.x-B.x)*CW,dy=(A.y-B.y)*CH,dd=Math.sqrt(dx*dx+dy*dy);
+      if (dd<lim){ cctx.strokeStyle='rgba(255,255,255,'+(0.14*(1-dd/lim))+')'; cctx.beginPath(); cctx.moveTo(A.x*CW,A.y*CH); cctx.lineTo(B.x*CW,B.y*CH); cctx.stroke(); }
+    }
+    cn.forEach(function(m,k){ cctx.fillStyle=k===0?'rgb('+GOLD+')':'rgba(255,255,255,.55)'; cctx.beginPath(); cctx.arc(m.x*CW,m.y*CH,k===0?3:m.s,0,6.283); cctx.fill(); });
+  }
+
+  /* ============ LOOP ============ */
+  var nav=document.getElementById('nav'), closeVisible=false, sceneVisible=true, last=performance.now();
+  new IntersectionObserver(function(en){closeVisible=en[0].isIntersecting;}).observe(closeCv);
+  new IntersectionObserver(function(en){sceneVisible=en[0].isIntersecting;}).observe(scene);
+  function loop(now){
+    var dt=Math.min(now-last,50); last=now;
+    if (sceneVisible) drawScene(sceneProgress(), now);
+    if (closeVisible) drawClose(dt);
+    nav.classList.toggle('solid', scrollY>40);
+    requestAnimationFrame(loop);
+  }
+
+  /* ============ REVEALS ============ */
+  var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ============ LIT STATEMENT ============ */
+  var lit=document.getElementById('litText');
+  'Ideas may begin with individuals, but they achieve lasting impact through institutions that endure beyond them.'.split(' ').forEach(function(w){
+    var s=document.createElement('span'); s.textContent=w+' ';
+    if (/^endure$/i.test(w.replace(/[^a-z]/gi,''))) s.className='gold';
+    lit.appendChild(s);
+  });
+  var spans=[].slice.call(lit.children);
+  function litUpdate(){ var r=lit.getBoundingClientRect(), vh=innerHeight; var t=clamp((vh*0.85-r.top)/(r.height+vh*0.35),0,1); var n=Math.round(t*spans.length*1.15); spans.forEach(function(s,i){ s.classList.toggle('lit', i<n); }); }
+  if (reduce) spans.forEach(function(s){s.classList.add('lit');}); else addEventListener('scroll', litUpdate, {passive:true});
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  addEventListener('resize', resize);
+  resize(); litUpdate();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

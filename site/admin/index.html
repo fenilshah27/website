@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin · fenilpshah.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="/config.js"></script>
+<style>
+  :root{--bg:#f6f3ee;--card:#fff;--ink:#1b1a17;--muted:#7d766b;--line:#e6e0d6;--off:#efeae2;--accent:#7a1f2b;--accent-soft:#f4e9ea;--ok:#2f6b3f;--ok-soft:#eaf3ec;--warn:#8a5a00;--warn-soft:#fbf1dc;--gold:#A8721A;
+    --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .hidden{display:none!important}
+  button{font:inherit;color:inherit}
+  a{color:inherit}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .note{font-size:13px;color:var(--muted)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--ink);color:#fff;border:0;font-weight:500;padding:10px 16px;cursor:pointer;text-decoration:none;white-space:nowrap}
+  .btn:disabled{opacity:.5;cursor:wait}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  .btn.danger{background:var(--accent)}
+  .btn.sm{padding:6px 11px;font-size:13px}
+  label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+  input,textarea,select{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:9px 11px;border-radius:0;outline:none}
+  input:focus,textarea:focus,select:focus{border-color:var(--ink)}
+  textarea{min-height:70px;resize:vertical}
+  .msg{padding:10px 14px;font-size:14px;margin-top:14px;border-left:3px solid var(--accent);background:var(--accent-soft)}
+  .msg.ok{border-color:var(--ok);background:var(--ok-soft)}
+
+  .login{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+  .login-card{width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);padding:32px}
+  .login-card h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:8px 0 6px}
+  .login-card .btn{width:100%;margin-top:18px}
+
+  #app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}
+  aside{background:var(--ink);color:#fff;padding:22px 0;position:sticky;top:0;height:100vh;display:flex;flex-direction:column}
+  aside .brand{padding:0 22px 22px;border-bottom:1px solid #2c2a26}
+  aside .brand b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;letter-spacing:-.01em}
+  aside .brand span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E3A63B}
+  aside nav{display:flex;flex-direction:column;padding:14px 10px;gap:2px;flex:1}
+  aside nav button{text-align:left;background:none;border:0;color:#cfc8bc;padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+  aside nav button:hover{color:#fff;background:#25231f}
+  aside nav button.active{color:#fff;background:#2e2b26;box-shadow:inset 3px 0 0 #E3A63B}
+  aside nav .grp{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#7d766b;padding:14px 14px 6px}
+  aside nav .badge{background:#E3A63B;color:#000;font-size:11px;font-weight:600;border-radius:99px;padding:1px 8px}
+  aside .foot{padding:14px 22px;border-top:1px solid #2c2a26;display:flex;flex-direction:column;gap:8px}
+  aside .foot a,aside .foot button{font-size:13px;color:#cfc8bc;text-decoration:none;background:none;border:0;text-align:left;cursor:pointer}
+  aside .foot a:hover,aside .foot button:hover{color:#fff}
+  main{min-width:0}
+  .frame{width:100%;height:100vh;border:0;display:block;background:var(--bg)}
+  .page{padding:32px clamp(18px,3vw,40px) 60px;max-width:1240px}
+  .head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+  .head h1{font-family:var(--serif);font-weight:500;font-size:32px;letter-spacing:-.01em;line-height:1.1;margin-top:6px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin-bottom:20px;flex-wrap:wrap}
+  .tabs button{background:none;border:0;padding:10px 16px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
+  .tabs button.active{color:var(--ink);border-color:var(--ink);font-weight:500}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);padding:20px}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:4px 0 12px}
+  .stat{display:flex;justify-content:space-between;padding:6px 0;border-top:1px dashed var(--line);font-size:14px}
+  .stat b{font-variant-numeric:tabular-nums}
+  .card .links{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:14px}
+  th{text-align:left;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:10px 12px;border-bottom:1px solid var(--line);background:#fbf9f5;white-space:nowrap}
+  td{padding:10px 12px;border-bottom:1px solid var(--off);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td .sub{display:block;font-size:12.5px;color:var(--muted)}
+  .tbl{overflow-x:auto}
+  .tag{display:inline-block;font-size:11.5px;padding:2px 9px;border-radius:99px;background:var(--off);color:var(--muted);white-space:nowrap}
+  .tag.ok{background:var(--ok-soft);color:var(--ok)}.tag.warn{background:var(--warn-soft);color:var(--warn)}.tag.bad{background:var(--accent-soft);color:var(--accent)}
+  .sw{position:relative;display:inline-block;width:38px;height:22px;cursor:pointer;vertical-align:middle}
+  .sw input{opacity:0;width:0;height:0;position:absolute}
+  .sw i{position:absolute;inset:0;background:#d9d2c6;border-radius:99px;transition:.2s}
+  .sw i:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s}
+  .sw input:checked + i{background:var(--ok)}
+  .sw input:checked + i:after{transform:translateX(16px)}
+  .empty{padding:40px;text-align:center;color:var(--muted);background:var(--card);border:1px dashed var(--line)}
+  .loading{padding:40px;text-align:center;color:var(--muted)}
+  .modal{position:fixed;inset:0;background:rgba(27,26,23,.5);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow:auto;z-index:50}
+  .modal.on{display:flex}
+  .mbox{background:#fff;width:100%;max-width:620px;padding:26px;border:1px solid var(--line)}
+  .mbox h2{font-family:var(--serif);font-weight:500;font-size:24px;margin-bottom:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .grid2 .full{grid-column:1/-1}
+  .mact{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+  .quote{white-space:pre-wrap;background:#fbf9f5;border-left:3px solid var(--gold);padding:8px 12px;margin:4px 0}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;font-size:13px;z-index:90;opacity:0;transition:.25s;pointer-events:none}
+  .toast.on{opacity:1}
+  .mtoggle{display:none}
+  @media (max-width:860px){
+    #app{grid-template-columns:1fr}
+    aside{position:fixed;inset:0 auto 0 0;width:250px;z-index:40;transform:translateX(-100%);transition:transform .25s}
+    aside.open{transform:none}
+    .mtoggle{display:inline-flex;position:fixed;top:12px;right:12px;z-index:45}
+    .frame{height:100vh}
+    .grid2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="login" id="loginView">
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="eyebrow">fenilpshah.com · Admin</div>
+    <h1>Sign in</h1>
+    <p class="note" style="margin-bottom:20px">One password for bookings, mail, greetings, the IQ test and Otlo.</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" maxlength="200">
+    <button class="btn" type="submit" id="loginBtn">Sign in</button>
+    <div id="loginMsg" class="msg hidden"></div>
+  </form>
+</div>
+
+<div id="app" class="hidden">
+  <aside id="side">
+    <div class="brand"><span>Admin</span><b>fenilpshah.com</b></div>
+    <nav id="nav">
+      <button data-v="overview" class="active">Overview</button>
+      <span class="grp">Bookings</span>
+      <button data-v="bookings">Bookings &amp; schedule</button>
+      <button data-v="mail">Mail</button>
+      <span class="grp">Apps</span>
+      <button data-v="greet">Greetings <span class="badge hidden" id="bGreet"></span></button>
+      <button data-v="iq">IQ assessment</button>
+      <button data-v="otlo">ઓટલો · Otlo <span class="badge hidden" id="bOtlo"></span></button>
+    </nav>
+    <div class="foot">
+      <a href="/" target="_blank">View site ↗</a>
+      <button id="logoutBtn" type="button">Sign out</button>
+    </div>
+  </aside>
+  <button class="btn sm mtoggle" id="mtoggle" type="button">Menu</button>
+  <main id="main"></main>
+</div>
+
+<div class="modal" id="modal"><div class="mbox" id="mbox"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const API = (window.FPS && window.FPS.API || '') + '/admin';
+const SITE = location.origin;
+const KEY = 'fps_admin_token';
+const $ = id => document.getElementById(id);
+const S = { token: null, view: 'overview', sub: {}, cache: {} };
+
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function show(el, on){ el.classList.toggle('hidden', !on); }
+function msg(el, t, ok){ el.textContent = t || ''; el.classList.toggle('ok', !!ok); show(el, !!t); }
+function toast(t){ const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), 3200); }
+function when(iso){ if (!iso) return ''; const d = new Date(iso); if (isNaN(d)) return esc(iso); return d.toLocaleString('en-IN', { day:'numeric', month:'short', year:'numeric', hour:'numeric', minute:'2-digit' }); }
+function sw(on, attrs){ return `<label class="sw"><input type="checkbox" ${on ? 'checked' : ''} ${attrs}><i></i></label>`; }
+async function copy(t){ try { await navigator.clipboard.writeText(t); toast('Copied'); } catch(e){ prompt('Copy this:', t); } }
+function loading(){ $('main').innerHTML = '<div class="loading">Loading…</div>'; }
+
+async function call(op, data){
+  let res;
+  try { res = await fetch(API, { method:'POST', headers:{ 'Content-Type':'text/plain;charset=utf-8' }, body: JSON.stringify(Object.assign({ op, token: S.token }, data || {})) }); }
+  catch(e){ throw new Error('Could not reach the server. Check your connection. (NET)'); }
+  let d; try { d = JSON.parse(await res.text()); } catch(e){ throw new Error('The server is not responding correctly. Is the web app deployed and FPS.API set in /config.js? (HTML)'); }
+  if (d.signedOut){ signOut(d.error); throw new Error(d.error); }
+  return d;
+}
+async function act(btn, op, data, okText){
+  if (btn) btn.disabled = true;
+  try { const d = await call(op, data); if (!d.ok) throw new Error(d.error || 'Something went wrong.'); if (okText) toast(okText); return d; }
+  catch(e){ toast(e.message); throw e; }
+  finally { if (btn) btn.disabled = false; }
+}
+
+/* ---------- sign in ---------- */
+$('loginForm').onsubmit = async e => {
+  e.preventDefault();
+  const pw = $('pw').value; if (!pw) return msg($('loginMsg'), 'Please enter your password.');
+  const b = $('loginBtn'); b.disabled = true; b.textContent = 'Signing in…'; msg($('loginMsg'), '');
+  try {
+    const d = await call('login', { password: pw });
+    if (!d.ok) return msg($('loginMsg'), d.error || 'Could not sign in.');
+    S.token = d.token; sessionStorage.setItem(KEY, d.token); $('pw').value = '';
+    enter();
+  } catch(err){ msg($('loginMsg'), err.message); }
+  finally { b.disabled = false; b.textContent = 'Sign in'; }
+};
+function signOut(reason){
+  S.token = null; sessionStorage.removeItem(KEY);
+  show($('app'), false); show($('loginView'), true); msg($('loginMsg'), reason || '');
+}
+$('logoutBtn').onclick = async () => { try { await call('logout'); } catch(e){} signOut(''); msg($('loginMsg'), 'Signed out.', true); };
+window.addEventListener('message', e => { if (e.origin === location.origin && e.data === 'fps-signed-out') signOut('Your session has ended. Please sign in again.'); });
+
+function enter(){
+  show($('loginView'), false); show($('app'), true);
+  const v = (location.hash || '').replace('#', '') || 'overview';
+  go(VIEWS[v] ? v : 'overview');
+}
+document.querySelectorAll('#nav button').forEach(b => b.onclick = () => { go(b.dataset.v); $('side').classList.remove('open'); });
+$('mtoggle').onclick = () => $('side').classList.toggle('open');
+function go(v){
+  S.view = v; history.replaceState(null, '', '#' + v);
+  document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('active', b.dataset.v === v));
+  VIEWS[v]();
+}
+
+/* ---------- views ---------- */
+const VIEWS = {
+  overview: viewOverview,
+  bookings: () => frame('/admin/bookings/'),
+  mail: () => frame('/admin/mail/'),
+  greet: viewGreet,
+  iq: viewIQ,
+  otlo: viewOtlo
+};
+function frame(src){ $('main').innerHTML = `<iframe class="frame" src="${src}" title="Admin"></iframe>`; }
+function head(eyebrow, title, right){ return `<div class="head"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1></div><div class="row">${right || ''}</div></div>`; }
+function tabs(key, list){
+  const cur = S.sub[key] || list[0][0];
+  return `<div class="tabs">${list.map(([k, l]) => `<button data-sub="${key}:${k}" class="${k === cur ? 'active' : ''}">${l}</button>`).join('')}</div>`;
+}
+function bindTabs(fn){ document.querySelectorAll('[data-sub]').forEach(b => b.onclick = () => { const [k, v] = b.dataset.sub.split(':'); S.sub[k] = v; fn(); }); }
+function badge(id, n){ const e = $(id); e.textContent = n; show(e, n > 0); }
+
+async function viewOverview(){
+  loading();
+  let d; try { d = await call('overview'); } catch(e){ $('main').innerHTML = `<div class="page"><div class="msg">${esc(e.message)}</div></div>`; return; }
+  const c = d.counts || {}, sh = d.sheets || {};
+  if (c.greet) badge('bGreet', c.greet.waiting || 0);
+  if (c.otlo) badge('bOtlo', c.otlo.unreplied || 0);
+  const stat = (k, v) => `<div class="stat"><span>${k}</span><b>${v == null ? '–' : esc(v)}</b></div>`;
+  const sheet = k => sh[k] ? `<a class="btn ghost sm" href="${esc(sh[k])}" target="_blank">Open sheet ↗</a>` : '<span class="tag bad">Sheet not connected</span>';
+  const b = c.book || {};
+  $('main').innerHTML = `<div class="page">${head('Overview', 'Everything in one place')}
+    <div class="cards">
+      <div class="card"><div class="eyebrow">Bookings</div><h3>Fenil Book</h3>
+        ${Object.keys(b).slice(0, 5).map(k => stat(k.replace(/([A-Z])/g, ' $1').replace(/^./, s => s.toUpperCase()), b[k])).join('') || stat('Status', 'Open the Bookings tab')}
+        <div class="links"><button class="btn sm" data-go="bookings">Open</button><a class="btn ghost sm" href="/book/" target="_blank">Booking page ↗</a>${sheet('book')}</div></div>
+      <div class="card"><div class="eyebrow">Greetings</div><h3>Notes, letters &amp; wishes</h3>
+        ${stat('Links', c.greet && c.greet.total)}${stat('Active', c.greet && c.greet.active)}${stat('Times opened', c.greet && c.greet.opens)}${stat('Waiting for your reply', c.greet && c.greet.waiting)}
+        <div class="links"><button class="btn sm" data-go="greet">Open</button>${sheet('greet')}</div></div>
+      <div class="card"><div class="eyebrow">IQ assessment</div><h3>Proctored test</h3>
+        ${stat('Students', c.iq && c.iq.students)}${stat('Results', c.iq && c.iq.results)}${stat('Taking it now', c.iq && c.iq.live)}
+        <div class="links"><button class="btn sm" data-go="iq">Open</button><a class="btn ghost sm" href="/iq/" target="_blank">Test page ↗</a>${sheet('iq')}</div></div>
+      <div class="card"><div class="eyebrow">ઓટલો · Otlo</div><h3>Amdavad heritage</h3>
+        ${stat('Posts', c.otlo && c.otlo.posts)}${stat('Published', c.otlo && c.otlo.published)}${stat('Messages to answer', c.otlo && c.otlo.unreplied)}
+        <div class="links"><button class="btn sm" data-go="otlo">Open</button><a class="btn ghost sm" href="/otlo/" target="_blank">Otlo ↗</a>${sheet('otlo')}</div></div>
+    </div></div>`;
+  document.querySelectorAll('[data-go]').forEach(b => b.onclick = () => go(b.dataset.go));
+}
+
+/* ===== Greetings ===== */
+async function viewGreet(){
+  const sub = S.sub.greet || 'people';
+  loading();
+  try {
+    if (sub === 'people') {
+      const d = await call('greet.list'); if (!d.ok) throw new Error(d.error);
+      S.cache.greet = d.rows;
+      badge('bGreet', d.rows.reduce((a, r) => a + r.waiting, 0));
+      const typeTag = t => `<span class="tag ${t === 'Birthday' ? 'warn' : t === 'Letter' ? '' : 'bad'}">${esc(t)}</span>`;
+      const rows = d.rows.map(r => `<tr>
+        <td><b>${esc(r.name)}</b><span class="sub">${esc(r.code)}</span></td>
+        <td>${typeTag(r.type)}<span class="sub">Design ${r.design}</span></td>
+        <td>${sw(r.active, `data-gset="active" data-code="${esc(r.code)}"`)}</td>
+        <td>${r.opens}${r.waiting ? ` <span class="tag warn">${r.waiting} to reply</span>` : ''}</td>
+        <td>${r.email ? esc(r.email) : '<span class="sub">no email</span>'}${r.emailed ? `<span class="sub">sent ${when(r.emailed)}</span>` : ''}</td>
+        <td><div class="row">
+          <button class="btn ghost sm" data-copy="${esc(r.link)}">Copy link</button>
+          <a class="btn ghost sm" href="${esc(r.link)}" target="_blank">Open ↗</a>
+          <button class="btn ghost sm" data-send="${esc(r.code)}">Email it</button>
+          <button class="btn sm" data-edit="${esc(r.code)}">Edit</button></div></td></tr>`).join('');
+      $('main').innerHTML = `<div class="page">${head('Greetings', 'Notes, letters &amp; wishes',
+          `<button class="btn ghost sm" id="pvBtn">${d.preview ? 'Preview mode: ON (stop)' : 'Preview mode (30 min)'}</button><a class="btn ghost sm" href="${esc(d.sheet)}" target="_blank">Sheet ↗</a><button class="btn sm" id="newG">+ New greeting</button>`)}
+        ${tabs('greet', [['people', 'People'], ['replies', 'Messages to you'], ['activity', 'Activity']])}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>For</th><th>Page</th><th>Link on</th><th>Opened</th><th>Email</th><th></th></tr>${rows}</table></div>` : '<div class="empty">No greetings yet. Create the first one.</div>'}
+        <p class="note" style="margin-top:12px">Preview mode lets you open links yourself for 30 minutes without counting opens or sending yourself alerts.</p></div>`;
+      $('newG').onclick = () => editGreet(null);
+      $('pvBtn').onclick = async e => { await act(e.target, 'greet.preview', { on: !d.preview }, d.preview ? 'Preview mode off' : 'Preview mode on for 30 minutes'); viewGreet(); };
+      document.querySelectorAll('[data-gset]').forEach(i => i.onchange = async () => { try { await act(null, 'greet.set', { code: i.dataset.code, field: i.dataset.gset, value: i.checked }, i.checked ? 'Link switched on' : 'Link switched off'); } catch(e){ i.checked = !i.checked; } });
+      document.querySelectorAll('[data-copy]').forEach(b => b.onclick = () => copy(b.dataset.copy));
+      document.querySelectorAll('[data-edit]').forEach(b => b.onclick = () => editGreet(S.cache.greet.find(r => r.code === b.dataset.edit)));
+      document.querySelectorAll('[data-send]').forEach(b => b.onclick = () => sendGreet(S.cache.greet.find(r => r.code === b.dataset.send)));
+    } else if (sub === 'replies') {
+      const d = await call('greet.replies'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('Greetings', 'Messages to you')}${tabs('greet', [['people', 'People'], ['replies', 'Messages to you'], ['activity', 'Activity']])}
+        ${d.rows.length ? d.rows.map(r => `<div class="card" style="margin-bottom:12px">
+          <div class="row" style="justify-content:space-between"><b>${esc(r.name)}</b><span class="note">${when(r.at)} · ${esc(r.page)}</span></div>
+          <div class="quote">${esc(r.text)}</div>
+          ${r.contact ? `<div class="note">Contact: ${esc(r.contact)}</div>` : ''}
+          ${r.wants ? `<div style="margin-top:10px"><label>Your reply <span class="note">(shown on their link next time they open it${r.seen ? ' · seen ' + when(r.seen) : ''})</span></label>
+             <textarea data-reply="${r.row}">${esc(r.reply)}</textarea><div class="row" style="margin-top:8px"><button class="btn sm" data-save="${r.row}">Save reply</button></div></div>` : '<div class="note" style="margin-top:6px">No reply expected.</div>'}
+          </div>`).join('') : '<div class="empty">No messages yet.</div>'}</div>`;
+      document.querySelectorAll('[data-save]').forEach(b => b.onclick = () => act(b, 'greet.reply', { row: +b.dataset.save, text: document.querySelector(`[data-reply="${b.dataset.save}"]`).value }, 'Reply saved'));
+    } else {
+      const d = await call('greet.activity'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('Greetings', 'Activity')}${tabs('greet', [['people', 'People'], ['replies', 'Messages to you'], ['activity', 'Activity']])}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>Opened</th><th>Who</th><th>Device</th><th>Got to</th><th>Choice</th><th>Time</th></tr>
+        ${d.rows.map(r => `<tr><td>${when(r.at)}</td><td>${esc(r.name)}<span class="sub">${esc(r.page)}</span></td><td>${esc(r.device)}</td><td>${esc(r.step)}</td><td>${esc(r.choice)}</td><td>${esc(r.time)}</td></tr>`).join('')}</table></div>` : '<div class="empty">No visits logged yet.</div>'}</div>`;
+    }
+    bindTabs(viewGreet);
+  } catch(e){ $('main').innerHTML = `<div class="page"><div class="msg">${esc(e.message)}</div></div>`; }
+}
+function editGreet(r){
+  const n = r || { name:'', type:'Sorry', from:'Fenil', design:1, email:'', song:'', start:'', messages:[] };
+  const hint = { Sorry:'Up to 5 notes, shown one by one.', Birthday:'Message 1 is the wish (others are ignored).', Letter:'Messages 1–5 are the letter’s paragraphs.' };
+  $('mbox').innerHTML = `<h2>${r ? 'Edit greeting' : 'New greeting'}</h2>
+    <div class="grid2">
+      <div><label>For (name)</label><input id="gName" value="${esc(n.name)}" maxlength="80"></div>
+      <div><label>From</label><input id="gFrom" value="${esc(n.from)}" maxlength="60"></div>
+      <div><label>Page</label><select id="gType">${['Sorry', 'Birthday', 'Letter'].map(t => `<option ${t === n.type ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+      <div><label>Design</label><select id="gDesign">${[1, 2, 3].map(t => `<option ${t === n.design ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+      <div class="full"><label>Their email <span class="note">(optional, for “Email it”)</span></label><input id="gEmail" type="email" value="${esc(n.email)}"></div>
+      <div><label>Song <span class="note">(Google Drive link to an MP3)</span></label><input id="gSong" value="${esc(n.song)}"></div>
+      <div><label>Start at <span class="note">(e.g. 0:45)</span></label><input id="gStart" value="${esc(n.start)}"></div>
+      <div class="full note" id="gHint">${hint[n.type] || ''}</div>
+      ${[0, 1, 2, 3, 4].map(i => `<div class="full"><label>Message ${i + 1}</label><textarea data-m="${i}">${esc(n.messages[i] || '')}</textarea></div>`).join('')}
+    </div>
+    <div id="gMsg" class="msg hidden"></div>
+    <div class="mact"><button class="btn ghost" id="gCancel">Cancel</button><button class="btn" id="gSave">${r ? 'Save' : 'Create link'}</button></div>`;
+  $('modal').classList.add('on');
+  $('gType').onchange = () => { $('gHint').textContent = hint[$('gType').value]; };
+  $('gCancel').onclick = () => $('modal').classList.remove('on');
+  $('gSave').onclick = async () => {
+    const data = { code: r ? r.code : '', oldName: r ? r.name : '', name: $('gName').value.trim(), from: $('gFrom').value.trim(), type: $('gType').value, design: +$('gDesign').value,
+      email: $('gEmail').value.trim(), song: $('gSong').value.trim(), start: $('gStart').value.trim(), messages: [...document.querySelectorAll('[data-m]')].map(t => t.value) };
+    if (!data.name) return msg($('gMsg'), 'Please enter who it is for.');
+    try { const d = await act($('gSave'), 'greet.save', { data }); $('modal').classList.remove('on'); toast(r ? 'Saved' : 'Link created'); if (!r && d.link) copy(d.link); viewGreet(); }
+    catch(e){ msg($('gMsg'), e.message); }
+  };
+}
+function sendGreet(r){
+  $('mbox').innerHTML = `<h2>Email ${esc(r.name)} their link</h2>
+    <label>Send to</label><input id="sEmail" type="email" value="${esc(r.email)}">
+    <p class="note" style="margin-top:8px">${r.emailed ? 'Already emailed ' + when(r.emailed) + '. ' : ''}Sent from your greetings address in Zoho.</p>
+    <div id="sMsg" class="msg hidden"></div>
+    <div class="mact"><button class="btn ghost" id="sCancel">Cancel</button><button class="btn" id="sGo">Send</button></div>`;
+  $('modal').classList.add('on');
+  $('sCancel').onclick = () => $('modal').classList.remove('on');
+  $('sGo').onclick = async () => { try { await act($('sGo'), 'greet.sendLink', { code: r.code, email: $('sEmail').value.trim() }, 'Link emailed 💌'); $('modal').classList.remove('on'); viewGreet(); } catch(e){ msg($('sMsg'), e.message); } };
+}
+
+/* ===== IQ ===== */
+async function viewIQ(){
+  const sub = S.sub.iq || 'students';
+  const T = tabs('iq', [['students', 'Students'], ['results', 'Results'], ['live', 'Taking it now']]);
+  loading();
+  try {
+    if (sub === 'students') {
+      const d = await call('iq.students'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('IQ assessment', 'Students', `<a class="btn ghost sm" href="${esc(d.sheet)}" target="_blank">Sheet ↗</a><button class="btn sm" id="addS">+ Add student</button>`)}${T}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>Student</th><th>Login</th><th>Status</th><th>Attempts</th><th>Last login</th><th></th></tr>
+        ${d.rows.map(r => `<tr><td><b>${esc(r.name)}</b><span class="sub">${esc(r.email)}</span></td>
+          <td><code>${esc(r.id)}</code><span class="sub">${esc(r.password) || '<i>no password</i>'}</span></td>
+          <td>${sw(r.status !== 'Blocked', `data-iqst="${esc(r.id)}"`)}</td><td>${r.attempts}</td><td>${when(r.lastLogin)}</td>
+          <td><div class="row"><button class="btn ghost sm" data-cred="${esc(r.id)}">Copy login</button><button class="btn ghost sm" data-pw="${esc(r.id)}">New password</button><button class="btn ghost sm" data-reset="${esc(r.id)}">Allow retake</button></div></td></tr>`).join('')}</table></div>` : '<div class="empty">No students yet.</div>'}</div>`;
+      $('addS').onclick = addStudent;
+      document.querySelectorAll('[data-iqst]').forEach(i => i.onchange = async () => { try { await act(null, 'iq.setStatus', { id: i.dataset.iqst, status: i.checked ? 'Active' : 'Blocked' }, i.checked ? 'Active' : 'Blocked'); } catch(e){ i.checked = !i.checked; } });
+      document.querySelectorAll('[data-cred]').forEach(b => b.onclick = () => { const r = d.rows.find(x => x.id === b.dataset.cred); copy(`IQ Assessment\n${SITE}/iq/\nStudent ID: ${r.id}\nPassword: ${r.password}`); });
+      document.querySelectorAll('[data-pw]').forEach(b => b.onclick = async () => { if (!confirm('Give ' + b.dataset.pw + ' a new password?')) return; await act(b, 'iq.newPassword', { id: b.dataset.pw }, 'New password set'); viewIQ(); });
+      document.querySelectorAll('[data-reset]').forEach(b => b.onclick = async () => { if (!confirm('Let ' + b.dataset.reset + ' take the test again?')) return; await act(b, 'iq.reset', { id: b.dataset.reset }, b.dataset.reset + ' can take it again'); viewIQ(); });
+    } else if (sub === 'results') {
+      const d = await call('iq.results'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('IQ assessment', 'Results')}${T}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>Submitted</th><th>Student</th><th>Score</th><th>Indicative IQ</th><th>Flags</th><th>Ended</th><th></th></tr>
+        ${d.rows.map(r => `<tr><td>${when(r.at)}</td><td><b>${esc(r.name)}</b><span class="sub">${esc(r.id)} · ${esc(r.email)}</span></td>
+          <td>${esc(r.correct)}/${esc(r.total)}<span class="sub">${esc(r.pct)}%</span></td><td><b>${esc(r.iq)}</b><span class="sub">${esc(r.band)}</span></td>
+          <td>${Number(r.flags) ? `<span class="tag ${Number(r.flags) >= 3 ? 'bad' : 'warn'}">${esc(r.flags)}</span>` : '0'}</td><td>${esc(r.completion)}<span class="sub">${esc(r.minutes)} min</span></td>
+          <td><div class="row">${/^https?:/.test(r.pdf) ? `<a class="btn ghost sm" href="${esc(r.pdf)}" target="_blank">Report ↗</a>` : ''}${/^https?:/.test(r.snaps) ? `<a class="btn ghost sm" href="${esc(r.snaps)}" target="_blank">Snapshots ↗</a>` : ''}</div></td></tr>`).join('')}</table></div>` : '<div class="empty">No results yet.</div>'}</div>`;
+    } else {
+      const d = await call('iq.live'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('IQ assessment', 'Taking it now', '<button class="btn ghost sm" id="sweep">Finalise expired sessions</button>')}${T}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>Student</th><th>Started</th><th>Deadline</th><th>Flags</th><th>Last seen</th></tr>
+        ${d.rows.map(r => `<tr><td>${esc(r.id)}</td><td>${when(r.started)}</td><td>${when(r.deadline)}</td><td>${esc(r.flags)}</td><td>${when(r.lastSeen)}</td></tr>`).join('')}</table></div>` : '<div class="empty">Nobody is taking the test right now.</div>'}</div>`;
+      $('sweep').onclick = async e => { await act(e.target, 'iq.sweep', {}, 'Done'); viewIQ(); };
+    }
+    bindTabs(viewIQ);
+  } catch(e){ $('main').innerHTML = `<div class="page"><div class="msg">${esc(e.message)}</div></div>`; }
+}
+function addStudent(){
+  $('mbox').innerHTML = `<h2>Add a student</h2><div class="grid2">
+    <div><label>Student ID</label><input id="aId" placeholder="IQ002" maxlength="20" style="text-transform:uppercase"></div>
+    <div><label>Name</label><input id="aName" maxlength="80"></div>
+    <div class="full"><label>Email <span class="note">(their report is emailed here)</span></label><input id="aEmail" type="email"></div></div>
+    <div id="aMsg" class="msg hidden"></div>
+    <div class="mact"><button class="btn ghost" id="aCancel">Cancel</button><button class="btn" id="aGo">Add &amp; copy login</button></div>`;
+  $('modal').classList.add('on');
+  $('aCancel').onclick = () => $('modal').classList.remove('on');
+  $('aGo').onclick = async () => {
+    try { const d = await act($('aGo'), 'iq.addStudent', { id: $('aId').value, name: $('aName').value, email: $('aEmail').value });
+      copy(`IQ Assessment\n${SITE}/iq/\nStudent ID: ${d.id}\nPassword: ${d.password}`); $('modal').classList.remove('on'); viewIQ(); }
+    catch(e){ msg($('aMsg'), e.message); }
+  };
+}
+
+/* ===== Otlo ===== */
+async function viewOtlo(){
+  const sub = S.sub.otlo || 'posts';
+  const T = tabs('otlo', [['posts', 'Posts'], ['messages', 'Messages']]);
+  const refresh = '<button class="btn ghost sm" id="oRef">Refresh website</button>';
+  loading();
+  try {
+    if (sub === 'posts') {
+      const d = await call('otlo.posts'); if (!d.ok) throw new Error(d.error);
+      $('main').innerHTML = `<div class="page">${head('ઓટલો · Otlo', 'Posts', refresh + `<a class="btn sm" href="${esc(d.sheet)}" target="_blank">Write in the sheet ↗</a>`)}${T}
+        ${d.rows.length ? `<div class="tbl"><table><tr><th>Post</th><th>Type</th><th>Date</th><th>Published</th><th>Featured</th><th></th></tr>
+        ${d.rows.map(r => `<tr><td><b>${esc(r.title)}</b><span class="sub">${esc(r.slug)}</span></td><td>${esc(r.type)}<span class="sub">${esc(r.cluster)}</span></td><td>${esc(String(r.date || '').slice(0, 10))}</td>
+          <td>${sw(r.published, `data-op="published" data-row="${r.row}"`)}</td><td>${sw(r.featured, `data-op="featured" data-row="${r.row}"`)}</td>
+          <td><a class="btn ghost sm" href="/otlo/#/p/${encodeURIComponent(r.slug)}" target="_blank">View ↗</a></td></tr>`).join('')}</table></div>` : '<div class="empty">No posts yet. Add them in the Posts tab of the sheet.</div>'}
+        <p class="note" style="margin-top:12px">Articles are written in the Otlo sheet (Posts tab). Changes show on the site within 5 minutes, or straight away with “Refresh website”.</p></div>`;
+      document.querySelectorAll('[data-op]').forEach(i => i.onchange = async () => { try { await act(null, 'otlo.setPost', { row: +i.dataset.row, field: i.dataset.op, value: i.checked }, 'Saved'); } catch(e){ i.checked = !i.checked; } });
+    } else {
+      const d = await call('otlo.messages'); if (!d.ok) throw new Error(d.error);
+      badge('bOtlo', d.rows.filter(m => !String(m.replied || '').trim()).length);
+      $('main').innerHTML = `<div class="page">${head('ઓટલો · Otlo', 'Messages', refresh)}${T}
+        ${d.rows.length ? d.rows.map(m => `<div class="card" style="margin-bottom:12px">
+          <div class="row" style="justify-content:space-between"><b>${esc(m.subject)}</b><span class="note">${when(m.received)} · ${esc(m.ref)}</span></div>
+          <div class="note">${esc(m.email)}</div><div class="quote">${esc(m.message)}</div>
+          <div class="row" style="margin-top:8px"><a class="btn sm" href="mailto:${esc(m.email)}?subject=${encodeURIComponent('Re: ' + (m.subject || ''))}">Reply by email</a>
+          <label class="row" style="margin:0;font-weight:400">${sw(!!String(m.replied || '').trim(), `data-rep="${m.row}"`)} Replied</label></div></div>`).join('') : '<div class="empty">No messages yet.</div>'}</div>`;
+      document.querySelectorAll('[data-rep]').forEach(i => i.onchange = async () => { try { await act(null, 'otlo.markReplied', { row: +i.dataset.rep, value: i.checked }, 'Saved'); } catch(e){ i.checked = !i.checked; } });
+    }
+    $('oRef').onclick = e => act(e.target, 'otlo.refresh', {}, 'Website refreshed');
+    bindTabs(viewOtlo);
+  } catch(e){ $('main').innerHTML = `<div class="page"><div class="msg">${esc(e.message)}</div></div>`; }
+}
+
+$('modal').addEventListener('click', e => { if (e.target === $('modal')) $('modal').classList.remove('on'); });
+
+/* resume a session in this tab */
+(function(){ const t = sessionStorage.getItem(KEY); if (t){ S.token = t; enter(); } else $('pw').focus(); })();
+</script>
+</body>
+</html>

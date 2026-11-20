@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Fenil Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f3ee; --card:#ffffff; --ink:#1b1a17; --muted:#7d766b; --line:#e6e0d6; --off:#efeae2;
+    --accent:#7a1f2b; --accent-soft:#f4e9ea; --ok:#2f6b3f; --ok-soft:#eaf3ec; --warn:#8a5a00; --warn-soft:#fbf1dc;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .hidden{display:none !important}
+  button{font:inherit;color:inherit}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .serif{font-family:var(--serif);font-weight:500}
+  .note{font-size:13px;color:var(--muted)}
+
+  /* Buttons & inputs */
+  .btn{font-family:var(--sans);display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--ink);color:#fff;border:0;font-weight:500;padding:11px 18px;cursor:pointer;text-decoration:none;font-size:14px;white-space:nowrap}
+  .btn:disabled{opacity:.5;cursor:wait}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  .btn.danger{background:var(--accent)}
+  .btn.sm{padding:7px 12px;font-size:13px}
+  .btn svg{width:15px;height:15px}
+  .linkbtn{background:none;border:0;font-size:13px;color:var(--accent);text-decoration:underline;cursor:pointer;padding:0}
+  label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+  label .opt{color:var(--muted);font-weight:400}
+  input,textarea,select{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:0;outline:none}
+  input:focus,textarea:focus,select:focus{border-color:var(--ink)}
+  textarea{min-height:80px;resize:vertical}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .full{grid-column:1 / -1}
+  .check{display:flex;align-items:center;gap:10px;font-weight:400;font-size:14px;margin:0}
+  .check input{width:18px;height:18px;padding:0}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--card);border:1px solid var(--line);padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer}
+  .chip:hover{border-color:var(--ink)}
+  .chip.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .msg{padding:11px 14px;font-size:14px;margin-top:14px;border-left:3px solid var(--accent);background:var(--accent-soft)}
+  .msg.ok{border-color:var(--ok);background:var(--ok-soft)}
+  .loading{display:flex;align-items:center;gap:12px;color:var(--muted);padding:24px 0}
+  .spin{width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--ink);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .empty{color:var(--muted);padding:22px;border:1px dashed var(--line);text-align:center;background:var(--card);font-size:14px}
+
+  /* Sign in */
+  .login{min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+  .login-card{width:100%;max-width:400px;background:var(--card);border:1px solid var(--line);padding:32px}
+  .login-card h1{font-family:var(--serif);font-weight:500;font-size:30px;margin:8px 0 6px}
+
+  /* Shell */
+  .top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+  .top-in{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:16px}
+  .brand{display:flex;flex-direction:column;line-height:1.2}
+  .brand b{font-family:var(--serif);font-weight:500;font-size:20px}
+  .top .sp{flex:1}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding:5px 9px}
+  .pill.on{background:var(--ok-soft);color:var(--ok)} .pill.off{background:var(--warn-soft);color:var(--warn)}
+  .pill i{width:6px;height:6px;border-radius:50%;background:currentColor}
+  .shell{max-width:1180px;margin:0 auto;padding:24px 20px 64px;display:grid;grid-template-columns:200px 1fr;gap:32px}
+  .nav{position:sticky;top:84px;align-self:start;display:flex;flex-direction:column;gap:2px}
+  .nav .grp{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:14px 0 4px 10px}
+  .nav button{background:none;border:0;text-align:left;padding:8px 10px;font-size:14px;color:var(--muted);cursor:pointer;border-left:2px solid transparent}
+  .nav button:hover{color:var(--ink)}
+  .nav button.active{color:var(--ink);border-color:var(--ink);font-weight:500;background:#efe9df}
+  .view-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
+  .view-h h2{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1}
+  .panel{background:var(--card);border:1px solid var(--line);padding:20px}
+  .sec{margin-top:28px}
+  .sec-t{font-family:var(--serif);font-weight:500;font-size:19px;margin-bottom:10px}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .stat{background:var(--card);border:1px solid var(--line);padding:14px 16px}
+  .stat .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .stat .v{font-family:var(--serif);font-size:30px;line-height:1.15;margin-top:4px}
+  .stat .s{font-size:12px;color:var(--muted)}
+  .two{display:grid;grid-template-columns:1.25fr 1fr;gap:24px}
+
+  /* Agenda (shared with schedule) */
+  .ag-day{margin-top:18px}
+  .ag-day-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:4px}
+  .ag-day-h .d{font-family:var(--serif);font-size:18px}
+  .ag-day-h .c{font-size:12px;color:var(--muted)}
+  .ag{display:grid;grid-template-columns:150px 92px 1fr;gap:4px 12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .ag .tm{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .ag .k{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;align-self:start;gap:6px;padding-top:3px}
+  .ag .k i{width:8px;height:8px;display:inline-block}
+  .ag .t{font-weight:600}
+  .ag .x{font-size:13px;color:var(--muted)}
+  .ag.cancelled .t{text-decoration:line-through;color:var(--muted)}
+  .ag-free{font-size:13px;color:var(--ok);padding-top:8px}
+  .k-booking i{background:var(--ink)} .k-class i{background:var(--accent)} .k-blocked i{background:#9c9387} .k-cancelled i{background:#cfc6b8}
+
+  /* Booking list */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+  .toolbar input{max-width:280px}
+  .bk{background:var(--card);border:1px solid var(--line);margin-bottom:8px}
+  .bk-h{display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;padding:12px 16px;cursor:pointer;width:100%;background:none;border:0;text-align:left}
+  .bk-h:hover{background:#fcfbf8}
+  .bk-when b{display:block;font-size:14px}
+  .bk-when span{font-size:12px;color:var(--muted)}
+  .bk-who b{font-weight:600}
+  .bk-who span{display:block;font-size:13px;color:var(--muted)}
+  .st{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;padding:4px 8px;white-space:nowrap}
+  .st.Confirmed{background:var(--ok-soft);color:var(--ok)}
+  .st.Cancelled{background:var(--accent-soft);color:var(--accent)}
+  .st.No-show{background:var(--warn-soft);color:var(--warn)}
+  .st.Past{background:var(--off);color:var(--muted)}
+  .src{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:6px}
+  .bk-b{border-top:1px solid var(--line);padding:16px}
+  .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 14px;font-size:14px}
+  .kv dt{color:var(--muted)} .kv dd{word-break:break-word}
+
+  /* Generic table cards */
+  .rows{display:flex;flex-direction:column;gap:8px}
+  .rw{background:var(--card);border:1px solid var(--line);padding:14px 16px;display:flex;gap:14px;align-items:flex-start}
+  .rw .main{flex:1;min-width:0}
+  .rw .t{font-weight:600}
+  .rw .meta{font-size:13px;color:var(--muted);margin-top:2px;word-break:break-word}
+  .rw .acts{display:flex;gap:6px;flex-shrink:0}
+  .rw.inactive{opacity:.55}
+  .edit{background:#fcfbf9;border:1px solid var(--ink);padding:18px;margin-bottom:12px}
+  .hint{font-size:12px;color:var(--muted);margin-top:4px}
+  .set-row{display:grid;grid-template-columns:1fr 1.2fr auto;gap:14px;align-items:center}
+  .set-row .val{font-size:14px;word-break:break-word}
+
+  /* Feedback */
+  .fb{background:var(--card);border:1px solid var(--line);padding:14px 16px;margin-bottom:8px}
+  .stars{color:var(--accent);letter-spacing:2px}
+  .fb .q{font-size:14px;margin-top:6px}
+  .fb .q span{color:var(--muted)}
+
+  /* Log table */
+  .tbl{width:100%;border-collapse:collapse;font-size:13px;background:var(--card);border:1px solid var(--line)}
+  .tbl th,.tbl td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .tbl-wrap{overflow-x:auto}
+
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+  .tool h3{font-family:var(--serif);font-weight:500;font-size:18px;margin-bottom:4px}
+  .codebox{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;background:var(--off);padding:10px;word-break:break-all;margin-top:10px}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;gap:0;padding-top:0}
+    .nav{position:sticky;top:61px;z-index:4;flex-direction:row;overflow-x:auto;background:var(--bg);margin:0 -20px 18px;padding:8px 20px;border-bottom:1px solid var(--line);scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav .grp{display:none}
+    .nav button{border-left:0;border-bottom:2px solid transparent;white-space:nowrap;padding:8px 10px}
+    .nav button.active{border-color:var(--ink);background:none}
+    .two{grid-template-columns:1fr}
+  }
+  .kv a,.rw a{color:var(--accent)}
+  .brand b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .brand{min-width:0}
+  @media (max-width:600px){
+    .top-in{padding:12px 16px;gap:8px}
+    .brand b{font-size:17px}
+    #openPill{display:none !important}
+    .r-txt{display:none}
+    #refreshBtn{padding:7px 9px}
+    .shell{padding:0 16px 48px}
+    .nav{margin:0 -16px 16px;padding:8px 16px}
+    .grid{grid-template-columns:1fr}
+    .ag{grid-template-columns:1fr}
+    .bk-h{grid-template-columns:1fr auto}
+    .bk-when{grid-column:1 / -1}
+    .kv{grid-template-columns:1fr}
+    .kv dt{margin-top:6px}
+    .set-row{grid-template-columns:1fr auto}
+    .set-row .val{grid-column:1 / -1;order:3}
+    .view-h h2{font-size:24px}
+    .brand-sub{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= SIGN IN ================= -->
+<div class="login" id="loginView">
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="eyebrow">Fenil Book · Admin</div>
+    <h1>Sign in</h1>
+    <p class="note" style="margin-bottom:20px">Use your owner password.</p>
+    <label for="pw">Password</label>
+    <input id="pw" type="password" autocomplete="current-password" maxlength="200">
+    <div class="actions"><button class="btn" type="submit" id="loginBtn" style="width:100%">Sign in</button></div>
+    <div id="loginMsg" class="msg hidden"></div>
+  </form>
+</div>
+
+<!-- ================= APP ================= -->
+<div id="app" class="hidden">
+  <header class="top">
+    <div class="top-in">
+      <div class="brand"><span class="eyebrow brand-sub">Admin</span><b id="ownerName">Fenil Book</b></div>
+      <span class="pill on hidden" id="openPill"><i></i>Bookings open</span>
+      <div class="sp"></div>
+      <button class="btn ghost sm" id="refreshBtn" type="button" title="Refresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg><span class="r-txt">Refresh</span></button>
+      <button class="btn ghost sm" id="logoutBtn" type="button">Sign out</button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <nav class="nav" id="nav">
+      <button data-v="dashboard" class="active">Dashboard</button>
+      <button data-v="bookings">Bookings</button>
+      <button data-v="schedule">Schedule</button>
+      <button data-v="fmeet">Fenil Meet</button>
+      <span class="grp">Availability</span>
+      <button data-v="classes">Classes</button>
+      <button data-v="blocked">Blocked time</button>
+      <button data-v="hours">Working hours</button>
+      <button data-v="types">Appointment types</button>
+      <span class="grp">Communication</span>
+      <button data-v="feedback">Feedback</button>
+      <button data-v="emails">Emails</button>
+      <span class="grp">System</span>
+      <button data-v="settings">Settings</button>
+      <button data-v="tools">Tools</button>
+    </nav>
+
+    <main id="main">
+      <div id="viewMsg" class="msg hidden" style="margin:0 0 16px"></div>
+      <div id="view"></div>
+    </main>
+  </div>
+</div>
+
+<script>
+/* ====== YOUR APPS SCRIPT WEB APP URL (same as the booking page) ====== */
+const SCRIPT_URL = FPS.API + '/book';
+const JSPDF_URL = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+
+const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const DAYS_LONG=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS_LONG=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const $=id=>document.getElementById(id);
+const S={token:null, view:'dashboard', dash:null, bookings:null, bkFilter:'upcoming', bkQuery:'', open:{}, types:[], schedRange:null, schedData:null, pdfUrl:null};
+
+/* ---------- helpers ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function parts(d){const p=d.split('-').map(Number);return {y:p[0],m:p[1],d:p[2],w:new Date(Date.UTC(p[0],p[1]-1,p[2])).getUTCDay()}}
+function mins(t){const p=String(t).split(':').map(Number);return p[0]*60+(p[1]||0)}
+function ampmM(m){let h=Math.floor(m/60)%24,mm=m%60,ap=h>=12?'pm':'am';h=h%12||12;return h+':'+String(mm).padStart(2,'0')+' '+ap}
+function ampm(t){return ampmM(mins(t))}
+function hourLabel(m){let h=Math.floor(m/60)%24,ap=h>=12?'pm':'am';h=h%12||12;return h+ap}
+function shortDate(d){const p=parts(d);return DAYS[p.w]+' '+p.d+' '+MONTHS[p.m-1]}
+function fmtDur(m){ const h=Math.floor(m/60), mm=m%60; return (h?h+'h':'')+(h&&mm?' ':'')+(mm?mm+'m':'')||'0m'; }
+function todayISO(){ return new Date(Date.now()+330*60000).toISOString().slice(0,10); }
+function show(el,on){el.classList.toggle('hidden',!on)}
+function msg(el,text,ok){el.textContent=text||'';el.classList.toggle('ok',!!ok);show(el,!!text)}
+function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)}
+function loading(){ $('view').innerHTML='<div class="loading"><div class="spin"></div>Loading…</div>'; }
+function flash(text,ok){ msg($('viewMsg'),text,ok); if(text) setTimeout(()=>{ if($('viewMsg').textContent===text) msg($('viewMsg'),''); }, 6000); }
+
+async function call(op, data){
+  const body=Object.assign({action:'admin',op:op,token:S.token},data||{});
+  let res;
+  try{ res=await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body)}); }
+  catch(e){ throw new Error('Could not reach the booking system. Please try again. (code: NET)'); }
+  const text=await res.text();
+  if(!res.ok) throw new Error('Could not reach the booking system. (code: '+res.status+')');
+  let d; try{ d=JSON.parse(text); }catch(e){ throw new Error('The booking system is not responding correctly. (code: HTML)'); }
+  if(d.signedOut){ signOut(d.error); throw new Error(d.error); }
+  return d;
+}
+
+/* ---------- sign in / out ---------- */
+$('loginForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const pw=$('pw').value; if(!pw) return msg($('loginMsg'),'Please enter your password.');
+  const btn=$('loginBtn'); btn.disabled=true; btn.textContent='Signing in…'; msg($('loginMsg'),'');
+  try{
+    const d=await call('login',{password:pw});
+    if(!d.ok) return msg($('loginMsg'),d.error||'Could not sign in.');
+    S.token=d.token; $('pw').value='';
+    if(d.owner) $('ownerName').textContent=d.owner;
+    show($('loginView'),false); show($('app'),true);
+    go('dashboard');
+  }catch(err){ msg($('loginMsg'),err.message); }
+  finally{ btn.disabled=false; btn.textContent='Sign in'; }
+});
+function signOut(reason){
+  S.token=null; S.dash=null; S.bookings=null;
+  show($('app'),false); show($('loginView'),true);
+  msg($('loginMsg'),reason||'',!reason); $('pw').focus();
+}
+$('logoutBtn').onclick=async ()=>{ try{ await call('logout'); }catch(e){} signOut(''); msg($('loginMsg'),'Signed out.',true); };
+$('refreshBtn').onclick=()=>{ S.dash=null; S.bookings=null; go(S.view); };
+
+/* ---------- navigation ---------- */
+const VIEWS={fmeet:viewFenilMeet,dashboard:viewDashboard,bookings:viewBookings,schedule:viewSchedule,classes:()=>viewTable('classes'),blocked:()=>viewTable('blocked'),
+  hours:()=>viewTable('hours'),types:()=>viewTable('types'),feedback:viewFeedback,emails:()=>viewTable('emails'),settings:()=>viewTable('settings'),tools:viewTools};
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>go(b.dataset.v));
+function go(v){
+  S.view=v; msg($('viewMsg'),'');
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.v===v));
+  window.scrollTo({top:0});
+  VIEWS[v]();
+}
+function head(title,sub,right){
+  return '<div class="view-h"><div><div class="eyebrow">'+esc(sub||'')+'</div><h2>'+esc(title)+'</h2></div><div>'+(right||'')+'</div></div>';
+}
+
+/* ================= DASHBOARD ================= */
+async function viewDashboard(){
+  loading();
+  try{
+    const d=await call('dashboard'); if(!d.ok) throw new Error(d.error);
+    S.dash=d; $('ownerName').textContent=d.owner||'Fenil Book';
+    const pill=$('openPill'); show(pill,true); pill.className='pill '+(d.open?'on':'off'); pill.innerHTML='<i></i>'+(d.open?'Bookings open':'Bookings paused');
+    const st=d.stats;
+    let h=head('Good '+greeting()+'.','Dashboard · '+d.generated);
+    h+='<div class="stats">'+
+      stat('Upcoming',st.upcoming,'confirmed bookings')+stat('Next 7 days',st.next7,'meetings')+
+      stat('New · 30 days',st.new30,st.cancelled30+' cancelled')+
+      stat('Feedback',st.rating==null?'—':st.rating+' ★',st.ratings+' rating'+(st.ratings===1?'':'s')+' · '+st.followUps+' follow-up'+(st.followUps===1?'':'s'))+
+    '</div>';
+    h+='<div class="two sec"><div><div class="sec-t">Today</div><div class="panel" style="padding:4px 16px 14px">'+agendaDay(d.today,true)+'</div></div>';
+    h+='<div><div class="sec-t">Next up</div>';
+    if(!d.next.length) h+='<div class="empty">No upcoming bookings.</div>';
+    d.next.forEach(b=>{ h+='<div class="rw" style="margin-bottom:8px"><div class="main"><div class="t">'+esc(b.name)+'</div><div class="meta">'+
+      esc(shortDate(b.date)+' · '+ampm(b.start)+' · '+b.type)+'</div></div><button class="btn ghost sm" data-open="'+esc(b.id)+'">Open</button></div>'; });
+    h+='</div></div>';
+    h+='<div class="sec"><div class="sec-t">Recent feedback</div>';
+    if(!d.feedback.length) h+='<div class="empty">No feedback yet.</div>';
+    d.feedback.forEach(f=>h+=fbCard(f));
+    h+='</div>';
+    $('view').innerHTML=h;
+    $('view').querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{ S.open={}; S.open[b.dataset.open]=true; S.bkFilter='all'; S.bkQuery=b.dataset.open; go('bookings'); });
+  }catch(e){ $('view').innerHTML=''; flash(e.message); }
+}
+function greeting(){ const h=new Date(Date.now()+330*60000).getUTCHours(); return h<12?'morning':h<17?'afternoon':'evening'; }
+function stat(k,v,s){ return '<div class="stat"><div class="k">'+esc(k)+'</div><div class="v">'+esc(v)+'</div><div class="s">'+esc(s)+'</div></div>'; }
+
+/* ---------- agenda (shared by Dashboard + Schedule) ---------- */
+const KIND={booking:{label:'Booking',c:[27,26,23]},class:{label:'Class',c:[122,31,43]},blocked:{label:'Blocked',c:[156,147,135]},cancelled:{label:'Cancelled',c:[207,198,184]}};
+function timeRange(e){ return e.allDay?'All day':ampm(e.start)+' – '+ampm(e.end); }
+function eventDetail(e){
+  if(e.kind==='booking'||e.kind==='cancelled'){
+    return [ [e.type,e.org,e.location].filter(Boolean).join(' · '), [e.email,e.phone].filter(Boolean).join(' · '),
+      e.meet?('Meet: '+e.meet.replace(/^https?:\/\//,'')):'', e.meetCode?('Fenil Meet code: '+e.meetCode):'', e.purpose?('“'+e.purpose+'”'):'', e.id?('Booking '+e.id):'' ].filter(Boolean);
+  }
+  return e.location?[e.location]:[];
+}
+function dayCounts(day){
+  const n=k=>day.events.filter(e=>e.kind===k).length;
+  const freeMin=day.free.reduce((a,f)=>a+mins(f[1])-mins(f[0]),0);
+  const out=[];
+  if(n('booking')) out.push(n('booking')+' booking'+(n('booking')>1?'s':''));
+  if(n('class')) out.push(n('class')+' class'+(n('class')>1?'es':''));
+  if(n('blocked')) out.push(n('blocked')+' blocked');
+  out.push(freeMin?fmtDur(freeMin)+' free':'no free time');
+  return out.join(' · ');
+}
+function agendaDay(day,compact){
+  const p=parts(day.date);
+  let h='<div class="ag-day"'+(compact?' style="margin-top:10px"':'')+'><div class="ag-day-h"><span class="d">'+(day.today?'Today · ':'')+DAYS_LONG[p.w]+', '+p.d+' '+MONTHS[p.m-1]+'</span><span class="c">'+esc(dayCounts(day))+'</span></div>';
+  if(!day.events.length) h+='<div class="note" style="padding:6px 0">No commitments.</div>';
+  day.events.forEach(e=>{
+    h+='<div class="ag '+e.kind+'"><div class="tm">'+esc(timeRange(e))+'</div><div class="k k-'+e.kind+'"><i></i>'+KIND[e.kind].label+'</div>'+
+      '<div><div class="t">'+esc(e.title)+'</div>'+eventDetail(e).map(x=>'<div class="x">'+esc(x)+'</div>').join('')+'</div></div>';
+  });
+  if(day.free.length) h+='<div class="ag-free">Free: '+esc(day.free.map(f=>ampm(f[0])+' – '+ampm(f[1])).join('  ·  '))+'</div>';
+  return h+'</div>';
+}
+
+/* ================= BOOKINGS ================= */
+async function viewBookings(){
+  if(!S.bookings){ loading(); try{ const d=await call('bookings'); if(!d.ok) throw new Error(d.error); S.bookings=d.bookings; }catch(e){ $('view').innerHTML=''; return flash(e.message); } }
+  if(!S.types.length) loadTypes();
+  renderBookings();
+}
+async function loadTypes(){ try{ const d=await call('table',{name:'types'}); if(d.ok) S.types=d.rows.map(r=>({name:r.values[0],dur:r.values[1],mode:r.values[2],format:r.values[5]||'',active:String(r.values[4]||'Yes').toLowerCase()!=='no'})).filter(t=>t.active&&t.name); }catch(e){} }
+
+function renderBookings(){
+  const now=Date.now(), q=S.bkQuery.trim().toLowerCase();
+  let list=S.bookings.slice();
+  const f=S.bkFilter;
+  if(f==='upcoming') list=list.filter(b=>b.status==='Confirmed'&&b.endMs>now).sort((a,b)=>a.startMs-b.startMs);
+  else if(f==='past') list=list.filter(b=>b.status!=='Cancelled'&&b.endMs<=now).sort((a,b)=>b.startMs-a.startMs);
+  else if(f==='cancelled') list=list.filter(b=>b.status==='Cancelled').sort((a,b)=>b.startMs-a.startMs);
+  else list.sort((a,b)=>b.startMs-a.startMs);
+  if(q) list=list.filter(b=>[b.id,b.name,b.email,b.phone,b.org,b.type,b.purpose].join(' ').toLowerCase().indexOf(q)>-1);
+
+  let h=head('Bookings',S.bookings.length+' in total','<button class="btn" id="addBtn">+ Add meeting</button>');
+  h+='<div id="addBox"></div>';
+  h+='<div class="toolbar"><div class="chips">'+[['upcoming','Upcoming'],['past','Past'],['cancelled','Cancelled'],['all','All']].map(c=>
+    '<button class="chip'+(f===c[0]?' sel':'')+'" data-f="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>'+
+    '<input id="bkSearch" placeholder="Search name, email, ID…" value="'+esc(S.bkQuery)+'"></div>';
+  if(!list.length) h+='<div class="empty">No bookings here.</div>';
+  list.forEach(b=>h+=bookingCard(b,now));
+  $('view').innerHTML=h;
+  $('view').querySelectorAll('[data-f]').forEach(c=>c.onclick=()=>{ S.bkFilter=c.dataset.f; renderBookings(); });
+  const sr=$('bkSearch'); sr.oninput=()=>{ S.bkQuery=sr.value; const pos=sr.selectionStart; renderBookings(); const n=$('bkSearch'); n.focus(); n.setSelectionRange(pos,pos); };
+  $('addBtn').onclick=openAddForm;
+  $('view').querySelectorAll('.bk-h').forEach(x=>x.onclick=()=>{ const id=x.dataset.id; S.open[id]=!S.open[id]; renderBookings(); });
+  wireBookingActions();
+}
+function statusOf(b,now){ return b.status==='Confirmed'&&b.endMs<=now?'Past':b.status; }
+function bookingCard(b,now){
+  const st=statusOf(b,now), open=!!S.open[b.id];
+  let h='<div class="bk"><button class="bk-h" data-id="'+esc(b.id)+'"><div class="bk-when"><b>'+esc(shortDate(b.date))+'</b><span>'+esc(ampm(b.start)+' – '+ampm(b.end))+'</span></div>'+
+    '<div class="bk-who"><b>'+esc(b.name)+'</b><span>'+esc(b.type)+(b.format==='Online'?' · Online':b.format==='In person'?' · In person':'')+(b.org?' · '+esc(b.org):'')+'</span></div>'+
+    '<div><span class="st '+esc(st)+'">'+esc(st==='Past'?'Done':st)+'</span>'+(b.source==='Owner'?'<span class="src">by you</span>':'')+'</div></button>';
+  if(open){
+    h+='<div class="bk-b"><dl class="kv">'+
+      kv('Booking ID',b.id)+kv('When',parts(b.date).d+' '+MONTHS_LONG[parts(b.date).m-1]+' '+parts(b.date).y+', '+ampm(b.start)+' – '+ampm(b.end)+' IST')+
+      kv('Email',b.email?'<a href="mailto:'+esc(b.email)+'">'+esc(b.email)+'</a>':'',true)+kv('Phone',b.phone?'<a href="tel:'+esc(b.phone)+'">'+esc(b.phone)+'</a>':'',true)+
+      kv('Organisation',b.org)+kv('Mode / location',b.mode)+kv('Format',b.format)+
+      kv('Fenil Meet code',b.meetCode&&b.status==='Confirmed'?'<b>'+esc(b.meetCode)+'</b> <button class="linkbtn" data-copy="'+esc(b.meetCode)+'" style="margin-left:8px">Copy</button>':'',true)+
+      kv('Google Meet',b.meet&&b.status==='Confirmed'?'<a href="'+esc(b.meet)+'" target="_blank" rel="noopener">'+esc(b.meet.replace(/^https?:\/\//,''))+'</a> <button class="linkbtn" data-copy="'+esc(b.meet)+'" style="margin-left:8px">Copy</button>':'',true)+kv('Purpose',b.purpose)+kv('Booked',b.created+(b.source?' · by '+(b.source==='Owner'?'you':'client'):''))+
+      kv('Reminder',b.reminder)+kv('Feedback email',b.feedbackSent)+kv('Cancel reason',b.cancelReason)+'</dl>';
+    h+='<div class="actions">';
+    if(b.status==='Confirmed'&&b.endMs>now&&b.meet) h+='<a class="btn sm" href="'+esc(b.meet)+'" target="_blank" rel="noopener">Join Google Meet</a>';
+    if(b.status==='Confirmed'&&b.endMs>now) h+='<button class="btn danger sm" data-act="cancel" data-id="'+esc(b.id)+'">Cancel booking</button><button class="btn ghost sm" data-act="resend" data-id="'+esc(b.id)+'">Re-send confirmation</button>';
+    if(b.status==='Confirmed'&&b.endMs<=now) h+='<button class="btn ghost sm" data-act="noshow" data-id="'+esc(b.id)+'">Mark as no-show</button>';
+    if(b.status==='No-show') h+='<button class="btn ghost sm" data-act="unnoshow" data-id="'+esc(b.id)+'">Mark as attended</button>';
+    h+='</div><div id="cx-'+esc(b.id)+'"></div><div id="am-'+esc(b.id)+'" class="msg hidden"></div></div>';
+  }
+  return h+'</div>';
+}
+function kv(k,v,raw){ return v?'<dt>'+esc(k)+'</dt><dd>'+(raw?v:esc(v))+'</dd>':''; }
+
+function wireBookingActions(){
+  $('view').querySelectorAll('[data-copy]').forEach(c=>c.onclick=e=>{ e.stopPropagation(); copyText(c.dataset.copy); c.textContent='Copied ✓'; });
+  $('view').querySelectorAll('[data-act]').forEach(btn=>btn.onclick=async ()=>{
+    const b=S.bookings.find(x=>x.id===btn.dataset.id); const m=$('am-'+b.id);
+    const act=btn.dataset.act;
+    if(act==='cancel'){
+      $('cx-'+b.id).innerHTML='<div class="edit" style="margin-top:14px"><label>Reason or note for '+esc(b.name)+' <span class="opt">(optional, included in their email)</span></label>'+
+        '<textarea id="cr-'+esc(b.id)+'" style="min-height:64px"></textarea><label class="check" style="margin-top:12px"><input type="checkbox" id="cn-'+esc(b.id)+'" checked> Email '+esc(b.name.split(' ')[0])+' about the cancellation</label>'+
+        '<div class="actions"><button class="btn danger sm" id="cy-'+esc(b.id)+'">Confirm cancellation</button><button class="linkbtn" id="cz-'+esc(b.id)+'">Keep booking</button></div></div>';
+      $('cz-'+b.id).onclick=()=>{ $('cx-'+b.id).innerHTML=''; };
+      $('cy-'+b.id).onclick=async e=>{
+        e.target.disabled=true; e.target.textContent='Cancelling…';
+        try{ const r=await call('cancel',{row:b.row,id:b.id,reason:$('cr-'+b.id).value.trim(),notify:$('cn-'+b.id).checked});
+          if(!r.ok) throw new Error(r.error);
+          S.bookings=null; S.dash=null; await viewBookings(); flash(r.warning||('Cancelled '+b.id+'.'+($('cn-'+b.id)?'':'')),!r.warning);
+        }catch(err){ msg(m,err.message); e.target.disabled=false; e.target.textContent='Confirm cancellation'; }
+      };
+      return;
+    }
+    btn.disabled=true;
+    try{
+      let r;
+      if(act==='resend') r=await call('resend',{row:b.row,id:b.id});
+      else r=await call('setStatus',{row:b.row,id:b.id,status:act==='noshow'?'No-show':'Confirmed'});
+      if(!r.ok) throw new Error(r.error);
+      if(act==='resend'){ msg(m,'Confirmation re-sent to '+b.email+'.',true); btn.disabled=false; }
+      else { S.bookings=null; await viewBookings(); flash(act==='noshow'?'Marked as no-show — no feedback email will be sent.':'Marked as attended.',true); }
+    }catch(err){ msg(m,err.message); btn.disabled=false; }
+  });
+}
+
+/* ---------- add meeting ---------- */
+function openAddForm(){
+  const box=$('addBox'); if(box.innerHTML){ box.innerHTML=''; return; }
+  const opts=S.types.map(t=>'<option value="'+esc(t.name)+'" data-d="'+esc(t.dur)+'" data-m="'+esc(t.mode)+'" data-f="'+esc(t.format)+'">'+esc(t.name)+' ('+esc(t.dur)+' min)</option>').join('')+'<option value="Ad-hoc meeting">Ad-hoc meeting (custom)</option>';
+  box.innerHTML='<form class="edit" id="addForm" novalidate><div class="sec-t">Add a meeting</div><p class="note" style="margin:-4px 0 14px">The time is blocked straight away. Reminder and feedback emails follow automatically.</p><div class="grid">'+
+    '<div><label>Their name</label><input id="aName" maxlength="100"></div><div><label>Email <span class="opt">(for confirmation)</span></label><input id="aEmail" type="email" maxlength="150"></div>'+
+    '<div><label>Phone <span class="opt">(optional)</span></label><input id="aPhone" maxlength="30"></div><div><label>Organisation <span class="opt">(optional)</span></label><input id="aOrg" maxlength="150"></div>'+
+    '<div><label>Type</label><select id="aType">'+opts+'</select></div><div><label>Format</label><select id="aFormat"><option value="Online">Online — Google Meet link</option><option value="Fenil Meet">Online — Fenil Meet code</option><option value="In person">In person</option></select></div><div><label>Date</label><input id="aDate" type="date" value="'+todayISO()+'"></div>'+
+    '<div><label>Start time</label><input id="aStart" type="time" step="300" value="10:00"></div><div><label>Duration (minutes)</label><input id="aDur" type="number" min="5" max="720" step="5" value="30"></div>'+
+    '<div class="full"><label>Mode / location</label><input id="aMode" maxlength="200"></div>'+
+    '<div class="full"><label>Purpose / notes <span class="opt">(shown in their email)</span></label><textarea id="aPurpose" maxlength="1000" style="min-height:64px"></textarea></div>'+
+    '<label class="full check"><input type="checkbox" id="aSend" checked> Email them a confirmation</label></div>'+
+    '<div class="actions"><button class="btn" type="submit" id="aBtn">Add meeting</button><button class="btn danger hidden" type="button" id="aForce">Add anyway</button><button class="linkbtn" type="button" id="aClose">Close</button></div>'+
+    '<div id="aMsg" class="msg hidden"></div></form>';
+  const sel=$('aType'); let touched=false;
+  $('aMode').oninput=()=>touched=true;
+  const syncMode=()=>{ if(touched) return; const o=sel.selectedOptions[0]; $('aMode').value=$('aFormat').value==='Online'?'Online — Google Meet':$('aFormat').value==='Fenil Meet'?'Online — Fenil Meet':(o.dataset.f==='In person'&&o.dataset.m?o.dataset.m:'In person, Ahmedabad'); };
+  sel.onchange=()=>{ const o=sel.selectedOptions[0]; if(o.dataset.d) $('aDur').value=o.dataset.d; if(o.dataset.f==='Online'||o.dataset.f==='Fenil Meet'||o.dataset.f==='In person') $('aFormat').value=o.dataset.f; syncMode(); };
+  $('aFormat').onchange=syncMode;
+  sel.onchange();
+  $('aClose').onclick=()=>{ box.innerHTML=''; };
+  $('addForm').oninput=()=>show($('aForce'),false);
+  const submit=async force=>{
+    const body={force:!!force,name:$('aName').value.trim(),email:$('aEmail').value.trim(),phone:$('aPhone').value.trim(),organisation:$('aOrg').value.trim(),
+      type:sel.value,format:$('aFormat').value,date:$('aDate').value,start:$('aStart').value,duration:$('aDur').value,mode:$('aMode').value.trim(),purpose:$('aPurpose').value.trim(),sendEmail:$('aSend').checked};
+    if(body.name.length<2) return msg($('aMsg'),'Please enter their name.');
+    if(body.sendEmail&&!validEmail(body.email)) return msg($('aMsg'),'Add a valid email, or untick "Email them".');
+    const btn=force?$('aForce'):$('aBtn'); const label=btn.textContent; btn.disabled=true; btn.textContent='Adding…';
+    try{
+      const r=await call('addBooking',body);
+      if(!r.ok){ msg($('aMsg'),r.error); show($('aForce'),!!r.clash); return; }
+      box.innerHTML=''; S.bookings=null; S.dash=null; S.bkFilter='upcoming'; S.bkQuery='';
+      await viewBookings();
+      flash('Added '+r.id+' — '+r.booking.dateLabel+', '+r.booking.timeLabel+'. '+(r.emailed?'Confirmation emailed.':(r.emailError||'No email sent.'))+(r.meet?' Google Meet link created.':'')+(r.meetCode?' Fenil Meet code: '+r.meetCode+'.':'')+(r.meetError?' '+r.meetError:''),!r.emailError&&!r.meetError);
+    }catch(e){ msg($('aMsg'),e.message); }
+    finally{ if(document.body.contains(btn)){ btn.disabled=false; btn.textContent=label; } }
+  };
+  $('addForm').onsubmit=e=>{ e.preventDefault(); submit(false); };
+  $('aForce').onclick=()=>submit(true);
+  $('aName').focus();
+}
+
+/* ================= SCHEDULE ================= */
+const RANGES=[{k:'today',label:'Today',from:0,days:1},{k:'tomorrow',label:'Tomorrow',from:1,days:1},{k:'3',label:'Next 3 days',from:0,days:3},
+  {k:'7',label:'Next 7 days',from:0,days:7},{k:'14',label:'Next 14 days',from:0,days:14},{k:'30',label:'Next 30 days',from:0,days:30}];
+async function viewSchedule(){
+  const r=S.schedRange||RANGES[3]; S.schedRange=r;
+  let h=head('Schedule','Classes, bookings and blocked time','<button class="btn" id="pdfBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>Download PDF</button>');
+  h+='<div class="chips">'+RANGES.map(x=>'<button class="chip'+(x.k===r.k?' sel':'')+'" data-k="'+x.k+'">'+x.label+'</button>').join('')+'</div>';
+  h+='<button class="linkbtn hidden" id="pdfOpen" style="margin-top:10px">Download didn\'t start? Open the PDF</button><div id="schedBody"><div class="loading"><div class="spin"></div>Loading…</div></div>';
+  $('view').innerHTML=h;
+  $('view').querySelectorAll('[data-k]').forEach(c=>c.onclick=()=>{ S.schedRange=RANGES.find(x=>x.k===c.dataset.k); viewSchedule(); });
+  $('pdfBtn').onclick=downloadPdf; $('pdfOpen').onclick=()=>{ if(S.pdfUrl) window.open(S.pdfUrl,'_blank'); };
+  try{
+    const d=await call('schedule',{from:r.from,days:r.days}); if(!d.ok) throw new Error(d.error);
+    d.rangeLabel=r.label; S.schedData=d;
+    $('schedBody').innerHTML=d.days.map(x=>agendaDay(x)).join('')+'<p class="note" style="margin-top:14px">Generated '+esc(d.generated)+'.</p>';
+  }catch(e){ $('schedBody').innerHTML=''; flash(e.message); }
+}
+function loadJsPdf(){
+  if(window.jspdf&&window.jspdf.jsPDF) return Promise.resolve(window.jspdf.jsPDF);
+  return new Promise((ok,fail)=>{ const s=document.createElement('script'); s.src=JSPDF_URL;
+    s.onload=()=>window.jspdf&&window.jspdf.jsPDF?ok(window.jspdf.jsPDF):fail(new Error('PDF tool failed to load.'));
+    s.onerror=()=>fail(new Error('Could not load the PDF tool. Please check your connection.')); document.head.appendChild(s); });
+}
+async function downloadPdf(){
+  if(!S.schedData) return; const btn=$('pdfBtn'); btn.disabled=true;
+  try{ const J=await loadJsPdf(); const doc=buildOwnerPdf(J,S.schedData); doc.save('Detailed-schedule-'+S.schedData.days[0].date+'.pdf');
+    if(S.pdfUrl) URL.revokeObjectURL(S.pdfUrl); S.pdfUrl=doc.output('bloburl'); show($('pdfOpen'),true);
+  }catch(e){ flash(e.message); } finally{ btn.disabled=false; }
+}
+/* Detailed owner PDF (A4 portrait, mm). */
+function buildOwnerPdf(JsPDF, d){
+  const C={ink:[27,26,23],muted:[125,118,107],line:[230,224,214],off:[239,234,226],tick:[226,219,207],accent:[122,31,43],free:[214,230,216],freeInk:[47,107,63],white:[255,255,255]};
+  const doc=new JsPDF({unit:'mm',format:'a4',orientation:'portrait'});
+  const W=210,H=297,M=16,CW=W-2*M, LIMIT=H-22;
+  const fill=c=>doc.setFillColor(c[0],c[1],c[2]), draw=c=>doc.setDrawColor(c[0],c[1],c[2]), ink=c=>doc.setTextColor(c[0],c[1],c[2]);
+  const font=(f,st,sz)=>{doc.setFont(f,st);doc.setFontSize(sz);};
+  const lo=d.range[0], hi=d.range[1], span=Math.max(hi-lo,60);
+  const n=d.days.length, f=parts(d.days[0].date), l=parts(d.days[n-1].date);
+  let period;
+  if(n===1) period=DAYS_LONG[f.w]+', '+f.d+' '+MONTHS_LONG[f.m-1]+' '+f.y;
+  else if(f.m===l.m&&f.y===l.y) period=f.d+' – '+l.d+' '+MONTHS_LONG[f.m-1]+' '+f.y;
+  else if(f.y===l.y) period=f.d+' '+MONTHS_LONG[f.m-1]+' – '+l.d+' '+MONTHS_LONG[l.m-1]+' '+f.y;
+  else period=f.d+' '+MONTHS[f.m-1]+' '+f.y+' – '+l.d+' '+MONTHS[l.m-1]+' '+l.y;
+
+  // Columns for agenda rows
+  const TX=M, TW=34, KX=M+TW, KW=24, DX=KX+KW, DW=CW-TW-KW;
+
+  function pageHeader(first){
+    fill(C.accent); doc.rect(0,0,W,2.5,'F');
+    if(!first){
+      font('helvetica','normal',7.5); ink(C.muted);
+      doc.text((d.owner||'')+'  ·  Detailed schedule  ·  '+period, M, 12);
+      doc.text('PRIVATE', W-M, 12, {align:'right', charSpace:1});
+      draw(C.line); doc.setLineWidth(0.3); doc.line(M,15,W-M,15);
+      return 22;
+    }
+    font('helvetica','bold',7.5); ink(C.accent); doc.text('PRIVATE  ·  DETAILED SCHEDULE', M, 20, {charSpace:1.2});
+    font('times','normal',28); ink(C.ink); doc.text(d.owner||'', M, 32);
+    font('helvetica','normal',10); ink(C.muted); doc.text(period+'   ·   '+(d.rangeLabel||'')+'   ·   All times IST', M, 40);
+    font('helvetica','normal',7); doc.text('GENERATED', W-M, 20, {align:'right', charSpace:1});
+    font('helvetica','normal',8.5); ink(C.ink); doc.text(d.generated||'', W-M, 25, {align:'right'});
+
+    // Summary tiles
+    const all=[].concat.apply([],d.days.map(x=>x.events));
+    const freeMin=d.days.reduce((a,x)=>a+x.free.reduce((b,fr)=>b+mins(fr[1])-mins(fr[0]),0),0);
+    const tiles=[['Bookings',all.filter(e=>e.kind==='booking').length],['Classes',all.filter(e=>e.kind==='class').length],
+      ['Blocked',all.filter(e=>e.kind==='blocked').length],['Free time',fmtDur(freeMin)]];
+    const tw=(CW-9)/4;
+    tiles.forEach((t,i)=>{
+      const x=M+i*(tw+3);
+      fill([249,247,243]); doc.rect(x,47,tw,17,'F');
+      font('helvetica','bold',6.5); ink(C.muted); doc.text(t[0].toUpperCase(), x+4, 52.5, {charSpace:0.8});
+      font('times','normal',17); ink(C.ink); doc.text(String(t[1]), x+4, 61);
+    });
+    // Legend
+    let lx=M; const ly=71;
+    [['Booking',KIND.booking.c],['Class',KIND.class.c],['Blocked',KIND.blocked.c],['Free',C.free],['Outside hours',C.off]].forEach(it=>{
+      fill(it[1]); doc.roundedRect(lx,ly-2.4,6,2.8,0.6,0.6,'F');
+      font('helvetica','normal',7.5); ink(C.ink); doc.text(it[0], lx+8, ly);
+      lx+=8+doc.getTextWidth(it[0])+7;
+    });
+    return 80;
+  }
+  function footer(page,total){
+    draw(C.line); doc.setLineWidth(0.3); doc.line(M,H-16,W-M,H-16);
+    font('helvetica','italic',7.2); ink(C.muted);
+    doc.text('Private — contains personal details of people who booked. Please do not share.', M, H-10.5);
+    font('helvetica','normal',7.2); doc.text(page+' / '+total, W-M, H-10.5, {align:'right'});
+  }
+  function timeline(day,y){
+    const BX=M, BW=CW, bh=6.5, xOf=m=>BX+(Math.min(Math.max(m,lo),hi)-lo)/span*BW;
+    font('helvetica','normal',5.8); ink(C.muted);
+    const step=span>600?120:60;
+    for(let m=lo;m<=hi;m+=step) doc.text(hourLabel(m), xOf(m), y, {align: m===lo?'left':(m+step>hi?'right':'center')});
+    const by=y+1.6;
+    fill(C.off); doc.roundedRect(BX,by,BW,bh,1,1,'F');
+    day.free.forEach(fr=>{ fill(C.free); doc.rect(xOf(mins(fr[0])),by,xOf(mins(fr[1]))-xOf(mins(fr[0])),bh,'F'); });
+    day.events.filter(e=>e.kind!=='cancelled').forEach(e=>{
+      const a=e.allDay?lo:mins(e.start), b=e.allDay?hi:mins(e.end);
+      const x=xOf(a), w=Math.max(xOf(b)-x,0.8);
+      fill(KIND[e.kind].c); doc.rect(x,by,w,bh,'F');
+      font('helvetica','bold',5.6);
+      const lbl=e.title;
+      if(doc.getTextWidth(lbl)+2.5<w){ ink(C.white); doc.text(lbl, x+1.4, by+bh/2+1); }
+    });
+    draw(C.tick); doc.setLineWidth(0.15);
+    for(let m=lo+60;m<hi;m+=60){ const x=xOf(m); doc.line(x,by,x,by+bh); }
+    return by+bh+5;
+  }
+  function rowLayout(e){
+    font('helvetica','bold',9);
+    const title=doc.splitTextToSize(e.title+(e.kind==='cancelled'?'  (cancelled)':''), DW);
+    font('helvetica','normal',7.6);
+    const det=[].concat.apply([],eventDetail(e).map(t=>doc.splitTextToSize(t,DW)));
+    return {title, det, h: title.length*4 + det.length*3.5 + 3.2};
+  }
+
+  let y=pageHeader(true);
+  d.days.forEach(day=>{
+    const p=parts(day.date);
+    const rows=day.events.map(rowLayout);
+    const headH=24, firstRow=rows.length?rows[0].h:6;
+    if(y+headH+firstRow>LIMIT){ doc.addPage(); y=pageHeader(false); }
+    // Day header
+    font('helvetica','bold',7); ink(C.accent);
+    doc.text((day.today?'TODAY · ':'')+DAYS_LONG[p.w].toUpperCase(), M, y, {charSpace:0.9});
+    font('times','normal',15); ink(C.ink); doc.text(p.d+' '+MONTHS_LONG[p.m-1], M, y+6.5);
+    font('helvetica','normal',7.8); ink(C.muted); doc.text(dayCounts(day), W-M, y+6.5, {align:'right'});
+    y=timeline(day, y+12);
+    // Agenda rows
+    if(!rows.length){ font('helvetica','italic',8.5); ink(C.muted); doc.text('No commitments.', DX, y+1); y+=6; }
+    day.events.forEach((e,i)=>{
+      const r=rows[i];
+      if(y+r.h>LIMIT){ doc.addPage(); y=pageHeader(false);
+        font('helvetica','bold',7); ink(C.accent); doc.text(DAYS_LONG[p.w].toUpperCase()+' '+p.d+' '+MONTHS[p.m-1]+' (continued)', M, y, {charSpace:0.6}); y+=6; }
+      const muted=e.kind==='cancelled';
+      font('helvetica','bold',8.6); ink(muted?C.muted:C.ink); doc.text(timeRange(e), TX, y+1);
+      fill(KIND[e.kind].c); doc.rect(KX, y-1.2, 2.4, 2.4, 'F');
+      font('helvetica','bold',6.4); ink(e.kind==='class'?C.accent:C.muted); doc.text(KIND[e.kind].label.toUpperCase(), KX+4, y+0.8, {charSpace:0.5});
+      font('helvetica','bold',9); ink(muted?C.muted:C.ink); doc.text(r.title, DX, y+1);
+      let yy=y+1+r.title.length*4;
+      if(r.det.length){ font('helvetica','normal',7.6); ink(C.muted); doc.text(r.det, DX, yy-0.6); yy+=r.det.length*3.5; }
+      y=yy+1.6;
+      if(i<rows.length-1){ draw(C.line); doc.setLineWidth(0.15); doc.line(DX,y-2.2,W-M,y-2.2); }
+    });
+    // Free line
+    if(day.free.length){
+      font('helvetica','normal',7.8);
+      const lines=doc.splitTextToSize('Free:  '+day.free.map(fr=>ampm(fr[0])+' – '+ampm(fr[1])).join('   ·   '), CW-TW);
+      if(y+lines.length*3.6>LIMIT){ doc.addPage(); y=pageHeader(false); }
+      ink(C.freeInk); doc.text(lines, DX, y+1.5); y+=lines.length*3.6+1.5;
+    }
+    draw(C.line); doc.setLineWidth(0.3); doc.line(M,y+2,W-M,y+2);
+    y+=9;
+  });
+  const total=doc.getNumberOfPages();
+  for(let i=1;i<=total;i++){ doc.setPage(i); footer(i,total); }
+  doc.setProperties({title:(d.owner||'')+' — Detailed schedule — '+period, author:d.owner||'', subject:'Private schedule'});
+  return doc;
+}
+
+
+/* ================= GENERIC TABLE EDITORS ================= */
+const TABLES={
+  classes:{title:'Classes',sub:'Recurring commitments — blocked every week',noun:'class',
+    fields:[{t:'text',label:'Class / commitment'},{t:'days',label:'Day(s)'},{t:'time',label:'Start'},{t:'time',label:'End'},
+      {t:'date',label:'From date',opt:1},{t:'date',label:'Until date',opt:1},{t:'yesno',label:'Active',def:'Yes'},{t:'text',label:'Location (private)',opt:1}],
+    meta:v=>[v[1],range(v[2],v[3]),v[7],(v[4]||v[5])?('from '+(v[4]||'start')+' to '+(v[5]||'open')):''], inactive:v=>String(v[6]).toLowerCase()==='no'},
+  blocked:{title:'Blocked time',sub:'One-off days or hours you are unavailable',noun:'blocked time',
+    fields:[{t:'date',label:'Date'},{t:'time',label:'Start',opt:1,hint:'Leave blank for all day'},{t:'time',label:'End',opt:1,hint:'Leave blank for all day'},
+      {t:'text',label:'Reason (private)',opt:1},{t:'text',label:'Location (private)',opt:1}],
+    title1:v=>v[0]?shortDate(v[0])+' '+parts(v[0]).y:'(no date)', meta:v=>[(v[1]||v[2])?range(v[1]||'00:00',v[2]||'23:59'):'All day',v[3],v[4]],
+    sort:(a,b)=>String(b.values[0]).localeCompare(String(a.values[0]))},
+  hours:{title:'Working hours',sub:'When people can book you',noun:'hours',
+    fields:[{t:'days',label:'Day(s)'},{t:'time',label:'Start'},{t:'time',label:'End'}], meta:v=>[range(v[1],v[2])]},
+  types:{title:'Appointment types',sub:'What people can book',noun:'type',
+    fields:[{t:'text',label:'Appointment type'},{t:'number',label:'Duration (minutes)'},{t:'text',label:'Mode / location',hint:'For in-person types: where you meet'},{t:'textarea',label:'Description',opt:1},{t:'yesno',label:'Active',def:'Yes'},
+      {t:'select',label:'Format',options:['Online','Fenil Meet','In person','Client chooses'],def:'Client chooses',hint:'Online = Google Meet link · Fenil Meet = your own call with a code · Client chooses = they pick'}],
+    meta:v=>[v[1]?v[1]+' min':'',v[5]?(v[5]==='Online'?'Online · Google Meet':v[5]==='Fenil Meet'?'Online · Fenil Meet':v[5]==='Client chooses'?'Client chooses':'In person'):'',v[2],v[3]], inactive:v=>String(v[4]).toLowerCase()==='no'},
+  emails:{title:'Emails',sub:'Which address and name each email is sent from',noun:'email',
+    fields:[{t:'fixed',label:'Email'},{t:'yesno',label:'Send?'},{t:'text',label:'From address',opt:1,hint:'Blank = the default From address in Settings'},
+      {t:'text',label:'Sender name',opt:1},{t:'text',label:'Send to (alerts only)',opt:1,hint:'Blank = Owner email + Also notify'},{t:'fixed',label:'Notes'}],
+    meta:v=>[(String(v[1]).toLowerCase()==='no'?'Off':'On'),(v[3]||'')+(v[2]?' <'+v[2]+'>':' · default address'),v[4]?'to '+v[4]:''], inactive:v=>String(v[1]).toLowerCase()==='no'}
+};
+function range(a,b){ return (a&&b)?ampm(a)+' – '+ampm(b):''; }
+
+async function viewTable(name){
+  if(name==='settings') return viewSettings();
+  loading();
+  let d; try{ d=await call('table',{name}); if(!d.ok) throw new Error(d.error); }catch(e){ $('view').innerHTML=''; return flash(e.message); }
+  const cfg=TABLES[name];
+  const rows=d.rows.slice(); if(cfg.sort) rows.sort(cfg.sort);
+  let h=head(cfg.title,cfg.sub,d.add?'<button class="btn" id="newBtn">+ Add '+esc(cfg.noun)+'</button>':'');
+  h+='<div id="editBox"></div><div class="rows">';
+  if(!rows.length) h+='<div class="empty">Nothing here yet.</div>';
+  rows.forEach(r=>{
+    const v=r.values, t=cfg.title1?cfg.title1(v):v[0];
+    const meta=cfg.meta(v).filter(Boolean).join(' · ');
+    h+='<div class="rw'+(cfg.inactive&&cfg.inactive(v)?' inactive':'')+'" id="rw-'+r.row+'"><div class="main"><div class="t">'+esc(t)+'</div>'+(meta?'<div class="meta">'+esc(meta)+'</div>':'')+'</div><div class="acts">'+
+      '<button class="btn ghost sm" data-edit="'+r.row+'">Edit</button>'+(d.del?'<button class="btn ghost sm" data-del="'+r.row+'">Delete</button>':'')+'</div></div>';
+  });
+  h+='</div>';
+  $('view').innerHTML=h;
+  if(d.add) $('newBtn').onclick=()=>editRow(name,d,null);
+  $('view').querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editRow(name,d,d.rows.find(r=>r.row===+b.dataset.edit)));
+  $('view').querySelectorAll('[data-del]').forEach(b=>{ let armed=false; b.onclick=async ()=>{
+    if(!armed){ armed=true; b.textContent='Tap to confirm'; b.classList.add('danger'); b.classList.remove('ghost'); setTimeout(()=>{ if(document.body.contains(b)&&!b.disabled){ armed=false; b.textContent='Delete'; b.classList.remove('danger'); b.classList.add('ghost'); } },4000); return; }
+    b.disabled=true; const r=d.rows.find(x=>x.row===+b.dataset.del);
+    try{ const res=await call('deleteRow',{name,row:r.row,key:r.values[0]}); if(!res.ok) throw new Error(res.error); await viewTable(name); flash('Deleted.',true); }
+    catch(e){ flash(e.message); b.disabled=false; }
+  }; });
+}
+
+function fieldInput(f,i,val){
+  const id='f'+i, v=esc(val==null?'':val);
+  let inp;
+  if(f.t==='fixed') inp='<div class="note" style="padding:6px 0;color:var(--ink)">'+v+'</div>';
+  else if(f.t==='yesno') inp='<select id="'+id+'"><option'+(String(val||f.def||'Yes').toLowerCase()!=='no'?' selected':'')+'>Yes</option><option'+(String(val).toLowerCase()==='no'?' selected':'')+'>No</option></select>';
+  else if(f.t==='select'){ const cur=val||f.def||''; inp='<select id="'+id+'">'+f.options.map(o=>'<option'+(o===cur?' selected':'')+'>'+esc(o)+'</option>').join('')+'</select>'; }
+  else if(f.t==='textarea') inp='<textarea id="'+id+'" style="min-height:64px">'+v+'</textarea>';
+  else if(f.t==='time') inp='<input id="'+id+'" type="time" step="300" value="'+esc(normTime(val))+'">';
+  else if(f.t==='date') inp='<input id="'+id+'" type="date" value="'+esc(normDate(val))+'">';
+  else if(f.t==='number') inp='<input id="'+id+'" type="number" min="5" step="5" value="'+v+'">';
+  else if(f.t==='days') inp='<input id="'+id+'" value="'+v+'" placeholder="e.g. Tuesday · Mon, Thu · Mon-Fri">';
+  else inp='<input id="'+id+'" value="'+v+'">';
+  const hint=f.hint||(f.t==='days'?'Examples: Tuesday · Mon, Thu · Mon-Fri · Weekdays · Daily':'');
+  return '<div class="'+(f.t==='textarea'||f.t==='fixed'&&i>0?'full':'')+'"><label>'+esc(f.label)+(f.opt?' <span class="opt">(optional)</span>':'')+'</label>'+inp+(hint?'<div class="hint">'+esc(hint)+'</div>':'')+'</div>';
+}
+function normTime(v){ const m=String(v||'').trim().match(/^(\d{1,2})[:.](\d{2})/); return m?String(m[1]).padStart(2,'0')+':'+m[2]:''; }
+function normDate(v){ const s=String(v||'').trim(); if(/^\d{4}-\d{2}-\d{2}$/.test(s)) return s; const m=s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/); return m?m[3]+'-'+m[2].padStart(2,'0')+'-'+m[1].padStart(2,'0'):''; }
+
+function editRow(name,d,row){
+  const cfg=TABLES[name], box=$('editBox');
+  const vals=row?row.values.slice():[];
+  let h='<form class="edit" id="editForm" novalidate><div class="sec-t">'+(row?'Edit '+esc(cfg.noun):'New '+esc(cfg.noun))+'</div><div class="grid">';
+  cfg.fields.forEach((f,i)=>h+=fieldInput(f,i,row?vals[i]:(f.def||'')));
+  h+='</div><div class="actions"><button class="btn" type="submit" id="saveBtn">Save</button><button class="linkbtn" type="button" id="cancelEdit">Cancel</button></div><div id="editMsg" class="msg hidden"></div></form>';
+  box.innerHTML=h; box.scrollIntoView({behavior:'smooth',block:'start'});
+  $('cancelEdit').onclick=()=>{ box.innerHTML=''; };
+  $('editForm').onsubmit=async e=>{
+    e.preventDefault();
+    const out=[];
+    const n=Math.max(d.headers.length,cfg.fields.length);
+    for(let i=0;i<n;i++){
+      const f=cfg.fields[i];
+      if(!f||f.t==='fixed') out.push(vals[i]==null?'':vals[i]);
+      else out.push(($('f'+i).value||'').trim());
+    }
+    const err=validateRow(name,cfg,out); if(err) return msg($('editMsg'),err);
+    const btn=$('saveBtn'); btn.disabled=true; btn.textContent='Saving…';
+    try{ const r=await call('saveRow',{name,row:row?row.row:null,key:row?row.values[0]:'',values:out}); if(!r.ok) throw new Error(r.error);
+      if(name==='types') S.types=[];
+      await viewTable(name); flash('Saved.',true);
+    }catch(err2){ msg($('editMsg'),err2.message); btn.disabled=false; btn.textContent='Save'; }
+  };
+}
+function validateRow(name,cfg,v){
+  for(let i=0;i<cfg.fields.length;i++){ const f=cfg.fields[i]; if(!f.opt&&f.t!=='fixed'&&f.t!=='yesno'&&!String(v[i]||'').trim()) return 'Please fill in "'+f.label+'".'; }
+  const t=i=>v[i]?mins(v[i]):null;
+  if(name==='classes'&&t(3)<=t(2)) return 'End time must be after the start time.';
+  if(name==='hours'&&t(2)<=t(1)) return 'End time must be after the start time.';
+  if(name==='blocked'&&v[1]&&v[2]&&t(2)<=t(1)) return 'End time must be after the start time.';
+  if(name==='blocked'&&(!!v[1]!==!!v[2])) return 'Fill in both start and end, or leave both blank for the whole day.';
+  if(name==='types'&&!(+v[1]>=5)) return 'Duration must be at least 5 minutes.';
+  if(name==='emails'){ if(v[2]&&!validEmail(v[2])) return 'The From address does not look right.';
+    if(v[4]&&v[4].split(',').some(x=>!validEmail(x.trim()))) return 'Check the "Send to" addresses (separate several with commas).'; }
+  return '';
+}
+
+/* ---------- settings ---------- */
+const YESNO_SETTINGS=['Bookings open','Availability download','Google Calendar sync','Calendar feed includes classes & blocked time','Google Meet for online meetings','Fenil Meet enabled','Fenil Meet waiting room'];
+async function viewSettings(){
+  loading();
+  let d; try{ d=await call('table',{name:'settings'}); if(!d.ok) throw new Error(d.error); }catch(e){ $('view').innerHTML=''; return flash(e.message); }
+  let h=head('Settings','Booking rules and defaults')+'<div class="rows">';
+  d.rows.forEach(r=>{ const v=r.values;
+    h+='<div class="rw" id="st-'+r.row+'"><div class="main"><div class="set-row"><div><div class="t">'+esc(v[0])+'</div><div class="meta">'+esc(v[2]||'')+'</div></div>'+
+      '<div class="val">'+(v[1]===''?'<span class="note">—</span>':esc(v[1]))+'</div><div><button class="btn ghost sm" data-set="'+r.row+'">Edit</button></div></div></div></div>'; });
+  h+='</div>';
+  $('view').innerHTML=h;
+  $('view').querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{
+    const r=d.rows.find(x=>x.row===+b.dataset.set), v=r.values, card=$('st-'+r.row);
+    const yn=YESNO_SETTINGS.indexOf(v[0])>-1;
+    card.innerHTML='<form class="main" novalidate><div class="t">'+esc(v[0])+'</div><div class="meta" style="margin-bottom:10px">'+esc(v[2]||'')+'</div>'+
+      (yn?'<select id="sv"><option'+(String(v[1]).toLowerCase()!=='no'?' selected':'')+'>Yes</option><option'+(String(v[1]).toLowerCase()==='no'?' selected':'')+'>No</option></select>'
+         :'<input id="sv" value="'+esc(v[1])+'">')+
+      '<div class="actions"><button class="btn sm" type="submit">Save</button><button class="linkbtn" type="button" id="sc">Cancel</button></div><div id="sm" class="msg hidden"></div></form>';
+    $('sv').focus(); $('sc').onclick=()=>viewSettings();
+    card.querySelector('form').onsubmit=async e=>{ e.preventDefault();
+      const vals=v.slice(); vals[1]=$('sv').value.trim();
+      try{ const res=await call('saveRow',{name:'settings',row:r.row,key:v[0],values:vals}); if(!res.ok) throw new Error(res.error); await viewSettings(); flash('Saved "'+v[0]+'".',true); }
+      catch(err){ msg($('sm'),err.message); }
+    };
+  });
+}
+
+/* ================= FENIL MEET ================= */
+async function viewFenilMeet(){
+  loading();
+  let d; try{ d=await call('meetCodes'); if(!d.ok) throw new Error(d.error); }catch(e){ $('view').innerHTML=''; return flash(e.message); }
+  const page=d.page||'https://www.book.fenilpshah.com/meet';
+  let h=head('Fenil Meet','Your own video calls · '+page.replace(/^https?:\/\//,''),'<a class="btn" href="'+esc(page)+'" target="_blank" rel="noopener">Open Fenil Meet</a>');
+  h+='<form class="edit" id="fmForm" novalidate><div class="sec-t">New meeting code</div><p class="note" style="margin:-4px 0 14px">For a call that wasn\'t booked through the site. Share the code; you join as host with your password.</p><div class="grid">'+
+    '<div class="full"><label>Title</label><input id="fmTitle" maxlength="120" placeholder="e.g. UMUN core team sync"></div>'+
+    '<div><label>Date <span class="opt">(blank = now)</span></label><input id="fmDate" type="date"></div><div><label>Start time <span class="opt">(blank = now)</span></label><input id="fmStart" type="time" step="300"></div>'+
+    '<div><label>Open for (hours)</label><input id="fmHours" type="number" min="1" max="72" value="2"></div></div>'+
+    '<div class="actions"><button class="btn" type="submit" id="fmBtn">Create code</button></div><div id="fmOut"></div></form>';
+  h+='<div class="sec-t" style="margin-top:8px">Recent codes</div><div class="rows">';
+  if(!d.codes.length) h+='<div class="empty">No meeting codes yet. Codes are created automatically for Fenil Meet bookings.</div>';
+  d.codes.forEach(c=>{
+    const live=c.status==='Active';
+    h+='<div class="rw'+(live?'':' inactive')+'"><div class="main"><div class="t" style="font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em">'+esc(c.code)+'</div>'+
+      '<div class="meta">'+esc(c.title)+(c.booking?' · booking '+esc(c.booking):'')+' · open '+esc(c.opens)+' → '+esc(c.closes)+(c.joins&&c.joins!=='0'?' · joined '+esc(c.joins)+'×':'')+(live?'':' · '+esc(c.status))+'</div></div>'+
+      '<div class="acts"><button class="btn ghost sm" data-copy="'+esc(c.code)+'">Copy</button>'+(live?'<button class="btn ghost sm" data-cx="'+esc(c.code)+'">Cancel</button>':'')+'</div></div>';
+  });
+  h+='</div>';
+  $('view').innerHTML=h;
+  $('view').querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{ copyText(b.dataset.copy); b.textContent='Copied ✓'; });
+  $('view').querySelectorAll('[data-cx]').forEach(b=>{ let armed=false; b.onclick=async ()=>{
+    if(!armed){ armed=true; b.textContent='Tap to confirm'; return; }
+    b.disabled=true; try{ const r=await call('cancelMeetCode',{code:b.dataset.cx}); if(!r.ok) throw new Error(r.error); await viewFenilMeet(); flash('Code cancelled.',true); }catch(e){ flash(e.message); b.disabled=false; } }; });
+  $('fmForm').onsubmit=async e=>{ e.preventDefault(); const btn=$('fmBtn'); btn.disabled=true;
+    try{ const r=await call('newMeetCode',{title:$('fmTitle').value.trim(),date:$('fmDate').value,start:$('fmStart').value,hours:$('fmHours').value});
+      if(!r.ok) throw new Error(r.error);
+      const share='Join me on Fenil Meet: open '+r.page.replace(/^https?:\/\//,'')+' and enter the code '+r.code;
+      $('fmOut').innerHTML='<div class="msg ok"><b style="font-family:ui-monospace,Menlo,monospace;font-size:18px;letter-spacing:.08em">'+esc(r.code)+'</b><br>Open '+esc(r.opens)+' → '+esc(r.closes)+' IST</div>'+
+        '<div class="codebox" style="margin-top:10px">'+esc(share)+'</div><div class="actions"><button type="button" class="btn ghost sm" id="fmCopy">Copy invite text</button></div>';
+      $('fmCopy').onclick=()=>{ copyText(share); $('fmCopy').textContent='Copied ✓'; };
+    }catch(err){ $('fmOut').innerHTML='<div class="msg">'+esc(err.message)+'</div>'; }
+    finally{ btn.disabled=false; } };
+}
+
+/* ================= FEEDBACK ================= */
+function fbCard(f){
+  const r=+f.rating||0;
+  return '<div class="fb"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><div><b>'+esc(f.name)+'</b> <span class="note">· '+esc(f.type||'')+(f.meeting?' · '+esc(f.meeting):'')+'</span></div>'+
+    '<span class="stars">'+'★★★★★'.slice(0,r)+'<span style="color:#d9d2c6">'+'★★★★★'.slice(0,5-r)+'</span></span></div>'+
+    (f.liked?'<div class="q"><span>Went well:</span> '+esc(f.liked)+'</div>':'')+(f.improve?'<div class="q"><span>Could be better:</span> '+esc(f.improve)+'</div>':'')+
+    '<div class="note" style="margin-top:6px">'+esc(f.when||'')+(f.followUp==='Yes'?' · <b style="color:var(--accent)">Wants a follow-up</b>':'')+'</div></div>';
+}
+async function viewFeedback(){
+  loading();
+  try{
+    const d=await call('feedback'); if(!d.ok) throw new Error(d.error);
+    const list=d.rows.map(v=>({when:v[0],id:v[1],name:v[2],email:v[3],type:v[4],meeting:v[5],rating:v[6],liked:v[7],improve:v[8],followUp:v[9]}));
+    const rated=list.filter(f=>+f.rating); const avg=rated.length?(rated.reduce((a,f)=>a+ +f.rating,0)/rated.length).toFixed(1):'—';
+    let h=head('Feedback',list.length+' response'+(list.length===1?'':'s')+' · average '+avg+(rated.length?' ★':''));
+    if(!list.length) h+='<div class="empty">No feedback yet. Requests go out automatically after each meeting.</div>';
+    list.forEach(f=>h+=fbCard(f));
+    $('view').innerHTML=h;
+  }catch(e){ $('view').innerHTML=''; flash(e.message); }
+}
+
+/* ================= TOOLS ================= */
+function viewTools(){
+  let h=head('Tools','Email, calendar and security');
+  h+='<div class="tools">'+
+    tool('t1','Test emails','Sends one test from every sender address and name to your owner email.','Send test emails')+
+    tool('t2','Google Calendar','Adds missing bookings to your Google Calendar and removes cancelled ones.','Sync now')+
+    tool('t3','Calendar subscribe link','For your iPhone or any calendar app. Keep it private — it shows names.','Show link')+
+    '<div class="panel tool"><h3>Change password</h3><p class="note">Used for this admin page and the detailed schedule.</p>'+
+      '<form id="pwForm" style="margin-top:12px" autocomplete="off"><label>Current password</label><input id="pwOld" type="password" autocomplete="current-password">'+
+      '<label style="margin-top:10px">New password <span class="opt">(8+ characters)</span></label><input id="pwNew" type="password" autocomplete="new-password">'+
+      '<div class="actions"><button class="btn sm" type="submit">Change password</button></div><div id="pwMsg" class="msg hidden"></div></form></div>'+
+  '</div>';
+  if(S.dash&&S.dash.sheetUrl) h+='<p class="note" style="margin-top:14px">Need the raw data? <a href="'+esc(S.dash.sheetUrl)+'" target="_blank" rel="noopener" style="color:var(--accent)">Open the Google Sheet</a>.</p>';
+  h+='<div class="sec"><div class="sec-t" style="display:flex;justify-content:space-between;align-items:center">Email log <button class="btn ghost sm" id="logBtn">Load</button></div><div id="logBox" class="note">Every email the system sends, newest first.</div></div>';
+  $('view').innerHTML=h;
+  bindTool('t1',async out=>{ const r=await call('testEmails'); if(!r.ok) throw new Error(r.error);
+    out.innerHTML='<div class="msg ok">Sent to '+esc(r.to)+'<br>'+r.results.map(esc).join('<br>')+'</div>'; });
+  bindTool('t2',async out=>{ const r=await call('syncCalendar'); if(!r.ok) throw new Error(r.error);
+    out.innerHTML='<div class="msg ok">Synced “'+esc(r.calendar)+'”: added '+r.added+', removed '+r.removed+'.</div>'; });
+  bindTool('t3',async out=>{ const r=await call('calendarLink'); if(!r.ok) throw new Error(r.error);
+    out.innerHTML='<div class="codebox" id="icsUrl">'+esc(r.url)+'</div><div class="actions"><button class="btn ghost sm" id="copyIcs">Copy link</button></div>';
+    $('copyIcs').onclick=()=>{ copyText(r.url); $('copyIcs').textContent='Copied ✓'; }; });
+  $('pwForm').onsubmit=async e=>{ e.preventDefault();
+    try{ const r=await call('changePassword',{current:$('pwOld').value,next:$('pwNew').value}); if(!r.ok) throw new Error(r.error);
+      $('pwOld').value=''; $('pwNew').value=''; msg($('pwMsg'),'Password changed. Use the new one next time you sign in.',true);
+    }catch(err){ msg($('pwMsg'),err.message); } };
+  $('logBtn').onclick=async ()=>{
+    $('logBox').innerHTML='<div class="loading"><div class="spin"></div>Loading…</div>';
+    try{ const r=await call('log'); if(!r.ok) throw new Error(r.error);
+      $('logBox').innerHTML=r.rows.length?'<div class="tbl-wrap"><table class="tbl"><tr>'+r.headers.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr>'+
+        r.rows.map(row=>'<tr>'+row.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</table></div>':'<div class="empty">No emails sent yet.</div>';
+    }catch(err){ $('logBox').innerHTML=''; flash(err.message); }
+  };
+}
+function tool(id,title,text,btn){ return '<div class="panel tool"><h3>'+esc(title)+'</h3><p class="note">'+esc(text)+'</p><div class="actions"><button class="btn sm" id="'+id+'">'+esc(btn)+'</button></div><div id="'+id+'o"></div></div>'; }
+function bindTool(id,fn){ const b=$(id); b.onclick=async ()=>{ const out=$(id+'o'); b.disabled=true; const l=b.textContent; b.textContent='Working…'; out.innerHTML='';
+  try{ await fn(out); }catch(e){ out.innerHTML='<div class="msg">'+esc(e.message)+'</div>'; } finally{ b.disabled=false; b.textContent=l; } }; }
+function copyText(t){ try{ navigator.clipboard.writeText(t); }catch(e){ const a=document.createElement('textarea'); a.value=t; document.body.appendChild(a); a.select(); try{document.execCommand('copy');}catch(x){} a.remove(); } }
+
+$('pw').focus();
+</script>
+
+<script>
+/* fenilpshah.com/admin: use the session from the main admin sign-in */
+(function(){
+  const inFrame = window.self !== window.top;
+  if (inFrame) document.documentElement.classList.add('embedded');
+  const _so = window.signOut;
+  signOut = function(r){ try { sessionStorage.removeItem('fps_admin_token'); } catch(e){} if (inFrame) { try { parent.postMessage('fps-signed-out', location.origin); } catch(e){} } return _so(r); };
+  let t = null; try { t = sessionStorage.getItem('fps_admin_token'); } catch(e){}
+  if (t) { S.token = t; show($('loginView'), false); show($('app'), true); go('dashboard'); }
+  else if (inFrame) { try { parent.postMessage('fps-signed-out', location.origin); } catch(e){} }
+})();
+</script>
+<style>html.embedded #logoutBtn{display:none!important}</style>
+</body>
+</html>

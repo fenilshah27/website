@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>IQ Assessment · Fenil P. Shah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f1b2d;--ink2:#1e2d45;--paper:#f6f4ef;--card:#fff;--line:#e4dfd4;--muted:#667085;--gold:#b0812a;--ok:#1f7a4d;--bad:#b42318;--warn:#b54708}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;background:var(--paper);color:var(--ink);-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;overflow-x:hidden}
+.field input{-webkit-user-select:text;user-select:text}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.01em}
+h1{font-size:34px;margin-bottom:8px}h2{font-size:26px;margin-bottom:20px}h3{font-size:16px;margin-bottom:12px}
+.screen{display:none;min-height:100%}.screen.on{display:flex}
+.center{align-items:center;justify-content:center;padding:32px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;box-shadow:0 10px 40px rgba(15,27,45,.06)}
+.narrow{width:100%;max-width:440px}.wide2{width:100%;max-width:920px}
+.brand{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.muted{color:var(--muted);line-height:1.55}.small{font-size:13px}
+.field{display:block;font-size:13px;font-weight:500;margin-top:16px}
+.field input{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font:inherit;font-size:15px;background:#fbfaf7;color:var(--ink)}
+.field input:focus{outline:none;border-color:var(--ink);background:#fff}
+.btn{font:inherit;font-weight:500;font-size:14px;padding:11px 18px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.15s}
+.btn:hover:not(:disabled){border-color:var(--ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--ink);color:#fff;border-color:var(--ink)}.primary:hover:not(:disabled){background:var(--ink2)}
+.danger{color:var(--bad);border-color:#f0c6c2}.ghost.on{background:#fff4e0;border-color:var(--gold);color:var(--warn)}
+.wide{width:100%;margin-top:18px}
+.msg{min-height:20px;font-size:13px;margin-top:12px;color:var(--muted)}.msg.err{color:var(--bad)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}.chips span{font-size:11.5px;padding:4px 10px;border-radius:99px;background:#f1eee6;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+.rules{padding-left:18px;line-height:1.6;font-size:14.5px}.rules li{margin-bottom:8px}
+.camwrap{position:relative;aspect-ratio:4/3;background:var(--ink);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.camwrap video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.camph{position:absolute;inset:0;display:grid;place-items:center;color:#8a96a8;font-size:13px}
+.checks{list-style:none;margin-top:14px;font-size:14px}
+.checks li{padding:7px 0;border-bottom:1px dashed var(--line);display:flex;justify-content:space-between;gap:10px}
+.checks li::after{content:'…';color:var(--muted)}
+.checks li.ok::after{content:'✓ ' attr(data-t);color:var(--ok)}.checks li.no::after{content:'✕ ' attr(data-t);color:var(--bad);text-align:right}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:24px;padding:14px;background:#faf8f3;border-radius:10px;font-size:13.5px;line-height:1.5;cursor:pointer}
+.consent input{margin-top:3px;accent-color:var(--ink)}
+#test{flex-direction:column;height:100vh}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:var(--ink);color:#fff;gap:16px}
+.who b{display:block;font-size:14px}.who span{font-size:12px;color:#9fb0c8}
+.timer{font-family:Fraunces,serif;font-size:28px;font-variant-numeric:tabular-nums}.timer.low{color:#ffb4a8}
+.proc{display:flex;align-items:center;gap:10px;font-size:12.5px;line-height:1.35}
+.proc video{width:64px;height:48px;object-fit:cover;border-radius:8px;transform:scaleX(-1);border:2px solid #2f4566;background:#000}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#ff5a4f;animation:p 1.4s infinite}@keyframes p{50%{opacity:.25}}
+.body{flex:1;display:grid;grid-template-columns:1fr 280px;gap:24px;padding:28px;overflow:auto;max-width:1240px;width:100%;margin:0 auto}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);margin-bottom:18px}
+.tag{background:#f1eee6;padding:3px 10px;border-radius:99px;font-size:12px}
+.qtext{font-size:20px;line-height:1.55;margin-bottom:26px;font-family:Fraunces,serif;font-weight:500}
+.opts{display:grid;gap:10px}
+.opt{display:flex;align-items:center;gap:14px;text-align:left;font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;cursor:pointer;color:var(--ink)}
+.opt:hover{border-color:#b9b2a3}.opt .L{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:#f1eee6;font-weight:600;font-size:13px;flex:none}
+.opt.sel{border-color:var(--ink);background:#f4f6fa}.opt.sel .L{background:var(--ink);color:#fff}
+.nav{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:28px;flex-wrap:wrap}
+.save{flex:1;text-align:center;font-size:12.5px;color:var(--muted);min-width:80px}
+.side{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;align-self:start}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.grid button{font:inherit;font-size:13px;aspect-ratio:1;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;position:relative;color:var(--ink)}
+.grid .a{background:var(--ink);color:#fff;border-color:var(--ink)}
+.grid .m::after{content:'';position:absolute;top:3px;right:3px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.grid .c{outline:2px solid var(--gold);outline-offset:1px}
+.legend{display:flex;gap:12px;font-size:11.5px;color:var(--muted);margin:14px 0 8px;flex-wrap:wrap}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;border:1px solid var(--line);margin-right:5px;vertical-align:-1px}
+.legend i.a{background:var(--ink)}.legend i.m{background:var(--gold);border-color:var(--gold)}
+#wm{position:fixed;inset:0;pointer-events:none;z-index:50}
+.modal,.block{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(15,27,45,.55);backdrop-filter:blur(3px);z-index:100;padding:16px}
+.block{z-index:200;background:rgba(15,27,45,.94)}.modal.on,.block.on{display:flex}
+.mbox{background:#fff;border-radius:16px;padding:28px;max-width:440px;width:100%}.mbox h3{font-size:20px}
+.mbox p{color:var(--muted);line-height:1.55;margin:6px 0 20px}.mact{display:flex;justify-content:flex-end;gap:10px}
+#shade{position:fixed;inset:0;background:#000;z-index:300;display:none}
+#scr{position:fixed;left:-10000px;top:0;width:320px;height:180px;opacity:0;pointer-events:none}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap}.linkbox{margin-top:14px;padding:10px 12px;background:#f1eee6;border-radius:8px;font-size:13px;word-break:break-all;-webkit-user-select:text;user-select:text}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-size:13px;z-index:150;opacity:0;transition:.25s;pointer-events:none}.toast.on{opacity:1}
+@media(max-width:900px){.body{grid-template-columns:1fr;padding:16px}.cols{grid-template-columns:1fr}.card{padding:24px}}
+@media print{body{display:none!important}}
+</style>
+</head>
+<body oncontextmenu="return false">
+<div id="wm"></div><div id="shade"></div>
+<video id="scr" autoplay muted playsinline></video>
+
+<section class="screen center" id="framed">
+  <div class="card narrow">
+    <div class="brand">fenilpshah.com · Assessments</div>
+    <h1>IQ Assessment</h1>
+    <p class="muted">A timed, proctored reasoning assessment. It opens in its own browser tab so your webcam and screen can be proctored.</p>
+    <ol class="rules" style="margin-top:18px">
+      <li>Use a laptop or desktop with a webcam, in Chrome or Edge.</li>
+      <li>Keep your Student ID and password ready.</li>
+      <li>You will share your camera and your entire screen. Both are recorded.</li>
+      <li>Close other tabs and apps. Switching away is flagged and captured.</li>
+      <li>Do not refresh or close the new tab during the test.</li>
+    </ol>
+    <button class="btn primary wide" id="framedBtn" type="button">Start the assessment ↗</button>
+    <div class="msg" id="framedMsg"></div>
+  </div>
+</section>
+
+<section class="screen center" id="mobile">
+  <div class="card narrow">
+    <div class="brand">fenilpshah.com · Assessments</div>
+    <h1>Desktop required</h1>
+    <p class="muted">This proctored assessment needs a laptop or desktop computer with a webcam and an up-to-date Chrome, Edge or Firefox browser. Please reopen this page on a computer.</p>
+  </div>
+</section>
+
+<section class="screen center" id="login">
+  <div class="card narrow">
+    <div class="brand">fenilpshah.com · Assessments</div>
+    <h1>IQ Assessment</h1>
+    <p class="muted">A timed, proctored reasoning assessment. Sign in with the credentials issued to you.</p>
+    <form id="loginForm" autocomplete="off">
+      <label class="field">Student ID<input id="sid" required spellcheck="false" autocapitalize="characters"></label>
+      <label class="field">Password<input id="spw" type="password" required></label>
+      <div class="msg" id="loginMsg"></div>
+      <button class="btn primary wide" id="loginBtn" type="submit">Sign in</button>
+    </form>
+    <div class="chips"><span>Webcam proctored</span><span>Fullscreen</span><span>No copy / paste</span><span>AI-free zone</span><span>Single attempt</span></div>
+  </div>
+</section>
+
+<section class="screen center" id="check">
+  <div class="card wide2">
+    <div class="brand">Before you begin</div>
+    <h2>Welcome, <span id="hello"></span></h2>
+    <div class="cols">
+      <div>
+        <h3>Rules</h3>
+        <ol class="rules">
+          <li><b id="qcount"></b> questions in <b id="minutes"></b> minutes. The timer cannot be paused and the test submits automatically when time ends.</li>
+          <li>Stay in fullscreen and on this tab for the whole test.</li>
+          <li>Copy, paste, right-click, printing, screenshots and developer tools are blocked and recorded.</li>
+          <li>Your webcam takes regular snapshots. Keep your face visible and well lit.</li>
+          <li>Your <b>entire screen</b> is shared and captured, including whenever you switch tabs or apps.</li>
+          <li>No phones, notes, other people or AI tools. This is an AI-free zone.</li>
+          <li>Every breach is a proctoring flag. At <b id="maxv"></b> flags the test ends automatically.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>System check</h3>
+        <div class="camwrap"><video id="prev" autoplay muted playsinline></video><div class="camph" id="camph">Camera off</div></div>
+        <div class="btnrow">
+          <button class="btn" id="camBtn" type="button">1 · Enable camera</button>
+          <button class="btn" id="scrBtn" type="button">2 · Share entire screen</button>
+        </div>
+        <ul class="checks">
+          <li id="ck-cam">Camera</li><li id="ck-scr">Screen sharing</li><li id="ck-fs">Fullscreen</li><li id="ck-disp">Single display</li><li id="ck-net">Connection</li>
+        </ul>
+      </div>
+    </div>
+    <label class="consent"><input type="checkbox" id="consent"> I agree to be proctored. I understand that webcam snapshots, screen captures and activity logs are recorded and reviewed with my results.</label>
+    <div class="msg" id="checkMsg"></div>
+    <button class="btn primary wide" id="startBtn" type="button" disabled>Enter fullscreen &amp; begin</button>
+  </div>
+</section>
+
+<section class="screen" id="test">
+  <header class="bar">
+    <div class="who"><b id="tName"></b><span id="tId"></span></div>
+    <div class="timer" id="timer">--:--</div>
+    <div class="proc"><video id="mini" autoplay muted playsinline></video><div><span class="dot"></span> Proctoring<br><small>Flags <b id="flags">0</b> / <b id="flagsMax">5</b></small></div></div>
+  </header>
+  <main class="body">
+    <article class="qcard">
+      <div class="qmeta"><span id="qnum"></span><span class="tag" id="qcat"></span></div>
+      <p class="qtext" id="qtext"></p>
+      <div class="opts" id="opts"></div>
+      <div class="nav">
+        <button class="btn" id="prevBtn" type="button">← Previous</button>
+        <button class="btn ghost" id="markBtn" type="button">⚑ Mark for review</button>
+        <span class="save" id="save"></span>
+        <button class="btn primary" id="nextBtn" type="button">Next →</button>
+      </div>
+    </article>
+    <aside class="side">
+      <h3>Questions</h3>
+      <div class="grid" id="grid"></div>
+      <div class="legend"><span><i class="a"></i>Answered</span><span><i class="m"></i>Marked</span><span><i></i>Open</span></div>
+      <p class="muted small"><b id="answered">0</b> answered</p>
+      <button class="btn danger wide" id="submitBtn" type="button">Submit test</button>
+    </aside>
+  </main>
+</section>
+
+<section class="screen center" id="done">
+  <div class="card narrow">
+    <div class="brand">fenilpshah.com · Assessments</div>
+    <h1 id="doneT"></h1>
+    <p class="muted" id="doneP"></p>
+  </div>
+</section>
+
+<div class="modal" id="modal"><div class="mbox"><h3 id="mT"></h3><p id="mP"></p><div class="mact" id="mA"></div></div></div>
+<div class="block" id="block"><div class="mbox"><h3 id="bT"></h3><p id="bP"></p><div class="mact"><button class="btn primary" id="bBtn" type="button"></button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ CONFIG ============ */
+const API_URL = FPS.API + '/iq';
+const SNAP_MS = 30000;      // webcam snapshot interval
+const SCREEN_MS = 60000;    // routine screen capture interval
+const BEAT_MS = 45000;      // heartbeat interval
+
+/* ============ STATE & UTILS ============ */
+/* Snapshot of this page before anything changes, used to reopen it in its own tab. */
+const PRISTINE = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+const EMBEDDED = (() => { try { return window.self !== window.top; } catch(e){ return true; } })();
+const $ = s => document.querySelector(s);
+const S = { auth:null, token:null, id:'', name:'', qs:[], ans:{}, marked:{}, i:0, end:0, v:0, maxV:5,
+            stream:null, screen:null, quiet:false, live:false, submitting:false, last:{}, timers:[], chain:Promise.resolve(), warned5:false };
+const LABELS = {
+  tab_switch:'You left the test tab or minimised the window.',
+  focus_lost:'Focus moved to another window or application.',
+  fullscreen_exit:'You exited fullscreen mode.',
+  clipboard:'Copying and pasting are not allowed.',
+  blocked_shortcut:'That keyboard shortcut is not allowed.',
+  screenshot_attempt:'Screenshots are not allowed.',
+  devtools:'Developer tools are not allowed.',
+  camera_off:'Your camera was disconnected.',
+  camera_covered:'Your camera appears covered or too dark. Keep your face visible.',
+  second_display:'An additional display was detected.',
+  screen_share_stopped:'You stopped sharing your screen.'
+};
+
+function show(id){ document.querySelectorAll('.screen').forEach(e => e.classList.toggle('on', e.id === id)); }
+function msg(sel, text, err){ const m = $(sel); m.textContent = text || ''; m.classList.toggle('err', !!err); }
+function toast(t){ const e = $('#toast'); e.textContent = t; e.classList.add('on'); setTimeout(() => e.classList.remove('on'), 3500); }
+function xmlEsc(s){ return String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&apos;','"':'&quot;'}[c])); }
+
+async function api(action, data = {}, tries = 1){
+  for (let t = 0; t < tries; t++){
+    try {
+      const r = await fetch(API_URL, { method:'POST', body: JSON.stringify(Object.assign({ action }, data)) });
+      return await r.json();
+    } catch(e){
+      if (t === tries - 1) return { ok:false, net:true, error:'Network error. Check your internet connection.' };
+      await new Promise(res => setTimeout(res, 1500 * (t + 1)));
+    }
+  }
+}
+
+function modal(title, text, buttons){
+  $('#mT').textContent = title; $('#mP').textContent = text;
+  const a = $('#mA'); a.innerHTML = '';
+  buttons.forEach(([label, cls, fn]) => {
+    const b = document.createElement('button'); b.className = 'btn ' + (cls || ''); b.type = 'button'; b.textContent = label;
+    b.onclick = () => { hideModal(); fn && fn(); }; a.appendChild(b);
+  });
+  $('#modal').classList.add('on');
+}
+function hideModal(){ $('#modal').classList.remove('on'); }
+function showBlock(title, text, label, fn){
+  $('#bT').textContent = title; $('#bP').textContent = text;
+  const b = $('#bBtn'); b.style.display = label ? '' : 'none'; b.textContent = label || ''; b.onclick = fn || null;
+  $('#block').classList.add('on');
+}
+function hideBlock(){ $('#block').classList.remove('on'); }
+
+/* ============ BOOT ============ */
+const UA = navigator.userAgent;
+const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(UA) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(UA));
+/* Google Sites blocks the camera inside embeds. Reopen this same page in its own tab,
+   where Chrome can ask for camera and screen permission. */
+function openFullTab(){
+  let url, w = null;
+  try { url = URL.createObjectURL(new Blob([PRISTINE], { type:'text/html' })); }
+  catch(e){ return msg('#framedMsg', 'Your browser could not open the assessment. Please use Chrome or Edge.', true); }
+  try { w = window.open(url, '_blank'); } catch(e){}
+  if (!w) return msg('#framedMsg', 'Chrome blocked the new tab. Click the pop-up icon at the right of the address bar, choose "Always allow", then click Start again.', true);
+  msg('#framedMsg', 'The assessment has opened in a new tab. Keep this tab open until you finish.');
+}
+$('#framedBtn').addEventListener('click', openFullTab);
+
+if (isMobile) show('mobile');
+else if (EMBEDDED) show('framed');
+else show('login');
+
+/* ============ LOGIN ============ */
+$('#loginForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (API_URL.indexOf('PASTE_') === 0) return msg('#loginMsg', 'The assessment is not configured yet.', true);
+  const btn = $('#loginBtn'); btn.disabled = true; btn.textContent = 'Verifying…'; msg('#loginMsg', '');
+  const r = await api('login', { studentId: $('#sid').value.trim(), password: $('#spw').value });
+  btn.disabled = false; btn.textContent = 'Sign in';
+  if (!r.ok) return msg('#loginMsg', r.error, true);
+  S.auth = r.auth; S.id = r.studentId; S.name = r.name; S.maxV = r.maxViolations;
+  $('#hello').textContent = r.name; $('#qcount').textContent = r.total; $('#minutes').textContent = r.minutes; $('#maxv').textContent = r.maxViolations;
+  $('#spw').value = '';
+  show('check'); runChecks();
+  if (r.resumable) msg('#checkMsg', 'You have an unfinished session. Starting will resume it with your remaining time. Resuming is recorded as a proctoring flag.');
+});
+
+/* ============ SYSTEM CHECK ============ */
+function setCk(id, ok, text){ const li = $('#ck-' + id); li.className = ok ? 'ok' : 'no'; li.dataset.t = text; }
+function multiScreen(){ return ('isExtended' in screen) && screen.isExtended === true; }
+function runChecks(){
+  const fs = !!document.documentElement.requestFullscreen;
+  setCk('fs', fs, fs ? 'Supported' : 'Not supported');
+  if (!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia)) setCk('scr', false, 'Not supported: use Chrome or Edge');
+  setCk('disp', !multiScreen(), multiScreen() ? 'Disconnect extra monitors' : 'OK');
+  setCk('net', navigator.onLine, navigator.onLine ? 'Online' : 'Offline');
+  updateStart();
+}
+function updateStart(){
+  $('#startBtn').disabled = !($('#consent').checked && S.stream && S.stream.active && ((S.screen && S.screen.active) || S.noScreen) && !multiScreen() && navigator.onLine);
+}
+$('#consent').addEventListener('change', updateStart);
+$('#camBtn').addEventListener('click', enableCam);
+$('#scrBtn').addEventListener('click', enableScreen);
+
+async function enableScreen(){
+  if (!(navigator.mediaDevices && navigator.mediaDevices.getDisplayMedia)) return;
+  S.quiet = true;   // the share picker steals focus; don't flag it
+  const t0 = Date.now();
+  try {
+    const st = await navigator.mediaDevices.getDisplayMedia({
+      video:{ displaySurface:'monitor', frameRate:{ max:5 } }, audio:false,
+      monitorTypeSurfaces:'include', selfBrowserSurface:'exclude', surfaceSwitching:'exclude'
+    });
+    const tr = st.getVideoTracks()[0];
+    const surf = (tr.getSettings && tr.getSettings().displaySurface) || 'monitor';
+    if (surf !== 'monitor'){
+      st.getTracks().forEach(t => t.stop());
+      setCk('scr', false, 'Choose "Entire screen", not a tab or window');
+    } else {
+      S.screen = st; $('#scr').srcObject = st;
+      $('#scrBtn').textContent = '2 · Screen shared';
+      setCk('scr', true, 'Entire screen');
+      tr.onended = () => {
+        if (S.live){
+          flag('screen_share_stopped', 'Screen sharing stopped');
+          showBlock('Screen sharing stopped', 'The assessment requires your entire screen to be shared at all times. Share it again to continue. The timer keeps running.', 'Share entire screen', enableScreen);
+        } else { S.screen = null; $('#scrBtn').textContent = '2 · Share entire screen'; setCk('scr', false, 'Stopped'); updateStart(); }
+      };
+      if ($('#bT').textContent === 'Screen sharing stopped') hideBlock();
+    }
+  } catch(e){
+    if (e && e.name === 'NotAllowedError' && Date.now() - t0 < 400 && !S.live){
+      // refused instantly with no picker shown: the page host does not permit screen capture
+      S.noScreen = true;
+      setCk('scr', true, 'Not available on this page (webcam only)');
+    } else setCk('scr', false, 'Not shared: click and choose "Entire screen"');
+  }
+  setTimeout(() => { S.quiet = false; }, 1500);
+  updateStart();
+}
+
+/* Grabs one frame of the shared screen and uploads it. */
+const sc = document.createElement('canvas');
+async function grabScreen(tag){
+  if (!S.token || !S.screen || !S.screen.active) return;
+  try {
+    const track = S.screen.getVideoTracks()[0];
+    let src = null, w = 0, h = 0;
+    if ('ImageCapture' in window){
+      try { src = await new ImageCapture(track).grabFrame(); w = src.width; h = src.height; } catch(_){ src = null; }
+    }
+    if (!src){ const v = $('#scr'); if (!v.videoWidth) return; src = v; w = v.videoWidth; h = v.videoHeight; }
+    const k = Math.min(1, 1280 / w);
+    sc.width = Math.round(w * k); sc.height = Math.round(h * k);
+    sc.getContext('2d').drawImage(src, 0, 0, sc.width, sc.height);
+    if (src.close) src.close();
+    api('snapshot', { token:S.token, image: sc.toDataURL('image/jpeg', 0.5), tag, kind:'screen' });
+  } catch(e){}
+}
+
+async function enableCam(){
+  try {
+    S.stream = await navigator.mediaDevices.getUserMedia({ video:{ width:{ideal:640}, height:{ideal:480}, facingMode:'user' }, audio:false });
+    $('#prev').srcObject = S.stream; $('#mini').srcObject = S.stream;
+    $('#camph').style.display = 'none'; $('#camBtn').textContent = 'Camera on';
+    setCk('cam', true, 'Connected');
+    const track = S.stream.getVideoTracks()[0];
+    track.onended = () => { if (S.live){ flag('camera_off', 'Camera track ended'); camLost(); } else { setCk('cam', false, 'Disconnected'); updateStart(); } };
+    if ($('#bT').textContent === 'Camera disconnected') hideBlock();
+  } catch(e){
+    setCk('cam', false, 'Blocked: click the camera icon in the address bar and choose Allow');
+  }
+  updateStart();
+}
+function camLost(){
+  showBlock('Camera disconnected', 'The assessment requires your webcam at all times. Reconnect it to continue. The timer keeps running.', 'Reconnect camera', enableCam);
+}
+
+$('#startBtn').addEventListener('click', async () => {
+  if (multiScreen()) return msg('#checkMsg', 'Please disconnect additional monitors.', true);
+  S.fs = false;
+  try { await document.documentElement.requestFullscreen({ navigationUI:'hide' }); S.fs = !!document.fullscreenElement; }
+  catch(e){ S.fs = false; }   // if the host blocks fullscreen, tab / focus monitoring still applies
+  const btn = $('#startBtn'); btn.disabled = true; btn.textContent = 'Starting…';
+  const r = await api('start', { auth: S.auth, ua: UA });
+  btn.textContent = 'Enter fullscreen & begin';
+  if (!r.ok){
+    if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+    updateStart(); return msg('#checkMsg', r.error, true);
+  }
+  begin(r);
+});
+
+/* ============ TEST ============ */
+function begin(r){
+  S.token = r.token; S.qs = r.questions; S.ans = r.answers || {}; S.v = r.violations || 0; S.maxV = r.maxViolations;
+  S.end = Date.now() + (r.deadline - r.serverNow); S.i = 0; S.live = true;
+  $('#tName').textContent = S.name; $('#tId').textContent = S.id; $('#flagsMax').textContent = S.maxV;
+  buildWatermark(); buildGrid(); render(); updateFlags(); show('test');
+  if (r.resumed) modal('Session resumed', 'Your earlier session has been resumed with the time remaining. Re-entering a session is recorded as a proctoring flag.', [['Continue','primary']]);
+  S.timers.push(setInterval(tick, 1000), setInterval(() => snap('periodic'), SNAP_MS), setInterval(() => grabScreen('periodic'), SCREEN_MS),
+                setInterval(beat, BEAT_MS), setInterval(devtoolsCheck, 2000));
+  setTimeout(() => { snap('start'); grabScreen('start'); }, 1500);
+  tick();
+}
+
+function buildWatermark(){
+  const t = `${S.id} · ${S.name} · ${new Date().toLocaleDateString('en-IN')}`;
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='380' height='220'><text x='10' y='130' transform='rotate(-24 190 110)' fill='rgba(15,27,45,0.075)' font-family='Inter,Arial' font-size='15'>${xmlEsc(t)}</text></svg>`;
+  $('#wm').style.backgroundImage = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
+function buildGrid(){
+  const g = $('#grid'); g.innerHTML = '';
+  S.qs.forEach((q, k) => { const b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1; b.onclick = () => { S.i = k; render(); }; g.appendChild(b); });
+}
+function updateGrid(){
+  [...$('#grid').children].forEach((b, k) => { const q = S.qs[k]; b.className = [S.ans[q.qid] ? 'a' : '', S.marked[q.qid] ? 'm' : '', k === S.i ? 'c' : ''].join(' '); });
+  $('#answered').textContent = Object.keys(S.ans).length;
+}
+
+function render(){
+  const q = S.qs[S.i];
+  $('#qnum').textContent = `Question ${S.i + 1} of ${S.qs.length}`;
+  $('#qcat').textContent = q.category;
+  $('#qtext').textContent = q.question;
+  const box = $('#opts'); box.innerHTML = '';
+  ['A','B','C','D'].forEach((L, k) => {
+    if (!q.options[k]) return;
+    const b = document.createElement('button'); b.type = 'button';
+    b.className = 'opt' + (S.ans[q.qid] === L ? ' sel' : '');
+    b.innerHTML = `<span class="L">${L}</span><span class="t"></span>`;
+    b.querySelector('.t').textContent = q.options[k];
+    b.onclick = () => choose(q.qid, L);
+    box.appendChild(b);
+  });
+  $('#prevBtn').disabled = S.i === 0;
+  $('#nextBtn').textContent = S.i === S.qs.length - 1 ? 'Review & submit' : 'Next →';
+  $('#markBtn').classList.toggle('on', !!S.marked[q.qid]);
+  updateGrid();
+}
+
+function choose(qid, L){
+  if (!S.live) return;
+  if (S.ans[qid] === L) delete S.ans[qid]; else S.ans[qid] = L;
+  render();
+  const choice = S.ans[qid] || '';
+  $('#save').textContent = 'Saving…';
+  S.chain = S.chain.then(() => api('answer', { token:S.token, qid, choice }, 3)).then(r => {
+    if (r.ok) $('#save').textContent = 'Saved ✓';
+    else if (r.ended) r.expired ? submitTest('time_up') : finish('ended');
+    else $('#save').textContent = 'Offline: answers kept, will sync on submit';
+  });
+}
+
+$('#prevBtn').onclick = () => { if (S.i > 0){ S.i--; render(); } };
+$('#nextBtn').onclick = () => { if (S.i < S.qs.length - 1){ S.i++; render(); } else openReview(); };
+$('#markBtn').onclick = () => { const q = S.qs[S.i]; S.marked[q.qid] = !S.marked[q.qid]; render(); };
+$('#submitBtn').onclick = openReview;
+
+function openReview(){
+  const n = S.qs.length, a = Object.keys(S.ans).length, m = Object.values(S.marked).filter(Boolean).length;
+  modal('Submit your test?', `You have answered ${a} of ${n} questions${m ? ` and marked ${m} for review` : ''}. Once submitted you cannot return to the test.`,
+    [['Keep working', ''], ['Submit now', 'primary', () => submitTest('submitted')]]);
+}
+
+function tick(){
+  const ms = S.end - Date.now();
+  if (ms <= 0){ $('#timer').textContent = '00:00'; return submitTest('time_up'); }
+  const m = Math.floor(ms / 60000), s = Math.floor(ms / 1000) % 60;
+  $('#timer').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  $('#timer').classList.toggle('low', ms < 300000);
+  if (ms < 300000 && !S.warned5){ S.warned5 = true; toast('5 minutes remaining'); }
+}
+
+async function beat(){
+  if (!S.live) return;
+  const r = await api('heartbeat', { token:S.token });
+  if (r.ok){ S.end = Date.now() + r.remaining; S.v = r.violations; updateFlags(); }
+  else if (r.ended) r.expired ? submitTest('time_up') : finish('ended');
+}
+
+function updateFlags(){ $('#flags').textContent = S.v; }
+
+/* ============ PROCTORING ============ */
+const cv = document.createElement('canvas'); cv.width = 320; cv.height = 240;
+function snap(tag){
+  const v = $('#mini'); if (!S.token || !v.videoWidth) return;
+  const g = cv.getContext('2d', { willReadFrequently:true });
+  g.drawImage(v, 0, 0, 320, 240);
+  if (tag === 'periodic'){
+    const d = g.getImageData(0, 0, 320, 240).data; let sum = 0, n = 0;
+    for (let i = 0; i < d.length; i += 64){ sum += (d[i] + d[i+1] + d[i+2]) / 3; n++; }
+    if (sum / n < 16) flag('camera_covered', 'Average brightness ' + Math.round(sum / n));
+  }
+  api('snapshot', { token:S.token, image: cv.toDataURL('image/jpeg', 0.6), tag, kind:'cam' });
+}
+
+async function flag(type, detail){
+  if (!S.live || S.quiet) return;
+  const now = Date.now(); if (S.last[type] && now - S.last[type] < 4000) return; S.last[type] = now;
+  snap(type);
+  if (type === 'tab_switch' || type === 'focus_lost'){
+    // wait for the other tab / app to be on screen, then capture what they switched to
+    setTimeout(() => grabScreen(type), 700);
+    setTimeout(() => grabScreen(type + '_later'), 2500);
+  } else grabScreen(type);
+  S.v++; updateFlags();
+  const r = await api('violation', { token:S.token, type, detail }, 2);
+  if (r.ok){ S.v = r.count; updateFlags(); if (r.terminated) return finish('terminated'); }
+  else if (r.ended) return r.expired ? submitTest('time_up') : finish('ended');
+  if (S.live) modal(`Proctoring flag ${S.v} of ${S.maxV}`, (LABELS[type] || 'A proctoring rule was breached.') + ' This has been recorded with a webcam snapshot.', [['I understand', 'primary']]);
+}
+
+document.addEventListener('visibilitychange', () => { if (document.hidden) flag('tab_switch', 'Tab hidden'); });
+window.addEventListener('blur', () => setTimeout(() => { if (S.live && !document.hidden && !document.hasFocus()) flag('focus_lost', 'Window blurred'); }, 400));
+document.addEventListener('fullscreenchange', () => {
+  if (S.live && S.fs && !document.fullscreenElement){
+    flag('fullscreen_exit', 'Left fullscreen');
+    showBlock('Return to fullscreen', 'The assessment must stay in fullscreen. This exit has been recorded and the timer is still running.', 'Re-enter fullscreen',
+      async () => { try { await document.documentElement.requestFullscreen(); hideBlock(); } catch(e){} });
+  }
+});
+['copy','cut','paste'].forEach(ev => document.addEventListener(ev, e => { e.preventDefault(); if (S.live) flag('clipboard', 'Attempted ' + ev); }, true));
+['contextmenu','dragstart','drop'].forEach(ev => document.addEventListener(ev, e => e.preventDefault(), true));
+document.addEventListener('selectstart', e => {
+  const el = e.target.nodeType === 1 ? e.target : e.target.parentElement;
+  if (!(el && el.closest && el.closest('.field'))) e.preventDefault();
+}, true);
+
+document.addEventListener('keydown', e => {
+  const k = (e.key || '').toLowerCase(), mod = e.ctrlKey || e.metaKey;
+  let bad = '';
+  if (k === 'f12') bad = 'F12';
+  else if (mod && e.shiftKey && ['i','j','c','k','s','3','4','5'].includes(k)) bad = 'Ctrl/⌘+Shift+' + e.key;
+  else if (mod && ['c','v','x','a','p','s','u','f','g','h','j','r','w','t','n'].includes(k)) bad = 'Ctrl/⌘+' + e.key;
+  else if (k === 'f5' && S.live) bad = 'F5';
+  else if (k === 'printscreen') bad = 'PrintScreen';
+  if (bad){
+    e.preventDefault(); e.stopPropagation();
+    if (S.live) flag(k === 'printscreen' ? 'screenshot_attempt' : 'blocked_shortcut', bad);
+    return;
+  }
+  if (S.live && !mod && !e.altKey && !$('#modal').classList.contains('on') && !$('#block').classList.contains('on')){
+    if (k === 'arrowright') $('#nextBtn').click();
+    else if (k === 'arrowleft') $('#prevBtn').click();
+    else { const L = {a:'A',b:'B',c:'C',d:'D','1':'A','2':'B','3':'C','4':'D'}[k]; if (L && S.qs[S.i].options['ABCD'.indexOf(L)]) choose(S.qs[S.i].qid, L); }
+  }
+}, true);
+document.addEventListener('keyup', e => {
+  if (e.key === 'PrintScreen'){
+    $('#shade').style.display = 'block'; setTimeout(() => $('#shade').style.display = 'none', 1500);
+    try { navigator.clipboard.writeText(''); } catch(_){}
+    if (S.live) flag('screenshot_attempt', 'PrintScreen');
+  }
+}, true);
+
+function devtoolsCheck(){
+  if (S.live && S.fs && (window.outerWidth - window.innerWidth > 200 || window.outerHeight - window.innerHeight > 200)) flag('devtools', 'Window size gap');
+}
+if ('onchange' in screen) screen.addEventListener('change', () => { if (S.live && multiScreen()) flag('second_display', 'Extra display connected'); });
+window.addEventListener('beforeunload', e => { if (S.live){ e.preventDefault(); e.returnValue = ''; } });
+window.addEventListener('offline', () => { if (S.live) toast('Connection lost: keep answering, answers sync on submit'); });
+window.addEventListener('online', () => { if (S.live) toast('Back online'); });
+
+/* ============ SUBMIT & FINISH ============ */
+async function submitTest(reason){
+  if (S.submitting) return; S.submitting = true; S.live = false;
+  S.timers.forEach(clearInterval); hideModal();
+  showBlock('Submitting…', 'Please wait while your responses are securely submitted. Do not close this window.');
+  snap('final'); grabScreen('final');
+  await S.chain;
+  const r = await api('submit', { token:S.token, reason, answers:S.ans }, 4);
+  finish(reason, r);
+}
+
+function finish(reason, r){
+  S.live = false; S.timers.forEach(clearInterval);
+  try { S.stream && S.stream.getTracks().forEach(t => t.stop()); } catch(_){}
+  try { if (S.screen){ const sTr = S.screen.getVideoTracks()[0]; if (sTr) sTr.onended = null; S.screen.getTracks().forEach(t => t.stop()); } } catch(_){}
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+  hideModal(); hideBlock();
+  let t = reason === 'time_up' ? 'Time is up' : 'Assessment submitted';
+  let p = `Thank you, ${S.name}. Your responses have been recorded.`;
+  if (reason === 'terminated'){
+    t = 'Assessment ended';
+    p = 'This session was closed because the proctoring flag limit was reached. Your responses up to this point have been recorded and the session report has been sent to the administrator.';
+  } else if (reason === 'ended'){
+    t = 'Session closed';
+    p = 'This session is no longer active. If you believe this is a mistake, write to office@fenilpshah.com with your Student ID.';
+  } else if (r && r.ok){
+    p += r.emailed ? ' Your detailed PDF report has been emailed to you.' : ' Your report will be shared by the administrator.';
+  } else {
+    p = 'We could not confirm the submission because of a connection problem. Your answers were saved as you went. Please do not retake the test; write to office@fenilpshah.com with your Student ID.';
+  }
+  $('#doneT').textContent = t; $('#doneP').textContent = p; show('done');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+# ---- old page names on fenilpshah.com ----
+/home            /              301
+/about-me        /about/        301
+/phyilosophy     /philosophy/   301
+/appointment     /book/         301
+
+# ---- greeting links: fenilpshah.com/g/<code> ----
+/g/*             /g/index.html  200
+
+# ---- old subdomains → new paths ----
+# Add each of these hostnames as a domain alias in Netlify (Domain management) first,
+# then point its DNS at Netlify. Old links keep working.
+https://otlo.fenilpshah.com/*              https://fenilpshah.com/otlo/            301!
+https://www.otlo.fenilpshah.com/*          https://fenilpshah.com/otlo/            301!
+https://amd.fenilpshah.com/*               https://fenilpshah.com/otlo/            301!
+https://iq.fenilpshah.com/*                https://fenilpshah.com/iq/              301!
+https://www.iq.fenilpshah.com/*            https://fenilpshah.com/iq/              301!
+https://appointment.fenilpshah.com/*       https://fenilpshah.com/book/            301!
+https://www.appointment.fenilpshah.com/*   https://fenilpshah.com/book/            301!
+https://greetings.fenilpshah.com/          https://fenilpshah.com/greetings/       301!
+https://www.greetings.fenilpshah.com/      https://fenilpshah.com/greetings/       301!
+https://greetings.fenilpshah.com/*         https://fenilpshah.com/g/:splat         301!
+https://www.greetings.fenilpshah.com/*     https://fenilpshah.com/g/:splat         301!
+https://sorry.fenilpshah.com/*             https://fenilpshah.com/g/:splat         301!
+https://www.sorry.fenilpshah.com/*         https://fenilpshah.com/g/:splat         301!
+https://birthday.fenilpshah.com/*          https://fenilpshah.com/g/:splat         301!
+https://www.birthday.fenilpshah.com/*      https://fenilpshah.com/g/:splat         301!
+
+# book.fenilpshah.com: keep it on Google Sites until the Fenil Meet page (/meet) is moved over.
+# Then switch these on:
+# https://book.fenilpshah.com/feedback*    https://fenilpshah.com/book/feedback/   301!
+# https://www.book.fenilpshah.com/feedback* https://fenilpshah.com/book/feedback/  301!
+# https://book.fenilpshah.com/*            https://fenilpshah.com/book/            301!
+# https://www.book.fenilpshah.com/*        https://fenilpshah.com/book/            301!
+
+# www → apex
+https://www.fenilpshah.com/*               https://fenilpshah.com/:splat           301!

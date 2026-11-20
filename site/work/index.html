@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work — Fenil Pritesh Shah</title>
+<meta name="description" content="Work — the institutions Fenil Pritesh Shah leads and contributes to across research, education, publishing and governance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#E3A63B;--gold-ink:#A8721A;--g4:#8c8c8c;--g5:#b3b3b3;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#000;color:#fff;font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 48px);margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .light .eyebrow{color:var(--gold-ink)}
+  .pad{padding:clamp(96px,14vw,180px) 0}
+  section{position:relative}
+  .light{background:#fff;color:#000}
+  h2.big{font-size:clamp(36px,5.4vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:22px}
+  h2.big em{font-style:normal;color:var(--gold)}
+  .light h2.big em{color:var(--gold-ink)}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+  nav.solid{background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:#1f1f1f}
+  .brand{font-weight:800;font-size:17px;letter-spacing:-.01em;text-decoration:none}
+  .brand i{font-style:normal;color:var(--gold)}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--g5)}
+  .navlinks a{text-decoration:none;transition:color .2s}
+  .navlinks a:hover,.navlinks a.cur{color:#fff}
+  .navlinks a.cur{box-shadow:inset 0 -2px 0 var(--gold);padding-bottom:4px}
+  .cta{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid #fff;padding:8px 16px;border-radius:999px;transition:background .3s,color .3s}
+  .cta:hover{background:#fff;color:#000}
+  @media (max-width:900px){.navlinks{display:none}}
+  @media (max-width:520px){nav{padding:14px 18px}}
+
+  /* SCENE */
+  #scene{height:500vh;background:#000}
+  #scene .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  #constellation{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;pointer-events:none;padding:0 20px}
+  .hero-title .eyebrow{display:block;margin-bottom:26px}
+  .hero-title h1{font-size:clamp(54px,11vw,180px);font-weight:900;letter-spacing:-.05em;line-height:.9}
+  .hero-title h1 i{font-style:normal;color:var(--gold)}
+  .hero-title p{margin:30px auto 0;max-width:760px;font-size:clamp(18px,2.1vw,26px);font-weight:300;color:var(--g5)}
+  .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .scrollcue i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+  @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .step{position:absolute;left:0;right:0;top:11vh;text-align:center;padding:0 24px;opacity:0;transform:translateY(24px);transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:none}
+  .step .eyebrow{display:block;margin-bottom:14px}
+  .step h2{font-size:clamp(26px,4vw,54px);font-weight:700;letter-spacing:-.028em;line-height:1.08;max-width:1000px;margin:0 auto}
+  .step h2 em{font-style:normal;color:var(--gold)}
+  .progress{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .progress span{width:3px;height:26px;background:#2a2a2a;transition:background .4s}
+  .progress span.on{background:var(--gold)}
+  @media (max-width:700px){.progress{display:none}}
+
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  /* INTRO + GLANCE */
+  .intro .top{display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:end}
+  .intro .top p{color:#4d4d4d}
+  .intro .top p strong{color:#000;font-weight:600}
+  .ggrid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #000}
+  .gcell{padding:30px 24px 34px 0;border-bottom:1px solid #d9d9d9}
+  .gcell + .gcell{padding-left:24px;border-left:1px solid #d9d9d9}
+  .gcell .v{font-size:clamp(44px,5.4vw,80px);font-weight:900;letter-spacing:-.05em;line-height:1}
+  .gcell .k{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+  .gcell .s{margin-top:8px;font-size:15px;color:#4d4d4d;line-height:1.45}
+  @media (max-width:900px){.intro .top{grid-template-columns:1fr;gap:24px}.ggrid{grid-template-columns:1fr 1fr}.gcell:nth-child(3){padding-left:0;border-left:0}}
+  @media (max-width:480px){.ggrid{grid-template-columns:1fr}.gcell + .gcell{padding-left:0;border-left:0}}
+
+  /* CHAPTERS */
+  .chapter .grid{display:grid;grid-template-columns:1fr 2fr;gap:clamp(32px,6vw,90px);align-items:start}
+  .chapter .side{position:sticky;top:110px}
+  .chapter .num{font-size:clamp(64px,8vw,120px);font-weight:900;letter-spacing:-.06em;line-height:.9;color:#1e1e1e}
+  .light.chapter .num{color:#ececec}
+  .chapter .side h2{margin-top:14px;font-size:clamp(30px,3.4vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.05}
+  .chapter .side p{margin-top:16px;font-size:16px;color:var(--g5);line-height:1.6;max-width:320px}
+  .light.chapter .side p{color:#4d4d4d}
+  .inst{border-top:2px solid #fff;padding:34px 0 clamp(56px,6vw,80px)}
+  .light .inst{border-top-color:#000}
+  .inst + .inst{border-top-width:1px;border-top-color:#333}
+  .light .inst + .inst{border-top-color:#d0d0d0}
+  .inst .row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+  .inst .ab{font-size:clamp(52px,7vw,104px);font-weight:900;letter-spacing:-.055em;line-height:.9}
+  .inst .ab i{font-style:normal;color:var(--gold)}
+  .light .inst .ab i{color:var(--gold-ink)}
+  .role{display:inline-flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+  .role b{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border:1px solid currentColor;padding:8px 14px;border-radius:999px}
+  .role b.gold{background:var(--gold);color:#000;border-color:var(--gold)}
+  .role small{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--g4)}
+  .inst h3{margin-top:18px;font-size:clamp(20px,2vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.25}
+  .inst p{margin-top:14px;font-size:17px;line-height:1.65;color:var(--g5);max-width:720px}
+  .light .inst p{color:#4d4d4d}
+  .inst p strong{color:#fff;font-weight:600}
+  .light .inst p strong{color:#000}
+  .tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+  .tags span{font-size:13px;font-weight:600;border:1px solid #3a3a3a;border-radius:999px;padding:6px 12px;color:#ddd}
+  .light .tags span{border-color:#cfcfcf;color:#333}
+  @media (max-width:860px){.chapter .grid{grid-template-columns:1fr}.chapter .side{position:static}.role{align-items:flex-start;text-align:left}}
+
+  /* SHARED PURPOSE */
+  .purpose{text-align:center}
+  .purpose .bigtxt{margin:28px auto 0;font-size:clamp(30px,5vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1.05;max-width:1150px}
+  .purpose .bigtxt span{color:#2e2e2e;transition:color .45s}
+  .purpose .bigtxt span.lit{color:#fff}
+  .purpose .bigtxt span.gold.lit{color:var(--gold)}
+  .purpose .sub{margin:36px auto 0;max-width:720px;color:var(--g5)}
+
+  /* CLOSE */
+  .close{text-align:center;overflow:hidden;border-top:1px solid #1a1a1a}
+  .close canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+  .close:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,.2));pointer-events:none}
+  .close .inner{position:relative;z-index:1}
+  .close .pre{font-size:clamp(22px,2.6vw,34px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .close h2{margin:18px auto 0;font-size:clamp(40px,7vw,104px);font-weight:900;letter-spacing:-.05em;line-height:.98;max-width:1100px}
+  .close h2 em{font-style:normal;color:var(--gold)}
+  .contact{margin:clamp(64px,8vw,110px) auto 0;display:inline-grid;grid-template-columns:auto auto;border:1px solid #fff;text-align:left}
+  .contact a{display:block;padding:26px 38px;text-decoration:none;transition:background .35s,color .35s}
+  .contact a + a{border-left:1px solid #fff}
+  .contact a:hover{background:#fff;color:#000}
+  .contact .lab{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .contact a:hover .lab{color:var(--gold-ink)}
+  .contact .val{margin-top:8px;font-size:clamp(20px,2.4vw,30px);font-weight:800;letter-spacing:-.02em}
+  @media (max-width:640px){.contact{grid-template-columns:1fr}.contact a + a{border-left:0;border-top:1px solid #fff}}
+
+  .nextpg{display:block;text-decoration:none;border-top:1px solid #1f1f1f;padding:clamp(56px,7vw,90px) 0;transition:background .4s}
+  .nextpg:hover{background:#0b0b0b}
+  .nextpg .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .nextpg .k{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .nextpg h3{margin-top:10px;font-size:clamp(34px,5vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1}
+  .nextpg .arr{font-size:clamp(40px,5vw,72px);font-weight:200;transition:transform .5s var(--ease)}
+  .nextpg:hover .arr{transform:translateX(12px);color:var(--gold)}
+
+  footer{background:#000;border-top:1px solid #1f1f1f;padding:44px 0 56px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer p{font-size:14px;color:var(--g4)}
+  footer .links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--g5)}
+  footer .links a{text-decoration:none}
+  footer .links a:hover{color:#fff}
+
+  @media (prefers-reduced-motion:reduce){.rv,.step{transition:none!important}.rv{opacity:1;transform:none}.scrollcue i{animation:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="/">Fenil Pritesh Shah<i>.</i></a>
+  <div class="navlinks">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/philosophy/">Philosophy</a>
+    <a class="cur" href="/work/">Work</a>
+    <a href="/writing/">Writing</a>
+    <a href="/now/">Now</a>
+  </div>
+  <a class="cta" href="/book/">Book a meeting</a>
+</nav>
+
+<!-- ================= SCENE ================= -->
+<section id="scene" aria-label="Work — seven institutions, one shared purpose">
+  <div class="stick">
+    <canvas id="constellation" aria-hidden="true"></canvas>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="eyebrow">Work</span>
+      <h1>The Institutions<i>.</i></h1>
+      <p>Each serves a distinct purpose. Together, they share one belief.</p>
+    </div>
+
+    <div class="step" data-from=".12" data-to=".32"><span class="eyebrow">Institution building</span><h2>Platforms for <em>research, collaboration and youth.</em></h2></div>
+    <div class="step" data-from=".34" data-to=".53"><span class="eyebrow">Research and academic publishing</span><h2>Journals that advance <em>scholarly contribution.</em></h2></div>
+    <div class="step" data-from=".55" data-to=".75"><span class="eyebrow">Associations and publications</span><h2>Governance, editorial voice and <em>emerging writers.</em></h2></div>
+    <div class="step" data-from=".77" data-to="1.01"><span class="eyebrow">A shared purpose</span><h2>Different areas. <em>One common mission.</em></h2></div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue">Scroll<i></i></div>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro light pad">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <span class="eyebrow rv">The work</span>
+        <h2 class="big rv d1">Designing, building and <em>strengthening</em> institutions.</h2>
+      </div>
+      <p class="lead rv d2">My work is centred around institutions that contribute to education, research, governance, and public dialogue. While each initiative serves a distinct purpose, they are united by a shared belief: <strong>lasting impact is created through institutions that continue to evolve beyond the individuals who establish them.</strong></p>
+    </div>
+    <div class="ggrid">
+      <div class="gcell rv"><div class="v">07</div><div class="k">Institutions</div><div class="s">Across research, education, publishing and governance</div></div>
+      <div class="gcell rv d1"><div class="v">04</div><div class="k">Domains</div><div class="s">Institution building, academic publishing, associations and publications</div></div>
+      <div class="gcell rv d2"><div class="v">02</div><div class="k">Journals</div><div class="s">International, peer reviewed: IJBMRS and IJELF</div></div>
+      <div class="gcell rv d3"><div class="v">02</div><div class="k">Publications</div><div class="s">Ahmedabad Business Review and Astitva</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 01 INSTITUTION BUILDING ================= -->
+<section class="chapter pad">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="num rv">01</div>
+      <span class="eyebrow rv d1" style="display:block;margin-top:18px">Chapter one</span>
+      <h2 class="rv d1">Institution Building</h2>
+      <p class="rv d2">Independent platforms that bring researchers, educators, students and young people together.</p>
+    </div>
+    <div>
+      <article class="inst rv">
+        <div class="row"><div class="ab">ACRI<i>.</i></div><div class="role"><b class="gold">President</b></div></div>
+        <h3>Ahmedabad Centre for Research and Innovation</h3>
+        <p>An independent institution dedicated to <strong>strengthening research culture, fostering interdisciplinary collaboration, and supporting knowledge driven development.</strong></p>
+        <p>ACRI serves as a platform for researchers, students, educators, and professionals to collaborate through academic publishing, conferences, research initiatives, educational programmes, and institutional partnerships. Its long term vision is to contribute towards a stronger research ecosystem that encourages curiosity, innovation, and meaningful scholarly engagement.</p>
+        <div class="tags"><span>Academic publishing</span><span>Conferences</span><span>Research initiatives</span><span>Educational programmes</span><span>Institutional partnerships</span></div>
+      </article>
+      <article class="inst rv">
+        <div class="row"><div class="ab">ICOY<i>.</i></div><div class="role"><b class="gold">Director General</b></div></div>
+        <h3>International Conference on Youth</h3>
+        <p>A global platform that brings together <strong>young people, educators, researchers, policymakers, and institutions</strong> to exchange ideas, encourage collaboration, and address issues shaping the future of society.</p>
+        <p>ICOY seeks to create meaningful dialogue that extends beyond conferences by building long term international networks, partnerships, and collaborative opportunities.</p>
+        <div class="tags"><span>Global dialogue</span><span>International networks</span><span>Partnerships</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 RESEARCH & PUBLISHING ================= -->
+<section class="chapter light pad">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="num rv">02</div>
+      <span class="eyebrow rv d1" style="display:block;margin-top:18px">Chapter two</span>
+      <h2 class="rv d1">Research and Academic Publishing</h2>
+      <p class="rv d2">International, peer reviewed journals committed to rigour, ethics and accessibility.</p>
+    </div>
+    <div>
+      <article class="inst rv">
+        <div class="row"><div class="ab">IJBMRS<i>.</i></div><div class="role"><b>Chairperson</b></div></div>
+        <h3>International Journal of Business and Management Research Studies</h3>
+        <p>An international peer reviewed academic journal dedicated to advancing research in <strong>business, management, entrepreneurship, finance, economics, and related disciplines.</strong></p>
+        <p>The journal is committed to maintaining rigorous editorial standards, ethical publishing practices, and meaningful scholarly contribution while providing researchers with an accessible and internationally oriented platform.</p>
+        <div class="tags"><span>Business</span><span>Management</span><span>Entrepreneurship</span><span>Finance</span><span>Economics</span></div>
+      </article>
+      <article class="inst rv">
+        <div class="row"><div class="ab">IJELF<i>.</i></div><div class="role"><b>Chairperson</b></div></div>
+        <h3>International Journal of Education and Learning Futures</h3>
+        <p>An international peer reviewed journal focused on research and innovation in <strong>education, pedagogy, curriculum, educational technology, assessment, and learning sciences.</strong></p>
+        <p>The journal encourages interdisciplinary scholarship and supports conversations that explore the future of education and learning across diverse contexts.</p>
+        <div class="tags"><span>Pedagogy</span><span>Curriculum</span><span>Educational technology</span><span>Assessment</span><span>Learning sciences</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 ASSOCIATIONS ================= -->
+<section class="chapter pad">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="num rv">03</div>
+      <span class="eyebrow rv d1" style="display:block;margin-top:18px">Chapter three</span>
+      <h2 class="rv d1">Professional Associations</h2>
+      <p class="rv d2">Shaping governance and long term direction for research across India.</p>
+    </div>
+    <div>
+      <article class="inst rv">
+        <div class="row"><div class="ab">AAIR<i>.</i></div><div class="role"><b>Member</b><small>Interim Governance Council</small></div></div>
+        <h3>Association of Indian Researchers</h3>
+        <p>A national professional association established to <strong>strengthen research culture and academic collaboration across India.</strong></p>
+        <p>As a member of its Interim Governance Council, I contribute to the development of its governance framework, institutional strategy, and long term organisational direction.</p>
+        <div class="tags"><span>Governance framework</span><span>Institutional strategy</span><span>Organisational direction</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 PUBLICATIONS ================= -->
+<section class="chapter light pad">
+  <div class="wrap grid">
+    <div class="side">
+      <div class="num rv">04</div>
+      <span class="eyebrow rv d1" style="display:block;margin-top:18px">Chapter four</span>
+      <h2 class="rv d1">Publications</h2>
+      <p class="rv d2">Editorial platforms that make ideas accessible and give emerging writers a voice.</p>
+    </div>
+    <div>
+      <article class="inst rv">
+        <div class="row"><div class="ab">ABR<i>.</i></div><div class="role"><b>Chairperson</b><small>Former CEO, Content and Editorial</small></div></div>
+        <h3>Ahmedabad Business Review</h3>
+        <p>An editorial platform dedicated to <strong>business, entrepreneurship, innovation, leadership, and emerging ideas.</strong></p>
+        <p>Through articles, interviews, analysis, and long form publications, ABR aims to make business ideas more accessible while encouraging thoughtful public discourse.</p>
+        <div class="tags"><span>Articles</span><span>Interviews</span><span>Analysis</span><span>Long form</span></div>
+      </article>
+      <article class="inst rv">
+        <div class="row"><div class="ab">Astitva<i>.</i></div><div class="role"><b>Chairperson</b></div></div>
+        <h3>A student publication</h3>
+        <p>Dedicated to <strong>reflective writing, storytelling, and intellectual expression.</strong></p>
+        <p>The platform encourages emerging writers to explore ideas through essays, articles, and creative writing while fostering critical thinking and meaningful dialogue.</p>
+        <div class="tags"><span>Essays</span><span>Storytelling</span><span>Creative writing</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SHARED PURPOSE ================= -->
+<section class="purpose pad">
+  <div class="wrap">
+    <span class="eyebrow rv">A shared purpose</span>
+    <p class="bigtxt" id="litText"></p>
+    <p class="sub lead rv">Although these institutions operate in different areas, they all contribute to this common mission.</p>
+  </div>
+</section>
+
+<section class="close pad">
+  <canvas id="closeSky" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="pre rv">Interested in collaborating?</p>
+    <h2 class="rv d1">Let’s build something that <em>outlasts us.</em></h2>
+    <div class="contact rv d2">
+      <a href="mailto:contact@fenilpshah.com"><div class="lab">Write to me</div><div class="val">contact@fenilpshah.com</div></a>
+      <a href="/book/"><div class="lab">Meet</div><div class="val">Book an appointment →</div></a>
+    </div>
+  </div>
+</section>
+
+<a class="nextpg" href="/writing/">
+  <div class="wrap"><div><div class="k">Next · Writing</div><h3>Where ideas begin.</h3></div><span class="arr">→</span></div>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand">Fenil Pritesh Shah<i style="font-style:normal;color:var(--gold)">.</i></span>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/philosophy/">Philosophy</a>
+        <a href="/writing/">Writing</a>
+        <a href="/now/">Now</a>
+        <a href="/otlo/">Otlo</a>
+        <a href="/book/">Book a meeting</a>
+      </div>
+    </div>
+    <p style="margin-top:20px">© <span id="yr"></span> Fenil Pritesh Shah</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio||1, 2);
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+  var GOLD='227,166,59';
+
+  /* ============ CONSTELLATION ============ */
+  var INST=[
+    {ab:'ACRI',   role:'President',        ang:200, g:0},
+    {ab:'ICOY',   role:'Director General', ang:240, g:0},
+    {ab:'IJBMRS', role:'Chairperson',      ang:300, g:1},
+    {ab:'IJELF',  role:'Chairperson',      ang:340, g:1},
+    {ab:'AAIR',   role:'Council Member',   ang:28,  g:2},
+    {ab:'ABR',    role:'Chairperson',      ang:90,  g:2},
+    {ab:'Astitva',role:'Chairperson',      ang:152, g:2}
+  ];
+  var GROUP=[[.1,.3],[.32,.51],[.53,.73]];
+  var R=rng(7777);
+  INST.forEach(function(n){ n.sat=[]; var k=5+Math.floor(R()*4); for (var i=0;i<k;i++) n.sat.push({r:0.9+R()*0.9, a:R()*6.283, sp:(R()-.5)*0.0012, s:0.6+R()*1}); n.tw=R()*6.283; });
+  var stars=[]; for (var s=0;s<140;s++) stars.push({x:R(),y:R(),s:R()*1.1+.2,tw:R()*6.283});
+
+  var cv=document.getElementById('constellation'), ctx=cv.getContext('2d'), W, H;
+  function resize(){ W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); sizeClose(); }
+  var scene=document.getElementById('scene');
+  function sceneProgress(){ var r=scene.getBoundingClientRect(), total=scene.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+  var heroTitle=document.getElementById('heroTitle'), cue=document.getElementById('cue');
+  var steps=[].slice.call(document.querySelectorAll('.step')), bars=[].slice.call(document.querySelectorAll('.progress span'));
+
+  function drawScene(p, now){
+    var t=reduce?0:now;
+    ctx.clearRect(0,0,W,H);
+    var mobile=W<700;
+    var cx=W/2, cy=H*(mobile?0.6:0.6);
+    var rx=Math.min(W*(mobile?0.34:0.34), 470), ry=Math.min(H*0.24, 230);
+    var nodeR=mobile?14:22;
+    var join=ease(clamp((p-0.76)/0.16,0,1));
+    var spin=reduce?0:t*0.00002;
+
+    for (var i=0;i<stars.length;i++){ var st=stars[i], tw=reduce?1:0.5+0.5*Math.sin(t*0.001+st.tw); ctx.fillStyle='rgba(255,255,255,'+(0.25*tw)+')'; ctx.fillRect(st.x*W,st.y*H,st.s,st.s); }
+
+    // orbit
+    var orbitA=clamp(p*6,0,1);
+    ctx.strokeStyle= join>0 ? 'rgba('+GOLD+','+(0.1+0.3*join)+')' : 'rgba(255,255,255,'+(0.08*orbitA)+')';
+    ctx.lineWidth=1; ctx.beginPath(); ctx.ellipse(cx,cy,rx,ry,0,0,6.283); ctx.stroke();
+
+    var pos=INST.map(function(n){ var a=(n.ang*Math.PI/180)+spin*(1-join*0); return {x:cx+Math.cos(a)*rx, y:cy+Math.sin(a)*ry}; });
+    var vis=INST.map(function(n,i){ var g=GROUP[n.g], idxIn=INST.filter(function(m,j){return m.g===n.g&&j<i;}).length; var span=(g[1]-g[0]); return ease(clamp((p-g[0]-idxIn*span*0.18)/(span*0.55),0,1)); });
+
+    // in-group links
+    for (var a=0;a<INST.length;a++) for (var b=a+1;b<INST.length;b++){
+      if (INST[a].g!==INST[b].g) continue;
+      var v=Math.min(vis[a],vis[b]); if (v<=0) continue;
+      ctx.strokeStyle='rgba(255,255,255,'+(0.3*v)+')'; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.moveTo(pos[a].x,pos[a].y); ctx.lineTo(pos[a].x+(pos[b].x-pos[a].x)*v, pos[a].y+(pos[b].y-pos[a].y)*v); ctx.stroke();
+    }
+
+    // links to shared purpose
+    if (join>0){
+      INST.forEach(function(n,i){
+        var local=clamp(join*1.4-i*0.06,0,1);
+        ctx.strokeStyle='rgba('+GOLD+','+(0.75*local)+')'; ctx.lineWidth=1.4;
+        ctx.beginPath(); ctx.moveTo(pos[i].x,pos[i].y); ctx.lineTo(pos[i].x+(cx-pos[i].x)*local, pos[i].y+(cy-pos[i].y)*local); ctx.stroke();
+      });
+      var pulse=reduce?0:Math.sin(t*0.0022);
+      var gg=ctx.createRadialGradient(cx,cy,0,cx,cy,90); gg.addColorStop(0,'rgba('+GOLD+','+(0.4*join)+')'); gg.addColorStop(1,'rgba('+GOLD+',0)');
+      ctx.fillStyle=gg; ctx.beginPath(); ctx.arc(cx,cy,90,0,6.283); ctx.fill();
+      ctx.fillStyle='rgba('+GOLD+','+join+')'; ctx.beginPath(); ctx.arc(cx,cy,7+pulse,0,6.283); ctx.fill();
+      ctx.strokeStyle='rgba('+GOLD+','+(0.5*join)+')'; ctx.beginPath(); ctx.arc(cx,cy,18+pulse*4,0,6.283); ctx.stroke();
+      ctx.font='700 '+(mobile?10:12)+'px Inter, Helvetica, Arial, sans-serif'; ctx.textAlign='center'; ctx.textBaseline='top';
+      ctx.fillStyle='rgba('+GOLD+','+join+')'; ctx.fillText('SHARED PURPOSE', cx, cy+30);
+    }
+
+    // nodes
+    INST.forEach(function(n,i){
+      var v=vis[i]; if (v<=0) return;
+      var P=pos[i], tw=reduce?1:0.85+0.15*Math.sin(t*0.0016+n.tw);
+      n.sat.forEach(function(s){
+        var a=s.a+(reduce?0:t*s.sp), rr=nodeR*(1.2+s.r)*v;
+        ctx.fillStyle='rgba(255,255,255,'+(0.55*v*tw)+')';
+        ctx.beginPath(); ctx.arc(P.x+Math.cos(a)*rr, P.y+Math.sin(a)*rr, s.s, 0, 6.283); ctx.fill();
+      });
+      ctx.fillStyle='#000'; ctx.beginPath(); ctx.arc(P.x,P.y,nodeR*v,0,6.283); ctx.fill();
+      ctx.strokeStyle= join>0.3 ? 'rgba('+GOLD+','+v+')' : 'rgba(255,255,255,'+(0.9*v)+')'; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(P.x,P.y,nodeR*v,0,6.283); ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,'+v+')'; ctx.beginPath(); ctx.arc(P.x,P.y,3,0,6.283); ctx.fill();
+      var below = P.y>=cy-5;
+      ctx.textAlign='center'; ctx.textBaseline= below?'top':'bottom';
+      var ly = below ? P.y+nodeR*2.2 : P.y-nodeR*2.2;
+      ctx.font='800 '+(mobile?13:18)+'px Inter, Helvetica, Arial, sans-serif';
+      ctx.fillStyle='rgba(255,255,255,'+v+')'; ctx.fillText(n.ab, P.x, below?ly:ly-(mobile?14:18));
+      ctx.font='600 '+(mobile?9:11)+'px Inter, Helvetica, Arial, sans-serif';
+      ctx.fillStyle='rgba(179,179,179,'+v+')'; ctx.fillText(n.role.toUpperCase(), P.x, below?ly+(mobile?17:23):ly);
+    });
+
+    heroTitle.style.opacity=clamp(1-p/0.1,0,1);
+    heroTitle.style.transform='translateY(calc(-50% - '+(p*260)+'px)) scale('+(1-p*0.4)+')';
+    cue.style.opacity=clamp(1-p/0.04,0,1);
+    steps.forEach(function(el){ el.classList.toggle('on', p>=+el.dataset.from && p<+el.dataset.to); });
+    var idx=p<.12?0:p<.34?1:p<.55?2:p<.77?3:4;
+    bars.forEach(function(b,i){ b.classList.toggle('on', i<=idx); });
+  }
+
+  /* ============ CLOSING FIELD ============ */
+  var closeCv=document.getElementById('closeSky'), cctx=closeCv.getContext('2d'), CW, CH;
+  var R2=rng(1234), cn=[];
+  for (var c=0;c<48;c++) cn.push({x:R2(),y:R2(),vx:(R2()-.5)*0.00005,vy:(R2()-.5)*0.00005,s:R2()*1.3+.5});
+  function sizeClose(){ CW=closeCv.clientWidth; CH=closeCv.clientHeight; closeCv.width=CW*DPR; closeCv.height=CH*DPR; cctx.setTransform(DPR,0,0,DPR,0,0); }
+  function drawClose(dt){
+    cctx.clearRect(0,0,CW,CH);
+    var lim=Math.min(CW,CH)*0.22;
+    cn.forEach(function(n){ if(!reduce){ n.x+=n.vx*dt; n.y+=n.vy*dt; if(n.x<0||n.x>1)n.vx*=-1; if(n.y<0||n.y>1)n.vy*=-1; } });
+    for (var a=0;a<cn.length;a++) for (var b=a+1;b<cn.length;b++){
+      var A=cn[a],B=cn[b],dx=(A.x-B.x)*CW,dy=(A.y-B.y)*CH,dd=Math.sqrt(dx*dx+dy*dy);
+      if (dd<lim){ cctx.strokeStyle='rgba(255,255,255,'+(0.14*(1-dd/lim))+')'; cctx.beginPath(); cctx.moveTo(A.x*CW,A.y*CH); cctx.lineTo(B.x*CW,B.y*CH); cctx.stroke(); }
+    }
+    cn.forEach(function(m,k){ cctx.fillStyle=k===0?'rgb('+GOLD+')':'rgba(255,255,255,.55)'; cctx.beginPath(); cctx.arc(m.x*CW,m.y*CH,k===0?3:m.s,0,6.283); cctx.fill(); });
+  }
+
+  /* ============ LOOP ============ */
+  var nav=document.getElementById('nav'), closeVisible=false, sceneVisible=true, last=performance.now();
+  new IntersectionObserver(function(en){closeVisible=en[0].isIntersecting;}).observe(closeCv);
+  new IntersectionObserver(function(en){sceneVisible=en[0].isIntersecting;}).observe(scene);
+  function loop(now){
+    var dt=Math.min(now-last,50); last=now;
+    if (sceneVisible) drawScene(sceneProgress(), now);
+    if (closeVisible) drawClose(dt);
+    nav.classList.toggle('solid', scrollY>40);
+    requestAnimationFrame(loop);
+  }
+
+  /* ============ REVEALS ============ */
+  var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ============ LIT STATEMENT ============ */
+  var lit=document.getElementById('litText');
+  'To build institutions that strengthen knowledge, education, research, governance, and public dialogue while creating opportunities that endure for future generations.'.split(' ').forEach(function(w){
+    var s=document.createElement('span'); s.textContent=w+' ';
+    if (/^(endure)$/i.test(w.replace(/[^a-z]/gi,''))) s.className='gold';
+    lit.appendChild(s);
+  });
+  var spans=[].slice.call(lit.children);
+  function litUpdate(){ var r=lit.getBoundingClientRect(), vh=innerHeight; var tt=clamp((vh*0.85-r.top)/(r.height+vh*0.35),0,1); var n=Math.round(tt*spans.length*1.15); spans.forEach(function(s,i){ s.classList.toggle('lit', i<n); }); }
+  if (reduce) spans.forEach(function(s){s.classList.add('lit');}); else addEventListener('scroll', litUpdate, {passive:true});
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  addEventListener('resize', resize);
+  resize(); litUpdate();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

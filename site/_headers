@@ -1,0 +1,9 @@
+/admin/*
+  X-Robots-Tag: noindex, nofollow
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: same-origin
+/iq/*
+  X-Robots-Tag: noindex, nofollow
+  Permissions-Policy: camera=(self), display-capture=(self), fullscreen=(self)
+/g/*
+  X-Robots-Tag: noindex, nofollow
