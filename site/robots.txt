@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /iq/
+Disallow: /g/
+Disallow: /book/feedback/
+
+Sitemap: https://fenilpshah.com/sitemap.xml

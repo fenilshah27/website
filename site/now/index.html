@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Now · What Fenil Pritesh Shah is working on</title>
+<meta name="description" content="A snapshot of what Fenil Pritesh Shah is building, researching and reading right now.">
+<meta name="author" content="Fenil Pritesh Shah">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://fenilpshah.com/now/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fenil Pritesh Shah">
+<meta property="og:title" content="Now · What Fenil Pritesh Shah is working on">
+<meta property="og:description" content="A snapshot of what Fenil Pritesh Shah is building, researching and reading right now.">
+<meta property="og:url" content="https://fenilpshah.com/now/">
+<meta property="og:image" content="https://fenilpshah.com/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Now · What Fenil Pritesh Shah is working on">
+<meta name="twitter:description" content="A snapshot of what Fenil Pritesh Shah is building, researching and reading right now.">
+<meta name="twitter:image" content="https://fenilpshah.com/og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://fenilpshah.com/now/", "name": "Now · What Fenil Pritesh Shah is working on", "description": "A snapshot of what Fenil Pritesh Shah is building, researching and reading right now.", "isPartOf": {"@id": "https://fenilpshah.com/#site"}, "about": {"@id": "https://fenilpshah.com/#fenil"}, "author": {"@id": "https://fenilpshah.com/#fenil"}}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--gold:#E3A63B;--gold-ink:#A8721A;--g4:#8c8c8c;--g5:#b3b3b3;--ease:cubic-bezier(.2,.7,.1,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#000;color:#fff;font-family:'Inter',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5}
+  a{color:inherit}
+  .wrap{width:min(1200px,100% - 48px);margin:0 auto}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+  .light .eyebrow{color:var(--gold-ink)}
+  .pad{padding:clamp(96px,14vw,180px) 0}
+  section{position:relative}
+  .light{background:#fff;color:#000}
+  h2.big{font-size:clamp(36px,5.4vw,76px);font-weight:800;letter-spacing:-.035em;line-height:1.02;margin-top:22px}
+  h2.big em{font-style:normal;color:var(--gold)}
+  .light h2.big em{color:var(--gold-ink)}
+  .lead{font-size:clamp(17px,1.5vw,20px);line-height:1.65}
+
+  /* NAV */
+  nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid transparent;transition:background .4s,border-color .4s}
+  nav.solid{background:rgba(0,0,0,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:#1f1f1f}
+  .brand{font-weight:800;font-size:17px;letter-spacing:-.01em;text-decoration:none}
+  .brand i{font-style:normal;color:var(--gold)}
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--g5)}
+  .navlinks a{text-decoration:none;transition:color .2s}
+  .navlinks a:hover,.navlinks a.cur{color:#fff}
+  .navlinks a.cur{box-shadow:inset 0 -2px 0 var(--gold);padding-bottom:4px}
+  .cta{white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid #fff;padding:8px 16px;border-radius:999px;transition:background .3s,color .3s}
+  .cta:hover{background:#fff;color:#000}
+  @media (max-width:900px){.navlinks{display:none}}
+  @media (max-width:520px){nav{padding:14px 18px}}
+
+  /* SCENE */
+  #scene{height:500vh;background:#000}
+  #scene .stick{position:sticky;top:0;height:100vh;overflow:hidden}
+  #radar{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-title{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;pointer-events:none;padding:0 20px}
+  .hero-title .eyebrow{display:block;margin-bottom:26px}
+  .hero-title h1{font-size:clamp(80px,16vw,260px);font-weight:900;letter-spacing:-.06em;line-height:.86;text-shadow:0 4px 40px #000}
+  .hero-title h1 i{font-style:normal;color:var(--gold)}
+  .hero-title p{margin:30px auto 0;max-width:720px;font-size:clamp(18px,2.1vw,26px);font-weight:300;color:var(--g5)}
+  .live{display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;border:1px solid #444;border-radius:999px;padding:8px 16px;color:#ddd;background:rgba(0,0,0,.6)}
+  .live i,.pill i{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(227,166,59,.6);animation:ping 2s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(227,166,59,.6)}70%{box-shadow:0 0 0 12px rgba(227,166,59,0)}100%{box-shadow:0 0 0 0 rgba(227,166,59,0)}}
+  .scrollcue{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--g4);display:flex;flex-direction:column;align-items:center;gap:12px}
+  .scrollcue i{width:1px;height:46px;background:linear-gradient(#fff,transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+  @keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+  .step{position:absolute;left:clamp(24px,5vw,72px);top:50%;transform:translateY(calc(-50% + 24px));max-width:min(430px,38vw);opacity:0;transition:opacity .6s var(--ease),transform .8s var(--ease);pointer-events:none}
+  .step.on{opacity:1;transform:translateY(-50%)}
+  .step .eyebrow{display:block;margin-bottom:14px}
+  .step h2{font-size:clamp(26px,3.4vw,48px);font-weight:700;letter-spacing:-.028em;line-height:1.08}
+  .step h2 em{font-style:normal;color:var(--gold)}
+  .step ul{margin-top:18px;list-style:none;font-size:15px;color:var(--g5);line-height:1.5}
+  .step li{padding:6px 0;border-top:1px solid #222}
+  @media (max-width:760px){.step{left:24px;right:24px;max-width:none;top:auto;bottom:7vh;transform:translateY(24px)}.step.on{transform:none}.step ul{display:none}.step h2{text-shadow:0 2px 20px #000}}
+  .progress{position:absolute;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .progress span{width:3px;height:26px;background:#2a2a2a;transition:background .4s}
+  .progress span.on{background:var(--gold)}
+  @media (max-width:700px){.progress{display:none}}
+
+  .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+  /* SNAPSHOT */
+  .snap .top{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:end}
+  .snap .top p{color:#4d4d4d}
+  .pill{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;background:#000;color:#fff;border-radius:999px;padding:9px 16px;margin-top:28px}
+  .ggrid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #000}
+  .gcell{padding:30px 24px 34px 0;border-bottom:1px solid #d9d9d9;text-decoration:none;transition:background .4s}
+  .gcell + .gcell{padding-left:24px;border-left:1px solid #d9d9d9}
+  .gcell .v{font-size:clamp(44px,5.4vw,80px);font-weight:900;letter-spacing:-.05em;line-height:1}
+  .gcell .k{margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+  .gcell .s{margin-top:8px;font-size:15px;color:#4d4d4d;line-height:1.45}
+  @media (max-width:860px){.snap .top{grid-template-columns:1fr;gap:24px}}
+  @media (max-width:640px){.ggrid{grid-template-columns:1fr}.gcell + .gcell{padding-left:0;border-left:0}}
+
+  /* BUILDING */
+  .building .head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+  .building .head p{max-width:440px;color:var(--g5)}
+  .blist{margin-top:clamp(56px,7vw,96px);border-top:1px solid #333}
+  .brow{display:grid;grid-template-columns:70px 1fr 160px;gap:28px;align-items:center;padding:clamp(24px,2.8vw,36px) 0;border-bottom:1px solid #262626;transition:padding .5s var(--ease)}
+  .brow:hover{padding-left:12px}
+  .brow .n{font-size:13px;font-weight:700;letter-spacing:.2em;color:var(--gold)}
+  .brow h3{font-size:clamp(22px,2.8vw,38px);font-weight:800;letter-spacing:-.03em;line-height:1.12}
+  .brow h3 small{display:block;margin-top:6px;font-size:15px;font-weight:500;letter-spacing:0;color:var(--g4)}
+  .status{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+  .status b{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--g5);display:flex;align-items:center;gap:8px}
+  .status b i{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  .track{width:100%;height:2px;background:#262626;position:relative;overflow:hidden}
+  .track:after{content:"";position:absolute;top:0;bottom:0;width:40%;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:run 2.6s var(--ease) infinite}
+  .brow:nth-child(2) .track:after{animation-delay:.4s}.brow:nth-child(3) .track:after{animation-delay:.8s}.brow:nth-child(4) .track:after{animation-delay:1.2s}.brow:nth-child(5) .track:after{animation-delay:1.6s}
+  @keyframes run{0%{left:-40%}100%{left:100%}}
+  @media (max-width:760px){.brow{grid-template-columns:1fr;gap:10px}.status{align-items:flex-start}.track{max-width:200px}}
+
+  /* RESEARCH */
+  .research .top{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:end}
+  .research .top p{color:#4d4d4d}
+  @media (max-width:860px){.research .top{grid-template-columns:1fr;gap:24px}}
+  .rgrid{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #000;border-left:1px solid #d9d9d9}
+  .rcell{padding:34px 28px 38px;border-right:1px solid #d9d9d9;border-bottom:1px solid #d9d9d9;position:relative;overflow:hidden;transition:color .45s}
+  .rcell:before{content:"";position:absolute;inset:0;background:#000;transform:translateY(101%);transition:transform .6s var(--ease)}
+  .rcell:hover{color:#fff}
+  .rcell:hover:before{transform:none}
+  .rcell > *{position:relative}
+  .rcell .n{font-size:12px;font-weight:700;letter-spacing:.22em;color:var(--gold-ink)}
+  .rcell:hover .n{color:var(--gold)}
+  .rcell h3{margin-top:18px;font-size:clamp(24px,2.6vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.08}
+  .research .coda{margin-top:48px;font-size:clamp(20px,2.2vw,28px);font-weight:300;color:#4d4d4d;letter-spacing:-.01em}
+  .research .coda strong{color:#000;font-weight:700}
+  @media (max-width:860px){.rgrid{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.rgrid{grid-template-columns:1fr}}
+
+  /* READING */
+  .reading{overflow:hidden}
+  .reading .intro{max-width:880px}
+  .reading .intro .lead{margin-top:26px;color:var(--g5)}
+  .reading .intro .lead strong{color:#fff;font-weight:600}
+  .marquee{margin-top:clamp(56px,7vw,96px);display:flex;flex-direction:column;gap:18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .mrow{display:flex;width:max-content;gap:18px;animation:slide 48s linear infinite}
+  .mrow.rev{animation-direction:reverse;animation-duration:56s}
+  .marquee:hover .mrow{animation-play-state:paused}
+  .chip{white-space:nowrap;font-size:clamp(24px,3.4vw,48px);font-weight:800;letter-spacing:-.035em;border:1px solid #333;border-radius:999px;padding:14px 30px;color:#d6d6d6;transition:color .3s,border-color .3s,background .3s}
+  .chip:hover{color:#000;background:var(--gold);border-color:var(--gold)}
+  .chip.g{color:var(--gold);border-color:#5a4318}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* AHEAD */
+  .ahead{text-align:center}
+  .ahead .bigtxt{margin:28px auto 0;font-size:clamp(30px,5vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1.05;max-width:1150px}
+  .ahead .bigtxt span{color:#d0d0d0;transition:color .45s}
+  .ahead .bigtxt span.lit{color:#000}
+  .ahead .bigtxt span.gold.lit{color:var(--gold-ink)}
+
+  /* CLOSE */
+  .close{text-align:center;overflow:hidden}
+  .close canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
+  .close:after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,.2));pointer-events:none}
+  .close .inner{position:relative;z-index:1}
+  .close .pre{font-size:clamp(22px,2.6vw,34px);font-weight:300;color:var(--g5);letter-spacing:-.015em}
+  .close h2{margin:18px auto 0;font-size:clamp(40px,7vw,104px);font-weight:900;letter-spacing:-.05em;line-height:.98;max-width:1100px}
+  .close h2 em{font-style:normal;color:var(--gold)}
+  .close .lead{margin:32px auto 0;max-width:720px;color:var(--g5)}
+  .contact{margin:clamp(64px,8vw,110px) auto 0;display:inline-grid;grid-template-columns:auto auto;border:1px solid #fff;text-align:left}
+  .contact a{display:block;padding:26px 38px;text-decoration:none;transition:background .35s,color .35s}
+  .contact a + a{border-left:1px solid #fff}
+  .contact a:hover{background:#fff;color:#000}
+  .contact .lab{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .contact a:hover .lab{color:var(--gold-ink)}
+  .contact .val{margin-top:8px;font-size:clamp(20px,2.4vw,30px);font-weight:800;letter-spacing:-.02em}
+  @media (max-width:640px){.contact{grid-template-columns:1fr}.contact a + a{border-left:0;border-top:1px solid #fff}}
+
+  .nextpg{display:block;text-decoration:none;border-top:1px solid #1f1f1f;padding:clamp(56px,7vw,90px) 0;transition:background .4s}
+  .nextpg:hover{background:#0b0b0b}
+  .nextpg .wrap{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .nextpg .k{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  .nextpg h3{margin-top:10px;font-size:clamp(34px,5vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1}
+  .nextpg .arr{font-size:clamp(40px,5vw,72px);font-weight:200;transition:transform .5s var(--ease)}
+  .nextpg:hover .arr{transform:translateX(12px);color:var(--gold)}
+
+  footer{background:#000;border-top:1px solid #1f1f1f;padding:44px 0 56px}
+  footer .row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+  footer p{font-size:14px;color:var(--g4)}
+  footer .links{display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:var(--g5)}
+  footer .links a{text-decoration:none}
+  footer .links a:hover{color:#fff}
+
+  @media (prefers-reduced-motion:reduce){.rv,.step{transition:none!important}.rv{opacity:1;transform:none}.scrollcue i,.mrow,.track:after,.live i,.pill i{animation:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="/">Fenil Pritesh Shah<i>.</i></a>
+  <div class="navlinks">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/philosophy/">Philosophy</a>
+    <a href="/work/">Work</a>
+    <a href="/writing/">Writing</a>
+    <a class="cur" href="/now/">Now</a>
+  </div>
+  <a class="cta" href="/book/">Book a meeting</a>
+</nav>
+
+<!-- ================= SCENE ================= -->
+<section id="scene" aria-label="Now — what I am building, researching and reading">
+  <div class="stick">
+    <canvas id="radar" aria-hidden="true"></canvas>
+
+    <div class="hero-title" id="heroTitle">
+      <span class="eyebrow">Now</span>
+      <h1>Now<i>.</i></h1>
+      <p>A snapshot of what I am working on, exploring, and thinking about.</p>
+      <span class="live"><i></i>Last updated · <span class="upd">July 2026</span></span>
+    </div>
+
+    <div class="step" data-from=".12" data-to=".33"><span class="eyebrow">Ring 01 · Currently building</span><h2>Strengthening the institutions <em>I lead.</em></h2>
+      <ul><li>ACRI</li><li>ICOY</li><li>IJBMRS and IJELF</li><li>Governance frameworks</li><li>Systems for collaboration</li></ul></div>
+    <div class="step" data-from=".35" data-to=".55"><span class="eyebrow">Ring 02 · Current research</span><h2>The questions I am <em>exploring.</em></h2>
+      <ul><li>Institutional governance</li><li>Research ecosystems</li><li>Educational innovation</li><li>Youth leadership</li><li>Organisational sustainability</li><li>Technology and society</li></ul></div>
+    <div class="step" data-from=".57" data-to=".77"><span class="eyebrow">Ring 03 · Reading and learning</span><h2>Continuous learning is essential to <em>responsible leadership.</em></h2>
+      <ul><li>Institutional development · Public policy</li><li>Organisational behaviour · Philosophy</li><li>Leadership · History</li><li>Artificial Intelligence · Higher education</li></ul></div>
+    <div class="step" data-from=".79" data-to="1.01"><span class="eyebrow">Looking ahead</span><h2>Where my attention is <em>directed next.</em></h2></div>
+
+    <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="scrollcue" id="cue">Scroll<i></i></div>
+  </div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snap light pad">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <span class="eyebrow rv">A snapshot</span>
+        <h2 class="big rv d1">As my work evolves, <em>so will this page.</em></h2>
+        <span class="pill rv d2"><i></i>Last updated · <span class="upd">July 2026</span></span>
+      </div>
+      <p class="lead rv d2">This page provides a snapshot of what I am currently working on, exploring, and thinking about. Rather than representing everything I have done, it reflects what I am focused on today and where my attention is directed next.</p>
+    </div>
+    <div class="ggrid">
+      <a class="gcell rv" href="#building"><div class="v">05</div><div class="k">Priorities</div><div class="s">What I am currently building</div></a>
+      <a class="gcell rv d1" href="#research"><div class="v">06</div><div class="k">Research areas</div><div class="s">The questions I am exploring</div></a>
+      <a class="gcell rv d2" href="#reading"><div class="v">08</div><div class="k">Reading interests</div><div class="s">Books, research and discussions</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CURRENTLY BUILDING ================= -->
+<section class="building pad" id="building">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow rv">Currently building</span>
+        <h2 class="big rv d1">Current priorities.</h2>
+      </div>
+      <p class="lead rv d2">My current efforts are focused on strengthening institutions that contribute to education, research, governance, and youth leadership.</p>
+    </div>
+    <div class="blist">
+      <div class="brow rv"><div class="n">01</div><h3>Expanding the Ahmedabad Centre for Research and Innovation<small>ACRI</small></h3><div class="status"><b><i></i>In progress</b><div class="track"></div></div></div>
+      <div class="brow rv"><div class="n">02</div><h3>Developing the International Conference on Youth<small>ICOY</small></h3><div class="status"><b><i></i>In progress</b><div class="track"></div></div></div>
+      <div class="brow rv"><div class="n">03</div><h3>Strengthening academic publishing<small>IJBMRS and IJELF</small></h3><div class="status"><b><i></i>In progress</b><div class="track"></div></div></div>
+      <div class="brow rv"><div class="n">04</div><h3>Designing governance frameworks<small>For long term institutional sustainability</small></h3><div class="status"><b><i></i>In progress</b><div class="track"></div></div></div>
+      <div class="brow rv"><div class="n">05</div><h3>Building systems that encourage collaboration<small>Across education and research</small></h3><div class="status"><b><i></i>In progress</b><div class="track"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="research light pad" id="research">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <span class="eyebrow rv">Current areas of research</span>
+        <h2 class="big rv d1">At present, <em>I am exploring…</em></h2>
+      </div>
+      <p class="lead rv d2">Questions related to the areas below.</p>
+    </div>
+    <div class="rgrid">
+      <div class="rcell rv"><div class="n">01</div><h3>Institutional governance</h3></div>
+      <div class="rcell rv d1"><div class="n">02</div><h3>Research ecosystems</h3></div>
+      <div class="rcell rv d2"><div class="n">03</div><h3>Educational innovation</h3></div>
+      <div class="rcell rv"><div class="n">04</div><h3>Youth leadership</h3></div>
+      <div class="rcell rv d1"><div class="n">05</div><h3>Organisational sustainability</h3></div>
+      <div class="rcell rv d2"><div class="n">06</div><h3>Technology and society</h3></div>
+    </div>
+    <p class="coda rv">These areas continue to influence <strong>both my writing and the institutions I am helping to build.</strong></p>
+  </div>
+</section>
+
+<!-- ================= READING ================= -->
+<section class="reading pad" id="reading">
+  <div class="wrap intro">
+    <span class="eyebrow rv">Reading and learning</span>
+    <h2 class="big rv d1">Continuous learning is essential to <em>responsible leadership.</em></h2>
+    <p class="lead rv d2">My current interests include <strong>books, research, and discussions</strong> related to:</p>
+  </div>
+  <div class="marquee rv d2" aria-label="Institutional development, Public policy, Organisational behaviour, Philosophy, Leadership, History, Artificial Intelligence, Higher education">
+    <div class="mrow" id="m1"></div>
+    <div class="mrow rev" id="m2"></div>
+  </div>
+</section>
+
+<!-- ================= LOOKING AHEAD ================= -->
+<section class="ahead light pad">
+  <div class="wrap">
+    <span class="eyebrow rv">Looking ahead</span>
+    <p class="bigtxt" id="litText"></p>
+  </div>
+</section>
+
+<section class="close pad">
+  <canvas id="closeSky" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="pre rv">A continuing journey</p>
+    <h2 class="rv d1">This page will change as <em>new ideas emerge.</em></h2>
+    <p class="lead rv d2">As projects evolve and priorities shift, so will what you read here.</p>
+    <div class="contact rv d3">
+      <a href="mailto:contact@fenilpshah.com"><div class="lab">Write to me</div><div class="val">contact@fenilpshah.com</div></a>
+      <a href="/book/"><div class="lab">Meet</div><div class="val">Book an appointment →</div></a>
+    </div>
+  </div>
+</section>
+
+<a class="nextpg" href="/">
+  <div class="wrap"><div><div class="k">Back to the beginning · Home</div><h3>Ideas that endure.</h3></div><span class="arr">→</span></div>
+</a>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <span class="brand">Fenil Pritesh Shah<i style="font-style:normal;color:var(--gold)">.</i></span>
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/philosophy/">Philosophy</a>
+        <a href="/work/">Work</a>
+        <a href="/writing/">Writing</a>
+        <a href="/otlo/">Otlo</a>
+        <a href="/book/">Book a meeting</a>
+      </div>
+    </div>
+    <p style="margin-top:20px">© <span id="yr"></span> Fenil Pritesh Shah</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---- Edit this one line when you update the page ---- */
+  var LAST_UPDATED = 'July 2026';
+  document.querySelectorAll('.upd').forEach(function(el){ el.textContent = LAST_UPDATED; });
+
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DPR = Math.min(window.devicePixelRatio||1, 2);
+  function clamp(v,a,b){return v<a?a:v>b?b:v;}
+  function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+  function rng(seed){return function(){seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};}
+  var GOLD='227,166,59';
+
+  /* ============ RADAR ============ */
+  var RINGS=[
+    ['ACRI','ICOY','IJBMRS · IJELF','Governance','Collaboration'],
+    ['Governance','Research ecosystems','Education','Youth leadership','Sustainability','Technology'],
+    ['Institutions','Public policy','Org. behaviour','Philosophy','Leadership','History','AI','Higher education']
+  ];
+  var WIN=[[.12,.33],[.35,.55],[.57,.77]];
+  var R=rng(2026), blips=[];
+  RINGS.forEach(function(list,ri){ var off=R()*6.283; list.forEach(function(lb,i){ blips.push({ring:ri,label:lb,a:off+i*6.283/list.length+(R()-.5)*0.25,rj:(R()-.5)*0.18,tw:R()*6.283}); }); });
+  var dust=[]; for (var d=0;d<120;d++) dust.push({x:R(),y:R(),s:R()*1.1+.2,tw:R()*6.283});
+
+  var cv=document.getElementById('radar'), ctx=cv.getContext('2d'), W, H;
+  function resize(){ W=cv.clientWidth; H=cv.clientHeight; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); sizeClose(); }
+  var scene=document.getElementById('scene');
+  function sceneProgress(){ var r=scene.getBoundingClientRect(), total=scene.offsetHeight-innerHeight; return clamp(-r.top/total,0,1); }
+  var heroTitle=document.getElementById('heroTitle'), cue=document.getElementById('cue');
+  var steps=[].slice.call(document.querySelectorAll('.step')), bars=[].slice.call(document.querySelectorAll('.progress span'));
+
+  function angDiff(a,b){ var d=(a-b)%6.283; if(d<0) d+=6.283; return d; }
+
+  function drawScene(p, now){
+    var t=reduce?0:now;
+    ctx.clearRect(0,0,W,H);
+    var mobile=W<760;
+    var cx= mobile ? W/2 : W*0.64, cy= mobile ? H*0.42 : H*0.52;
+    var maxR=Math.min(mobile?W*0.44:W*0.32, H*(mobile?0.34:0.42));
+    var ringR=[maxR*0.38, maxR*0.68, maxR*0.98];
+    var ahead=ease(clamp((p-0.79)/0.14,0,1));
+    var intro=clamp(p/0.1,0,1);
+
+    for (var i=0;i<dust.length;i++){ var ds=dust[i], tw=reduce?1:0.5+0.5*Math.sin(t*0.001+ds.tw); ctx.fillStyle='rgba(255,255,255,'+(0.22*tw)+')'; ctx.fillRect(ds.x*W,ds.y*H,ds.s,ds.s); }
+
+    // active ring index
+    var act=-1; WIN.forEach(function(w,k){ if (p>=w[0] && p<w[1]) act=k; });
+    var ringVis=WIN.map(function(w){ return ease(clamp((p-w[0]+0.04)/0.1,0,1)); });
+
+    // crosshair + rings
+    ctx.lineWidth=1;
+    ctx.strokeStyle='rgba(255,255,255,'+(0.07*(0.4+0.6*intro))+')';
+    ctx.beginPath(); ctx.moveTo(cx-maxR*1.08,cy); ctx.lineTo(cx+maxR*1.08,cy); ctx.moveTo(cx,cy-maxR*1.08); ctx.lineTo(cx,cy+maxR*1.08); ctx.stroke();
+    ringR.forEach(function(rr,k){
+      var on=act===k, v=ringVis[k];
+      ctx.strokeStyle= on ? 'rgba('+GOLD+',0.55)' : 'rgba(255,255,255,'+(0.08+0.1*v)+')';
+      ctx.lineWidth= on?1.5:1;
+      ctx.beginPath(); ctx.arc(cx,cy,rr,0,6.283); ctx.stroke();
+    });
+    // ticks
+    for (var tk=0;tk<72;tk++){ var ta=tk*6.283/72, l=tk%6===0?10:4; ctx.strokeStyle='rgba(255,255,255,'+(tk%6===0?0.25:0.1)+')'; ctx.beginPath(); ctx.moveTo(cx+Math.cos(ta)*(maxR*1.04),cy+Math.sin(ta)*(maxR*1.04)); ctx.lineTo(cx+Math.cos(ta)*(maxR*1.04+l),cy+Math.sin(ta)*(maxR*1.04+l)); ctx.stroke(); }
+
+    // sweep: time-driven + scroll-driven; settles pointing up-right when looking ahead
+    var sweepFree = (reduce?0:t*0.0009) + p*14;
+    var target = -Math.PI/4;
+    var sweep = sweepFree*(1-ahead) + target*ahead;
+    var sweepLen = maxR*(1.02 + ahead*0.9);
+    // trail
+    var trail=0.9*(1-ahead*0.7);
+    for (var s=0;s<24;s++){
+      var a0=sweep - trail*(s/24), a1=sweep - trail*((s+1)/24);
+      ctx.fillStyle='rgba('+GOLD+','+(0.16*(1-s/24))+')';
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,maxR*1.02,a1,a0); ctx.closePath(); ctx.fill();
+    }
+    ctx.strokeStyle='rgba('+GOLD+',0.9)'; ctx.lineWidth=1.6;
+    ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(cx+Math.cos(sweep)*sweepLen, cy+Math.sin(sweep)*sweepLen); ctx.stroke();
+    if (ahead>0){
+      var ex=cx+Math.cos(sweep)*sweepLen, ey=cy+Math.sin(sweep)*sweepLen, pl=reduce?0:Math.sin(t*0.003);
+      ctx.fillStyle='rgba('+GOLD+','+ahead+')'; ctx.beginPath(); ctx.arc(ex,ey,5+pl,0,6.283); ctx.fill();
+      ctx.strokeStyle='rgba('+GOLD+','+(0.5*ahead)+')'; ctx.beginPath(); ctx.arc(ex,ey,14+pl*3,0,6.283); ctx.stroke();
+      ctx.font='700 '+(mobile?10:12)+'px Inter, Helvetica, Arial, sans-serif'; ctx.textAlign='left'; ctx.textBaseline='bottom';
+      ctx.fillStyle='rgba('+GOLD+','+ahead+')'; ctx.fillText('NEXT →', ex+20, ey-6);
+    }
+
+    // blips
+    blips.forEach(function(b){
+      var v=ringVis[b.ring]; if (v<=0) return;
+      var rr=ringR[b.ring]*(1+b.rj*0.25), bx=cx+Math.cos(b.a)*rr, by=cy+Math.sin(b.a)*rr;
+      var since=angDiff(sweep, b.a);                 // how long since beam passed
+      var hit=reduce?0.6:Math.max(0,1-since/2.2);
+      var on=act===b.ring;
+      var base= on ? 0.75 : 0.28*(1-ahead*0.3);
+      var a=v*Math.min(1, base+hit*0.6);
+      ctx.fillStyle= on ? 'rgba('+GOLD+','+a+')' : 'rgba(255,255,255,'+a+')';
+      ctx.beginPath(); ctx.arc(bx,by,(on?3.6:2.4)+hit*2,0,6.283); ctx.fill();
+      if (hit>0.05 && on){ ctx.strokeStyle='rgba('+GOLD+','+(0.5*hit)+')'; ctx.beginPath(); ctx.arc(bx,by,6+ (1-hit)*14,0,6.283); ctx.stroke(); }
+      if (on && !mobile){
+        ctx.font='700 13px Inter, Helvetica, Arial, sans-serif';
+        var right=Math.cos(b.a)>=0; ctx.textAlign=right?'left':'right'; ctx.textBaseline='middle';
+        ctx.fillStyle='rgba(255,255,255,'+(0.55+0.45*hit)*v+')';
+        ctx.fillText(b.label, bx+(right?12:-12), by);
+      }
+    });
+
+    // centre
+    ctx.fillStyle='rgba('+GOLD+',1)'; ctx.beginPath(); ctx.arc(cx,cy,4,0,6.283); ctx.fill();
+
+    heroTitle.style.opacity=clamp(1-p/0.09,0,1);
+    heroTitle.style.transform='translateY(calc(-50% - '+(p*260)+'px)) scale('+(1-p*0.4)+')';
+    cue.style.opacity=clamp(1-p/0.04,0,1);
+    steps.forEach(function(el){ el.classList.toggle('on', p>=+el.dataset.from && p<+el.dataset.to); });
+    var idx=p<.12?0:p<.35?1:p<.57?2:p<.79?3:4;
+    bars.forEach(function(b,i){ b.classList.toggle('on', i<=idx); });
+  }
+
+  /* ============ READING MARQUEE ============ */
+  var topics=['Institutional development','Public policy','Organisational behaviour','Philosophy','Leadership','History','Artificial Intelligence','Higher education'];
+  function fill(el, list){ var html=''; for (var k=0;k<2;k++) list.forEach(function(x,i){ html+='<span class="chip'+(i%3===1?' g':'')+'"'+(k?' aria-hidden="true"':'')+'>'+x+'</span>'; }); el.innerHTML=html; }
+  fill(document.getElementById('m1'), topics.slice(0,4).concat(topics.slice(0,4)));
+  fill(document.getElementById('m2'), topics.slice(4).concat(topics.slice(4)));
+
+  /* ============ CLOSING FIELD ============ */
+  var closeCv=document.getElementById('closeSky'), cctx=closeCv.getContext('2d'), CW, CH;
+  var R2=rng(5150), cn=[];
+  for (var c=0;c<48;c++) cn.push({x:R2(),y:R2(),vx:(R2()-.5)*0.00005,vy:(R2()-.5)*0.00005,s:R2()*1.3+.5});
+  function sizeClose(){ CW=closeCv.clientWidth; CH=closeCv.clientHeight; closeCv.width=CW*DPR; closeCv.height=CH*DPR; cctx.setTransform(DPR,0,0,DPR,0,0); }
+  function drawClose(dt){
+    cctx.clearRect(0,0,CW,CH);
+    var lim=Math.min(CW,CH)*0.22;
+    cn.forEach(function(n){ if(!reduce){ n.x+=n.vx*dt; n.y+=n.vy*dt; if(n.x<0||n.x>1)n.vx*=-1; if(n.y<0||n.y>1)n.vy*=-1; } });
+    for (var a=0;a<cn.length;a++) for (var b=a+1;b<cn.length;b++){
+      var A=cn[a],B=cn[b],dx=(A.x-B.x)*CW,dy=(A.y-B.y)*CH,dd=Math.sqrt(dx*dx+dy*dy);
+      if (dd<lim){ cctx.strokeStyle='rgba(255,255,255,'+(0.14*(1-dd/lim))+')'; cctx.beginPath(); cctx.moveTo(A.x*CW,A.y*CH); cctx.lineTo(B.x*CW,B.y*CH); cctx.stroke(); }
+    }
+    cn.forEach(function(m,k){ cctx.fillStyle=k===0?'rgb('+GOLD+')':'rgba(255,255,255,.55)'; cctx.beginPath(); cctx.arc(m.x*CW,m.y*CH,k===0?3:m.s,0,6.283); cctx.fill(); });
+  }
+
+  /* ============ LOOP ============ */
+  var nav=document.getElementById('nav'), closeVisible=false, sceneVisible=true, last=performance.now();
+  new IntersectionObserver(function(en){closeVisible=en[0].isIntersecting;}).observe(closeCv);
+  new IntersectionObserver(function(en){sceneVisible=en[0].isIntersecting;}).observe(scene);
+  function loop(now){
+    var dt=Math.min(now-last,50); last=now;
+    if (sceneVisible) drawScene(sceneProgress(), now);
+    if (closeVisible) drawClose(dt);
+    nav.classList.toggle('solid', scrollY>40);
+    requestAnimationFrame(loop);
+  }
+
+  /* ============ REVEALS ============ */
+  var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+
+  /* ============ LIT STATEMENT ============ */
+  var lit=document.getElementById('litText');
+  'Over the coming years, I hope to continue building institutions that strengthen education, research, and public dialogue while collaborating with those who share a commitment to long term impact.'.split(' ').forEach(function(w){
+    var s=document.createElement('span'); s.textContent=w+' ';
+    if (/^(long|term|impact)$/i.test(w.replace(/[^a-z]/gi,''))) s.className='gold';
+    lit.appendChild(s);
+  });
+  var spans=[].slice.call(lit.children);
+  function litUpdate(){ var r=lit.getBoundingClientRect(), vh=innerHeight; var tt=clamp((vh*0.85-r.top)/(r.height+vh*0.35),0,1); var n=Math.round(tt*spans.length*1.15); spans.forEach(function(s,i){ s.classList.toggle('lit', i<n); }); }
+  if (reduce) spans.forEach(function(s){s.classList.add('lit');}); else addEventListener('scroll', litUpdate, {passive:true});
+
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  addEventListener('resize', resize);
+  resize(); litUpdate();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

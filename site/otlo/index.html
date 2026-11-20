@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ઓટલો · Otlo by Fenil P. Shah: Amdavad heritage, stories and art</title>
+<meta name="description" content="Otlo (ઓટલો) by Fenil P. Shah: articles, stories, art and a calendar celebrating the heritage and culture of Amdavad (Ahmedabad).">
+<meta name="author" content="Fenil Pritesh Shah">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://fenilpshah.com/otlo/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Fenil Pritesh Shah">
+<meta property="og:title" content="ઓટલો · Otlo by Fenil P. Shah: Amdavad heritage, stories and art">
+<meta property="og:description" content="Otlo (ઓટલો) by Fenil P. Shah: articles, stories, art and a calendar celebrating the heritage and culture of Amdavad (Ahmedabad).">
+<meta property="og:url" content="https://fenilpshah.com/otlo/">
+<meta property="og:image" content="https://fenilpshah.com/og.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ઓટલો · Otlo by Fenil P. Shah: Amdavad heritage, stories and art">
+<meta name="twitter:description" content="Otlo (ઓટલો) by Fenil P. Shah: articles, stories, art and a calendar celebrating the heritage and culture of Amdavad (Ahmedabad).">
+<meta name="twitter:image" content="https://fenilpshah.com/og.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "url": "https://fenilpshah.com/otlo/", "name": "ઓટલો · Otlo by Fenil P. Shah: Amdavad heritage, stories and art", "description": "Otlo (ઓટલો) by Fenil P. Shah: articles, stories, art and a calendar celebrating the heritage and culture of Amdavad (Ahmedabad).", "isPartOf": {"@id": "https://fenilpshah.com/#site"}, "about": {"@id": "https://fenilpshah.com/#fenil"}, "author": {"@id": "https://fenilpshah.com/#fenil"}}</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128' width='128' height='128'><rect width='128' height='128' rx='22' fill='%23B81D24'/><rect x='18' y='80' width='92' height='24' rx='2' fill='%23fff'/><rect x='34' y='52' width='60' height='22' rx='2' fill='%23fff' fill-opacity='.82'/><rect x='50' y='26' width='28' height='20' rx='2' fill='%23fff' fill-opacity='.62'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@500;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   ઓટલો · Otlo — otlo.fenilpshah.com
+   Content comes from the Google Sheet (see OTLO_API below).
+   ========================================================= */
+:root{
+  --red:#B81D24;
+  --red-deep:#8E1419;
+  --red-soft:#F8ECEA;
+  --ink:#1D1A18;
+  --muted:#6B6460;
+  --line:#EBDCD9;
+  --paper:#FFFFFF;
+  --max:1120px;
+  --gu:"Noto Serif Gujarati",serif;
+  --display:"Fraunces",Georgia,serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --ui:"DM Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+@media(min-width:720px){.wrap{padding:0 32px}}
+
+/* ---------- header ---------- */
+header.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .logo{height:46px;width:auto;display:block}
+.hero h1 .wm{width:min(100%,560px);height:auto;display:block}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.brand .gu{font-family:var(--gu);font-weight:700;color:var(--red);font-size:30px;line-height:1}
+.brand .en{font-family:var(--ui);font-size:10px;letter-spacing:.32em;color:var(--red);font-weight:600;margin-top:4px}
+nav.main{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+nav.main::-webkit-scrollbar{display:none}
+nav.main a{font-family:var(--ui);font-size:14px;font-weight:500;padding:8px 12px;border-radius:999px;white-space:nowrap;color:var(--ink)}
+nav.main a:hover{background:var(--red-soft)}
+nav.main a.on{background:var(--red);color:#fff}
+@media(max-width:719px){.top .wrap{padding-top:10px;padding-bottom:6px}nav.main{width:100%;margin:0 -12px}}
+
+/* ---------- patterns & media ---------- */
+.media{position:relative;overflow:hidden;background:var(--red-soft)}
+.media::before{content:"";position:absolute;inset:0;background-size:44px 44px;background-position:center}
+.gal .media.noimg{aspect-ratio:4/5}
+.gal figure:nth-child(3n+2) .media.noimg{aspect-ratio:1/1}
+.gal figure:nth-child(3n) .media.noimg{aspect-ratio:3/4}
+.prose .fig .media.noimg{aspect-ratio:16/9}
+.media img{position:relative;width:100%;height:100%;object-fit:cover}
+.media .ph{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-family:var(--ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red-deep)}
+.arch{border-radius:999px 999px 6px 6px}
+
+/* ---------- hero ---------- */
+.hero{padding:48px 0 40px;border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;gap:36px;align-items:center}
+@media(min-width:880px){.hero .wrap{grid-template-columns:1.15fr .85fr;gap:64px}.hero{padding:80px 0 72px}}
+.kicker{font-family:var(--ui);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);font-weight:600}
+.hero h1{font-family:var(--gu);font-weight:700;color:var(--red);font-size:clamp(72px,14vw,148px);line-height:1.05;margin:10px 0 0}
+.hero .sub{font-family:var(--display);font-size:clamp(24px,3.2vw,34px);line-height:1.2;margin-top:8px}
+.hero p.lead{color:var(--muted);margin-top:20px;max-width:34em}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{font-family:var(--ui);font-size:15px;font-weight:500;padding:12px 20px;border-radius:999px;border:1.5px solid var(--red);color:var(--red);transition:.2s}
+.btn.solid{background:var(--red);color:#fff}
+.btn:hover{background:var(--red-deep);border-color:var(--red-deep);color:#fff}
+.hero .media{aspect-ratio:4/5;max-width:420px;width:100%;justify-self:center}
+.steps{display:flex;flex-direction:column;align-items:flex-start;gap:0;margin-top:-1px}
+
+/* ---------- sections ---------- */
+section.block{padding:56px 0}
+section.block+section.block{border-top:1px solid var(--line)}
+.head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
+.head h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.4vw,38px);line-height:1.15}
+.head h2 .gu{font-family:var(--gu);color:var(--red);font-size:.7em;margin-left:10px;font-weight:500}
+.more{font-family:var(--ui);font-size:14px;color:var(--red);font-weight:500;border-bottom:1px solid currentColor}
+
+/* featured */
+.feature{display:grid;gap:28px;align-items:center}
+@media(min-width:880px){.feature{grid-template-columns:1.2fr 1fr;gap:48px}}
+.feature .media{aspect-ratio:16/11;border-radius:6px}
+.feature h3{font-family:var(--display);font-size:clamp(28px,3.6vw,42px);line-height:1.12;font-weight:600;margin:10px 0 14px}
+.feature p{color:var(--muted)}
+.tag{display:inline-flex;gap:8px;align-items:center;font-family:var(--ui);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:600}
+.tag i{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.6}
+
+/* clusters */
+.clusters{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(min-width:720px){.clusters{grid-template-columns:repeat(4,1fr);gap:20px}}
+.cl{display:block;group:1}
+.cl .media{aspect-ratio:3/4;transition:transform .35s}
+.cl:hover .media{transform:translateY(-4px)}
+.cl .gu{font-family:var(--gu);color:var(--red);font-size:20px;margin-top:12px;line-height:1.3}
+.cl h4{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25}
+.cl p{font-size:15px;color:var(--muted);line-height:1.45;margin-top:4px}
+
+/* post cards */
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-family:var(--ui);font-size:13px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;color:var(--ink)}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.posts{display:grid;gap:36px 28px}
+@media(min-width:720px){.posts{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.posts{grid-template-columns:repeat(3,1fr)}}
+.card .media{aspect-ratio:3/2;border-radius:6px;margin-bottom:16px}
+.card h3{font-family:var(--display);font-weight:600;font-size:23px;line-height:1.2;margin:8px 0}
+.card:hover h3{color:var(--red)}
+.card p{font-size:16px;color:var(--muted);line-height:1.5}
+.meta{font-family:var(--ui);font-size:13px;color:var(--muted);margin-top:10px}
+
+/* gallery */
+.gal{columns:2;column-gap:12px}
+@media(min-width:720px){.gal{columns:3;column-gap:16px}}
+.gal figure{break-inside:avoid;margin-bottom:12px;cursor:zoom-in}
+.gal .media{border-radius:4px}
+.gal figcaption{font-family:var(--ui);font-size:13px;color:var(--muted);padding:6px 2px 4px}
+
+/* calendar */
+.cal{display:grid;gap:0;border-top:1px solid var(--line)}
+.ev .d b.rng{font-size:28px;white-space:nowrap}
+.ev{display:grid;grid-template-columns:96px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.ev .d{font-family:var(--display);color:var(--red);line-height:1}
+.ev .d b{display:block;font-size:40px;font-weight:600}
+.ev .d span{font-family:var(--ui);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ev .d.every{font-family:var(--ui);font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;padding-top:6px}
+.ev h4{font-family:var(--display);font-size:21px;font-weight:600;line-height:1.25}
+.ev p{font-size:16px;color:var(--muted);margin-top:4px}
+.ev a.lnk{font-family:var(--ui);font-size:13px;color:var(--red);border-bottom:1px solid currentColor;display:inline-block;margin-top:6px}
+
+/* page header */
+.phead{padding:56px 0 36px;border-bottom:1px solid var(--line)}
+.phead .gu{font-family:var(--gu);color:var(--red);font-size:clamp(40px,7vw,72px);line-height:1.2;font-weight:700}
+.phead h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5vw,52px);line-height:1.1;margin-top:6px}
+.phead p{color:var(--muted);margin-top:12px;max-width:36em}
+
+/* article */
+.art-head{padding:48px 0 28px;max-width:760px;margin:0 auto}
+.art-head h1{font-family:var(--display);font-weight:600;font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:14px 0 16px}
+.art-head .dek{font-size:21px;color:var(--muted);line-height:1.5}
+.art-cover{max-width:1000px;margin:0 auto}
+.art-cover .media{aspect-ratio:16/9;border-radius:6px}
+.prose{max-width:680px;margin:40px auto 0;font-size:20px;line-height:1.75}
+.prose p{margin:0 0 1.15em}
+.prose h2{font-family:var(--display);font-weight:600;font-size:28px;line-height:1.2;margin:1.6em 0 .6em}
+.prose blockquote{border-left:3px solid var(--red);padding:4px 0 4px 22px;margin:1.6em 0;font-family:var(--display);font-style:italic;font-size:24px;line-height:1.4;color:var(--red-deep)}
+.prose a{color:var(--red);border-bottom:1px solid currentColor}
+.prose .fig{margin:1.8em 0}
+.prose .fig .media{border-radius:4px}
+.prose figcaption{font-family:var(--ui);font-size:14px;color:var(--muted);margin-top:8px}
+.prose > p:first-child::first-letter{font-family:var(--display);float:left;font-size:3.6em;line-height:.85;padding:6px 10px 0 0;color:var(--red);font-weight:600}
+.back{font-family:var(--ui);font-size:14px;color:var(--red);display:inline-flex;gap:6px}
+
+/* about */
+.about{max-width:680px}
+.about p{font-size:20px;line-height:1.7;margin-bottom:1em}
+
+/* footer */
+footer{background:var(--red);color:#fff;margin-top:72px;padding:56px 0 40px}
+footer .wrap{display:grid;gap:28px}
+@media(min-width:720px){footer .wrap{grid-template-columns:1.4fr 1fr 1fr}}
+footer .gu{font-family:var(--gu);font-size:44px;font-weight:700;line-height:1.1}
+footer p,footer a{font-family:var(--ui);font-size:14px;opacity:.9;line-height:1.7}
+footer a{display:block}
+footer a:hover{opacity:1;text-decoration:underline}
+footer h5{font-family:var(--ui);font-size:11px;letter-spacing:.24em;text-transform:uppercase;margin-bottom:10px;opacity:.75}
+footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.25);padding-top:18px;font-size:12px;opacity:.75}
+
+/* states */
+.note{font-family:var(--ui);font-size:13px;background:var(--red-soft);color:var(--red-deep);text-align:center;padding:8px 16px}
+.empty{font-family:var(--ui);color:var(--muted);padding:24px 0}
+.loading{min-height:60vh;display:grid;place-items:center}
+.loading .gu{font-family:var(--gu);color:var(--red);font-size:56px;font-weight:700;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(20,10,10,.92);z-index:50;display:none;align-items:center;justify-content:center;padding:24px;flex-direction:column;gap:12px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-height:82vh;max-width:100%;object-fit:contain;border-radius:4px}
+.lb p{color:#fff;font-family:var(--ui);font-size:14px;text-align:center;max-width:40em}
+</style>
+</head>
+<body>
+
+<div id="sampleNote"></div>
+<main id="app"><div class="loading"><div class="gu">ઓટલો</div></div></main>
+<div class="lb" id="lb"><img alt=""><p></p></div>
+
+<script>
+/* =========================================================
+   1. Paste your Apps Script web app URL here (ends in /exec).
+      Leave it empty to preview with sample content.
+   ========================================================= */
+/* 2. Which page this file is, and your site's address.
+      Each Google Sites page gets its own copy with a different PAGE value. */
+const PAGE = "home";            // home | read | clusters | gallery | calendar | about
+const SITE = location.origin + "/otlo";
+const SITE_PAGES = {home:"", read:"read", clusters:"clusters", gallery:"gallery", calendar:"calendar", about:"about"};
+const LINK_TARGET = "_self";     // opens other pages in the same tab
+const pageUrl = name => "/otlo/" + (SITE_PAGES[name] ? "#/" + SITE_PAGES[name] : "#/");
+const pageLink = (name, label, cls) => `<a class="${cls}" href="${pageUrl(name)}" target="${LINK_TARGET}">${label}</a>`;
+
+const OTLO_API = FPS.API + "/otlo";
+
+/* ---------------- sample content (used until the Sheet is connected) ---------------- */
+const SAMPLE = {
+  settings:{
+    site_title:"ઓટલો", site_subtitle:"Otlo",
+    tagline:"Stories, art and culture from Amdavad",
+    hero_text:"Every pol house has an otlo, the raised step out front where neighbours sit in the evening, talk, and pass on the stories of the street. This is that step, for the whole city.",
+    hero_image:"",
+    about:"Otlo is a corner of fenilpshah.com for writing, art and photography about Amdavad: its pols and stepwells, its crafts and festivals, its food, its river, and the institutions that shaped it.\n\nThe name comes from the otlo (ઓટલો), the raised platform at the front of a pol house. It is where the city has always sat down to talk.",
+    email:"fenil@fenilpshah.com", instagram:"", footer_note:"A corner of fenilpshah.com"
+  },
+  clusters:[
+    {id:"heritage",name:"Heritage & Architecture",gujarati:"વારસો",tagline:"Pols, stepwells, jaalis and the walled city.",image:""},
+    {id:"craft",name:"Art & Craft",gujarati:"કલા",tagline:"Textiles, block prints, kites and the hands behind them.",image:""},
+    {id:"festivals",name:"Festivals & Rituals",gujarati:"તહેવાર",tagline:"Uttarayan rooftops, Navratri nights, Rath Yatra mornings.",image:""},
+    {id:"food",name:"Food",gujarati:"સ્વાદ",tagline:"From Manek Chowk after dark to the pol kitchens.",image:""},
+    {id:"institutions",name:"Institutions",gujarati:"સંસ્થાઓ",tagline:"The mills, the ashram and the campuses that shaped a city.",image:""},
+    {id:"river",name:"The River",gujarati:"સાબરમતી",tagline:"The Sabarmati and the life along its banks.",image:""},
+    {id:"walks",name:"Walks",gujarati:"સફર",tagline:"Routes through the old city, one gate at a time.",image:""}
+  ],
+  posts:[
+    {slug:"why-an-otlo",title:"Why an otlo?",type:"Article",cluster:"heritage",author:"Fenil P. Shah",date:"2026-10-09",cover_image:"",featured:true,
+     excerpt:"On the raised step at the front of a pol house, and why this corner of the internet is named after it.",
+     body:"Walk into any pol in the old city in the evening and you will find people sitting on the otlo, the raised platform at the front of the house. It is not quite inside and not quite the street. It is the place in between, where a city talks to itself.\n\n## A step, not a stage\n\nThe otlo is not built for performance. Nobody is in charge of it. It is simply there, and over generations it has held gossip, arguments, advice, wedding plans and grief.\n\n> A city keeps its stories in the places where people sit down together.\n\nThis site tries to be that step for Amdavad: a place to slow down and look again at the pols, the stepwells, the crafts, the festivals and the food that make the city what it is."},
+    {slug:"sidi-saiyyed-jaali",title:"Light through stone: the Sidi Saiyyed jaali",type:"Article",cluster:"heritage",author:"Fenil P. Shah",date:"2026-10-05",cover_image:"",
+     excerpt:"A carved tree of intertwined branches in a sixteenth-century mosque has quietly become the city's emblem.",
+     body:"The Sidi Saiyyed mosque is small, but its carved stone latticework of intertwined branches is one of the most recognised images of Amdavad.\n\nReplace this sample with your own piece: what it is like to stand in front of it in the morning light, and why a window has become a symbol for an entire city."},
+    {slug:"uttarayan-rooftops",title:"Uttarayan from the rooftops",type:"Blog",cluster:"festivals",author:"Fenil P. Shah",date:"2026-09-28",cover_image:"",
+     excerpt:"Kites, manja, undhiyu and the sound of a whole city shouting 'kaipo che' at once.",
+     body:"On 14 January the city moves upstairs. Replace this sample with your own Uttarayan memories."},
+    {slug:"manek-chowk-after-dark",title:"Manek Chowk after dark",type:"Blog",cluster:"food",author:"Fenil P. Shah",date:"2026-09-20",cover_image:"",
+     excerpt:"By day a jewellery market, by night one of the city's most famous food streets.",
+     body:"As the jewellery shops close, the food stalls open. Replace this sample with your own night at Manek Chowk."},
+    {slug:"sketches-from-adalaj",title:"Sketches from Adalaj",type:"Art",cluster:"heritage",author:"Fenil P. Shah",date:"2026-09-12",cover_image:"",
+     excerpt:"Five levels down into a late fifteenth-century stepwell, one drawing at a time.",
+     body:"Use Art posts for drawings, paintings and photo essays. Add images in the body like this:\n\n![Caption for your image](https://drive.google.com/file/d/YOUR_FILE_ID/view)"},
+    {slug:"calico-museum-morning",title:"A morning at the Calico Museum",type:"Article",cluster:"craft",author:"Fenil P. Shah",date:"2026-09-02",cover_image:"",
+     excerpt:"Centuries of Indian textiles, seen slowly, in a house in Shahibaug.",
+     body:"Replace this sample with your own visit."}
+  ],
+  gallery:[
+    {image:"",caption:"Pol doorway, Khadia",credit:"",cluster:"heritage"},
+    {image:"",caption:"Kites drying before Uttarayan",credit:"",cluster:"festivals"},
+    {image:"",caption:"Block-printing table",credit:"",cluster:"craft"},
+    {image:"",caption:"Evening on the Sabarmati",credit:"",cluster:"river"},
+    {image:"",caption:"Chabutro in an old pol",credit:"",cluster:"heritage"},
+    {image:"",caption:"Late-night stall, Manek Chowk",credit:"",cluster:"food"}
+  ],
+  calendar:[
+    {date:"",title:"Old City Heritage Walk",place:"Swaminarayan Temple, Kalupur",note:"Morning walk through the pols of the walled city.",link:""},
+    {date:"2026-11-08",title:"Diwali",place:"Across the city",note:"Rangoli on every otlo.",link:""},
+    {date:"2026-11-19",end_date:"2026-11-25",title:"World Heritage Week",place:"Walled city",note:"A week to walk the city that became India's first UNESCO World Heritage City.",link:""},
+    {date:"2027-01-14",title:"Uttarayan",place:"Every rooftop",note:"Kites, undhiyu and chikki.",link:""},
+    {date:"2027-01-29",end_date:"2027-01-31",title:"The Stepwell",place:"Ahmedabad University",note:"Interdisciplinary festival of curiosity.",link:""}
+  ]
+};
+
+/* ---------------- helpers ---------------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function parseDate(s){ const m = String(s||"").match(/^(\d{4})-(\d{2})-(\d{2})/); return m ? {y:+m[1],m:+m[2]-1,d:+m[3]} : null; }
+function fmtDate(s){ const p = parseDate(s); return p ? `${p.d} ${MONTHS[p.m]} ${p.y}` : ""; }
+function truthy(v){ return v === true || /^(true|yes|y|1)$/i.test(String(v).trim()); }
+
+// Google Drive share links -> direct image links
+function imgUrl(u){
+  u = String(u||"").trim(); if(!u) return "";
+  const m = u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=|thumbnail\?id=)([\w-]{10,})/);
+  if(m) return "https://lh3.googleusercontent.com/d/" + m[1] + "=w1600";
+  return /^https?:\/\//i.test(u) ? u : "";
+}
+
+// Jaali patterns drawn in code (used behind every image, and as the placeholder when there is none)
+const PATS = [
+  `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><g fill='none' stroke='%23B81D24' stroke-opacity='.32' stroke-width='1.2'><circle cx='0' cy='0' r='22'/><circle cx='44' cy='0' r='22'/><circle cx='0' cy='44' r='22'/><circle cx='44' cy='44' r='22'/><circle cx='22' cy='22' r='22'/></g></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><g fill='none' stroke='%23B81D24' stroke-opacity='.32' stroke-width='1.2'><path d='M22 2 L42 22 L22 42 L2 22 Z'/><path d='M22 12 L32 22 L22 32 L12 22 Z'/><circle cx='22' cy='22' r='2.5' fill='%23B81D24' fill-opacity='.3'/></g></svg>`,
+  `<svg xmlns='http://www.w3.org/2000/svg' width='44' height='44'><g fill='none' stroke='%23B81D24' stroke-opacity='.32' stroke-width='1.2'><path d='M22 4 L27 17 L40 22 L27 27 L22 40 L17 27 L4 22 L17 17 Z'/><path d='M0 0 L8 8 M44 0 L36 8 M0 44 L8 36 M44 44 L36 36'/></g></svg>`
+];
+(() => {
+  const st = document.createElement("style");
+  st.textContent = PATS.map((s,i) => `.pat${i}::before{background-image:url("data:image/svg+xml,${encodeURIComponent(s.replace(/%23/g,"#"))}")}`).join("");
+  document.head.appendChild(st);
+})();
+function media(url, alt, i, cls="", label=""){
+  const u = imgUrl(url);
+  return `<div class="media pat${(i||0) % PATS.length} ${cls}${u ? "" : " noimg"}">${u
+    ? `<img src="${esc(u)}" alt="${esc(alt)}" loading="lazy" onerror="this.remove()">`
+    : (label ? `<span class="ph">${esc(label)}</span>` : "")}</div>`;
+}
+
+// Simple formatting for post bodies written in the Sheet
+function inline(s){
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g,"<em>$1</em>")
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+}
+function renderBody(t){
+  return String(t||"").replace(/\r/g,"").split(/\n\s*\n/).map((b,i) => {
+    b = b.trim(); if(!b) return "";
+    let m = b.match(/^!\[(.*?)\]\((.+?)\)$/);
+    if(m) return `<figure class="fig">${media(m[2], m[1], i)}${m[1] ? `<figcaption>${esc(m[1])}</figcaption>` : ""}</figure>`;
+    if(b.startsWith("## ")) return `<h2>${inline(b.slice(3))}</h2>`;
+    if(b.startsWith(">")) return `<blockquote>${inline(b.replace(/^>\s?/gm,""))}</blockquote>`;
+    return `<p>${inline(b).replace(/\n/g,"<br>")}</p>`;
+  }).join("");
+}
+
+/* ---------------- data ---------------- */
+let D = null;
+function normalise(d){
+  const s = d.settings || {};
+  const clusters = (d.clusters||[]).filter(c => c.id && c.name);
+  const posts = (d.posts||[]).filter(p => p.slug && p.title && (p.published === undefined || p.published === "" || truthy(p.published)))
+    .sort((a,b) => String(b.date||"").localeCompare(String(a.date||"")));
+  return {settings:s, clusters, posts, gallery:(d.gallery||[]).filter(g => g.image || g.caption), calendar:(d.calendar||[]).filter(e => e.title)};
+}
+async function load(){
+  if(!OTLO_API){ $("#sampleNote").innerHTML = `<div class="note">Preview with sample content. Connect the Google Sheet to show your own.</div>`; return normalise(SAMPLE); }
+  try{
+    const ctrl = new AbortController(); setTimeout(() => ctrl.abort(), 15000);
+    const r = await fetch(OTLO_API, {signal:ctrl.signal});
+    if(!r.ok) throw new Error(r.status);
+    return normalise(await r.json());
+  }catch(e){
+    console.error("Otlo: could not load the Sheet", e);
+    $("#sampleNote").innerHTML = `<div class="note">Couldn't reach the Sheet right now, showing sample content.</div>`;
+    return normalise(SAMPLE);
+  }
+}
+const cluster = id => D.clusters.find(c => c.id === id);
+const clusterIndex = id => Math.max(0, D.clusters.findIndex(c => c.id === id));
+
+/* ---------------- pieces ---------------- */
+function tag(p){
+  const c = cluster(p.cluster);
+  return `<span class="tag">${esc(p.type || "Article")}${c ? `<i></i>${esc(c.name)}` : ""}</span>`;
+}
+function card(p, i){
+  return `<a class="card reveal" href="#/p/${encodeURIComponent(p.slug)}">
+    ${media(p.cover_image, p.title, clusterIndex(p.cluster) + i, "", "")}
+    ${tag(p)}<h3>${esc(p.title)}</h3><p>${esc(p.excerpt)}</p>
+    <div class="meta">${[p.author, fmtDate(p.date)].filter(Boolean).map(esc).join(" · ")}</div></a>`;
+}
+function clusterTile(c, i){
+  return `<a class="cl reveal" href="#/c/${encodeURIComponent(c.id)}">
+    ${media(c.image, c.name, i, "arch")}
+    <div class="gu">${esc(c.gujarati)}</div><h4>${esc(c.name)}</h4><p>${esc(c.tagline)}</p></a>`;
+}
+function eventRow(e){
+  const a = parseDate(e.date), b = parseDate(e.end_date);
+  let d;
+  if(!a) d = `<div class="d every">${esc(e.when || "Ongoing")}</div>`;
+  else if(b && (b.d !== a.d || b.m !== a.m)) d = `<div class="d"><b class="rng">${a.d}–${b.d}</b><span>${MONTHS[a.m]}${b.m !== a.m ? "–" + MONTHS[b.m] : ""} ${a.y}</span></div>`;
+  else d = `<div class="d"><b>${a.d}</b><span>${MONTHS[a.m]} ${a.y}</span></div>`;
+  const link = imgUrl(e.link) ? `<a class="lnk" href="${esc(e.link)}" target="_blank" rel="noopener">More</a>` : "";
+  return `<div class="ev reveal">${d}<div><h4>${esc(e.title)}</h4><p>${[e.place, e.note].filter(Boolean).map(esc).join(" · ")}</p>${link}</div></div>`;
+}
+function upcoming(list){
+  const now = new Date(), today = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,"0")}-${String(now.getDate()).padStart(2,"0")}`;
+  const dated = list.filter(e => parseDate(e.date) && (e.end_date || e.date) >= today).sort((a,b) => a.date.localeCompare(b.date));
+  const ongoing = list.filter(e => !parseDate(e.date));
+  return [...ongoing, ...dated];
+}
+function galleryGrid(items){
+  if(!items.length) return `<div class="empty">No photos yet.</div>`;
+  return `<div class="gal">${items.map((g,i) => `<figure class="reveal" data-i="${i}">
+    ${media(g.image, g.caption, clusterIndex(g.cluster) + i, "", g.image ? "" : "Add a photo")}
+    ${g.caption || g.credit ? `<figcaption>${esc(g.caption)}${g.credit ? ` · ${esc(g.credit)}` : ""}</figcaption>` : ""}</figure>`).join("")}</div>`;
+}
+
+/* ---------------- pages ---------------- */
+function home(){
+  const s = D.settings, feat = D.posts.find(p => truthy(p.featured)) || D.posts[0];
+  const rest = D.posts.filter(p => p !== feat).slice(0, 6);
+  const ev = upcoming(D.calendar).slice(0, 4);
+  return `
+  <section class="hero"><div class="wrap">
+    <div class="reveal">
+      <div class="kicker">Amdavad · અમદાવાદ</div>
+      <h1><span class="sr">${esc(s.site_title || "ઓટલો")}</span><svg class="wm" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="38 28 612 292"><path transform="translate(55.0,235.0)" d="M228.4 0.0Q214.4 0.0 214.4 -18.2V-109.60000000000001Q214.4 -115.2 221.8 -117.60000000000001Q224.60000000000002 -118.60000000000001 225.70000000000002 -119.0Q226.8 -119.4 228.20000000000002 -120.30000000000001Q229.60000000000002 -121.2 230.8 -122.80000000000001V-21.0Q230.8 -13.4 237.20000000000002 -13.4Q242.4 -13.4 246.4 -21.0Q246.4 -11.4 241.8 -5.7Q237.20000000000002 0.0 228.4 0.0ZM95.4 -92.0Q95.4 -84.4 91.7 -78.4Q88.0 -72.4 81.2 -68.4Q74.4 -64.4 69.2 -62.300000000000004Q64.0 -60.2 56.6 -58.0Q61.800000000000004 -50.800000000000004 72.9 -43.5Q84.0 -36.2 94.80000000000001 -36.2Q105.0 -36.4 114.1 -41.5Q123.2 -46.6 128.0 -56.2Q121.0 -58.6 116.80000000000001 -66.4Q112.60000000000001 -74.2 112.60000000000001 -83.2Q112.60000000000001 -95.0 116.60000000000001 -102.30000000000001Q120.60000000000001 -109.60000000000001 127.4 -109.60000000000001Q134.6 -109.60000000000001 138.4 -101.80000000000001Q142.20000000000002 -94.0 142.20000000000002 -83.2Q142.20000000000002 -72.4 140.4 -63.0Q142.8 -62.400000000000006 144.6 -62.400000000000006Q152.6 -62.400000000000006 159.8 -66.4Q167.0 -70.4 171.20000000000002 -76.2V-110.0Q171.20000000000002 -115.60000000000001 177.4 -117.4Q180.8 -118.4 185.4 -120.4Q187.0 -122.0 187.4 -122.80000000000001V-21.0Q187.4 -13.4 194.20000000000002 -13.4Q199.4 -13.4 202.8 -21.0Q203.0 -20.0 203.0 -17.6Q203.0 -9.8 197.8 -4.9Q192.60000000000002 0.0 184.60000000000002 0.0Q171.20000000000002 0.0 171.20000000000002 -18.2V-61.6Q168.20000000000002 -58.2 162.0 -55.6Q155.8 -53.0 150.6 -53.0Q142.8 -53.0 138.8 -54.2Q133.4 -38.800000000000004 120.7 -29.6Q108.0 -20.400000000000002 94.80000000000001 -20.400000000000002Q82.2 -20.400000000000002 67.1 -30.800000000000004Q52.0 -41.2 45.2 -54.400000000000006Q16.2 -55.0 16.2 -70.60000000000001Q16.2 -75.0 20.5 -78.0Q24.8 -81.0 30.6 -81.0Q42.6 -81.0 52.6 -66.2Q63.2 -68.8 69.7 -75.2Q76.2 -81.60000000000001 76.4 -87.2Q76.4 -99.0 68.10000000000001 -106.0Q59.800000000000004 -113.0 49.800000000000004 -113.0Q42.0 -113.0 35.4 -111.30000000000001Q28.8 -109.60000000000001 25.8 -108.20000000000002Q22.8 -106.80000000000001 14.4 -102.4Q7.800000000000001 -99.0 6.6000000000000005 -99.0Q6.0 -99.0 6.0 -99.6Q6.0 -100.2 8.0 -102.2Q16.0 -111.2 29.400000000000002 -117.0Q42.800000000000004 -122.80000000000001 58.400000000000006 -122.80000000000001Q74.0 -122.80000000000001 84.7 -114.30000000000001Q95.4 -105.80000000000001 95.4 -92.0ZM126.60000000000001 -91.4Q122.4 -91.4 122.4 -82.60000000000001Q122.4 -69.0 130.20000000000002 -65.4Q131.4 -72.60000000000001 131.4 -81.60000000000001Q131.4 -91.4 126.60000000000001 -91.4ZM31.200000000000003 -72.8Q26.400000000000002 -72.8 26.400000000000002 -69.60000000000001Q26.400000000000002 -66.60000000000001 30.6 -65.0Q34.800000000000004 -63.400000000000006 40.2 -63.400000000000006Q36.800000000000004 -72.8 31.200000000000003 -72.8ZM214.4 -125.60000000000001Q206.4 -131.8 196.20000000000002 -149.20000000000002Q183.2 -171.20000000000002 174.60000000000002 -171.20000000000002Q172.8 -171.20000000000002 171.5 -170.90000000000003Q170.2 -170.60000000000002 168.7 -170.0Q167.2 -169.4 166.0 -169.20000000000002Q165.2 -169.0 164.8 -169.0Q164.2 -169.0 164.2 -169.60000000000002Q164.2 -170.0 165.2 -171.0Q168.2 -174.0 173.5 -177.0Q178.8 -180.0 183.60000000000002 -180.0Q190.0 -180.0 196.10000000000002 -173.4Q202.20000000000002 -166.8 206.20000000000002 -156.4Q213.0 -141.6 217.9 -135.6Q222.8 -129.6 230.8 -127.4Q227.8 -123.2 223.8 -123.2Q217.4 -123.2 214.4 -125.60000000000001Z M307.6 0.0Q287.0 0.0 274.7 -11.200000000000001Q262.4 -22.400000000000002 262.4 -41.2Q262.4 -56.800000000000004 273.6 -65.4Q284.8 -74.0 307.8 -81.2Q318.6 -84.60000000000001 324.4 -89.20000000000002Q330.2 -93.80000000000001 330.2 -102.4Q330.2 -115.2 313.8 -115.2Q309.4 -115.2 302.4 -113.0Q295.4 -110.80000000000001 293.4 -110.80000000000001Q291.4 -110.80000000000001 291.4 -111.80000000000001Q291.4 -114.60000000000001 298.8 -118.60000000000001Q307.4 -122.2 317.4 -122.2Q329.8 -122.2 338.6 -116.9Q347.4 -111.60000000000001 347.4 -102.0Q347.4 -97.0 345.2 -92.9Q343.0 -88.80000000000001 340.5 -86.30000000000001Q338.0 -83.80000000000001 332.2 -81.0Q326.4 -78.2 323.1 -77.0Q319.8 -75.8 312.2 -73.4Q310.2 -72.8 309.2 -72.4Q294.6 -67.2 287.6 -59.6Q280.6 -52.0 280.6 -39.800000000000004Q280.6 -26.8 291.0 -19.200000000000003Q301.4 -11.600000000000001 316.8 -11.600000000000001Q325.4 -11.600000000000001 335.4 -16.3Q345.4 -21.0 353.1 -25.700000000000003Q360.8 -30.400000000000002 364.0 -30.400000000000002Q364.8 -30.400000000000002 364.8 -29.6Q364.8 -28.6 362.9 -25.5Q361.0 -22.400000000000002 356.5 -18.0Q352.0 -13.600000000000001 345.7 -9.600000000000001Q339.4 -5.6000000000000005 329.29999999999995 -2.8000000000000003Q319.2 0.0 307.6 0.0Z M426.40000000000003 -123.60000000000001Q441.40000000000003 -123.60000000000001 452.20000000000005 -117.0Q458.20000000000005 -113.4 458.20000000000005 -110.2Q458.20000000000005 -108.60000000000001 455.20000000000005 -107.60000000000001Q446.6 -112.80000000000001 437.40000000000003 -112.80000000000001Q419.20000000000005 -112.80000000000001 407.6 -101.5Q396.0 -90.2 396.0 -74.2Q396.0 -57.0 413.3 -43.9Q430.6 -30.8 451.0 -28.8Q461.0 -27.8 461.20000000000005 -26.400000000000002Q461.20000000000005 -25.200000000000003 455.6 -23.6Q447.8 -21.400000000000002 440.40000000000003 -21.400000000000002Q415.6 -21.400000000000002 397.20000000000005 -37.300000000000004Q378.8 -53.2 378.8 -76.4Q378.8 -96.0 393.20000000000005 -109.80000000000001Q407.6 -123.60000000000001 426.40000000000003 -123.60000000000001ZM496.0 0.0Q482.0 0.0 482.0 -18.2V-75.60000000000001Q478.40000000000003 -76.2 474.6 -76.2Q455.6 -76.2 445.20000000000005 -68.2Q439.8 -64.0 436.8 -64.0Q435.20000000000005 -64.0 434.1 -65.4Q433.0 -66.8 433.0 -68.4Q433.0 -71.4 434.1 -73.0Q435.20000000000005 -74.60000000000001 438.40000000000003 -77.2Q457.40000000000003 -92.80000000000001 482.0 -93.60000000000001V-109.60000000000001Q482.0 -115.2 489.40000000000003 -117.60000000000001Q492.20000000000005 -118.60000000000001 493.30000000000007 -119.0Q494.40000000000003 -119.4 495.80000000000007 -120.30000000000001Q497.20000000000005 -121.2 498.40000000000003 -122.80000000000001V-21.0Q498.40000000000003 -13.4 504.8 -13.4Q510.0 -13.4 514.0 -21.0Q514.0 -11.4 509.4 -5.7Q504.8 0.0 496.0 0.0Z M530.4 -125.60000000000001Q522.4 -131.8 512.1999999999999 -149.20000000000002Q499.19999999999993 -171.20000000000002 490.59999999999997 -171.20000000000002Q488.79999999999995 -171.20000000000002 487.49999999999994 -170.90000000000003Q486.19999999999993 -170.60000000000002 484.69999999999993 -170.0Q483.19999999999993 -169.4 481.99999999999994 -169.20000000000002Q481.19999999999993 -169.0 480.79999999999995 -169.0Q480.19999999999993 -169.0 480.19999999999993 -169.60000000000002Q480.19999999999993 -170.0 481.19999999999993 -171.0Q484.19999999999993 -174.0 489.49999999999994 -177.0Q494.79999999999995 -180.0 499.59999999999997 -180.0Q505.99999999999994 -180.0 512.0999999999999 -173.4Q518.1999999999999 -166.8 522.1999999999999 -156.4Q529.0 -141.6 533.9 -135.6Q538.8 -129.6 546.8 -127.4Q543.8 -123.2 539.8 -123.2Q533.4 -123.2 530.4 -125.60000000000001ZM546.0 0.0Q532.0 0.0 532.0 -18.2V-109.60000000000001Q532.0 -115.2 539.4 -117.60000000000001Q542.2 -118.60000000000001 543.3 -119.0Q544.4 -119.4 545.8 -120.30000000000001Q547.2 -121.2 548.4 -122.80000000000001V-21.0Q548.4 -13.4 554.8 -13.4Q560.0 -13.4 564.0 -21.0Q564.0 -11.4 559.4 -5.7Q554.8 0.0 546.0 0.0Z" fill="#B81D24" stroke="#B81D24" stroke-width="9" stroke-linejoin="round"/><path transform="translate(267.4,295.0) scale(1)" d="M13.260000000000002 -25.194000000000003Q18.632 -25.194000000000003 21.93 -21.573Q25.228 -17.952 25.228 -12.036000000000001Q25.228 -6.5280000000000005 21.981 -2.873Q18.734 0.782 13.294 0.782Q7.888000000000001 0.782 4.6240000000000006 -2.8560000000000003Q1.36 -6.494000000000001 1.36 -12.206000000000001Q1.36 -17.918000000000003 4.641 -21.556000000000004Q7.922000000000001 -25.194000000000003 13.260000000000002 -25.194000000000003ZM13.294 -20.842000000000002Q10.200000000000001 -20.842000000000002 8.330000000000002 -18.479Q6.460000000000001 -16.116 6.460000000000001 -12.206Q6.460000000000001 -8.296000000000001 8.330000000000002 -5.933000000000001Q10.200000000000001 -3.5700000000000003 13.294 -3.5700000000000003Q16.354000000000003 -3.5700000000000003 18.241 -5.916Q20.128 -8.262 20.128 -12.07Q20.128 -16.082 18.275 -18.462000000000003Q16.422 -20.842000000000002 13.294 -20.842000000000002Z M57.222 -20.536V0.0H52.122V-20.536H44.608000000000004V-24.786H64.464V-20.536Z M90.304 -24.786V-4.25H102.17000000000002V0.0H85.20400000000001V-24.786Z M133.79000000000002 -25.194000000000003Q139.162 -25.194000000000003 142.46 -21.573Q145.758 -17.952 145.758 -12.036000000000001Q145.758 -6.5280000000000005 142.51100000000002 -2.873Q139.264 0.782 133.824 0.782Q128.418 0.782 125.15400000000001 -2.8560000000000003Q121.89000000000001 -6.494000000000001 121.89000000000001 -12.206000000000001Q121.89000000000001 -17.918000000000003 125.17100000000002 -21.556000000000004Q128.45200000000003 -25.194000000000003 133.79000000000002 -25.194000000000003ZM133.824 -20.842000000000002Q130.73000000000002 -20.842000000000002 128.86 -18.479Q126.99000000000001 -16.116 126.99000000000001 -12.206Q126.99000000000001 -8.296000000000001 128.86 -5.933000000000001Q130.73000000000002 -3.5700000000000003 133.824 -3.5700000000000003Q136.88400000000001 -3.5700000000000003 138.77100000000002 -5.916Q140.65800000000002 -8.262 140.65800000000002 -12.07Q140.65800000000002 -16.082 138.805 -18.462000000000003Q136.95200000000003 -20.842000000000002 133.824 -20.842000000000002Z" fill="#B81D24"/></svg></h1>
+      <div class="sub">${esc(s.tagline)}</div>
+      <p class="lead">${esc(s.hero_text)}</p>
+      <div class="btns">${pageLink("read","Start reading","btn solid")}${pageLink("clusters","Explore the city","btn")}</div>
+    </div>
+    ${media(s.hero_image, s.site_title, 0, "arch reveal")}
+  </div></section>
+
+  ${feat ? `<section class="block"><div class="wrap">
+    <a class="feature reveal" href="#/p/${encodeURIComponent(feat.slug)}">
+      ${media(feat.cover_image, feat.title, 1)}
+      <div><div class="kicker">Featured</div><h3>${esc(feat.title)}</h3><p>${esc(feat.excerpt)}</p>
+      <div class="meta">${tag(feat)}</div></div>
+    </a></div></section>` : ""}
+
+  <section class="block"><div class="wrap">
+    <div class="head"><h2>The city, in clusters<span class="gu">શહેર</span></h2>${pageLink("clusters","All clusters","more")}</div>
+    <div class="clusters">${D.clusters.slice(0, 4).map(clusterTile).join("")}</div>
+  </div></section>
+
+  <section class="block"><div class="wrap">
+    <div class="head"><h2>Latest from the otlo<span class="gu">નવું</span></h2>${pageLink("read","Everything","more")}</div>
+    <div class="posts">${rest.map(card).join("") || `<div class="empty">Nothing here yet.</div>`}</div>
+  </div></section>
+
+  ${D.gallery.length ? `<section class="block"><div class="wrap">
+    <div class="head"><h2>From the gallery<span class="gu">ચિત્રો</span></h2>${pageLink("gallery","Full gallery","more")}</div>
+    ${galleryGrid(D.gallery.slice(0, 6))}
+  </div></section>` : ""}
+
+  ${ev.length ? `<section class="block"><div class="wrap">
+    <div class="head"><h2>Around the city<span class="gu">ઉત્સવ</span></h2>${pageLink("calendar","Calendar","more")}</div>
+    <div class="cal">${ev.map(eventRow).join("")}</div>
+  </div></section>` : ""}`;
+}
+
+let filter = "All";
+function read(){
+  const types = ["All", ...new Set(D.posts.map(p => p.type || "Article"))];
+  const list = filter === "All" ? D.posts : D.posts.filter(p => (p.type || "Article") === filter);
+  return `<div class="phead"><div class="wrap"><div class="gu">વાંચો</div><h1>Read</h1>
+    <p>Articles, blogs and art from the otlo.</p></div></div>
+    <section class="block"><div class="wrap">
+      <div class="head"><div class="chips">${types.map(t => `<button class="chip ${t === filter ? "on" : ""}" data-f="${esc(t)}">${esc(t)}</button>`).join("")}</div></div>
+      <div class="posts">${list.map(card).join("") || `<div class="empty">Nothing here yet.</div>`}</div>
+    </div></section>`;
+}
+function clustersPage(){
+  return `<div class="phead"><div class="wrap"><div class="gu">શહેર</div><h1>The city, in clusters</h1>
+    <p>Seven ways into Amdavad. Pick one and start walking.</p></div></div>
+    <section class="block"><div class="wrap"><div class="clusters">${D.clusters.map(clusterTile).join("")}</div></div></section>`;
+}
+function clusterPage(id){
+  const c = cluster(id); if(!c) return notFound();
+  const posts = D.posts.filter(p => p.cluster === id), gal = D.gallery.filter(g => g.cluster === id);
+  return `<div class="phead"><div class="wrap"><a class="back" href="#/">← Back</a>
+    <div class="gu" style="margin-top:18px">${esc(c.gujarati)}</div><h1>${esc(c.name)}</h1><p>${esc(c.tagline)}</p></div></div>
+    <section class="block"><div class="wrap"><div class="posts">${posts.map(card).join("") || `<div class="empty">No writing in this cluster yet.</div>`}</div></div></section>
+    ${gal.length ? `<section class="block"><div class="wrap"><div class="head"><h2>Photographs</h2></div>${galleryGrid(gal)}</div></section>` : ""}`;
+}
+function postPage(slug){
+  const p = D.posts.find(x => x.slug === slug); if(!p) return notFound();
+  const more = D.posts.filter(x => x !== p && x.cluster === p.cluster).slice(0, 3);
+  const extra = String(p.gallery || "").split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+  return `<article><div class="wrap">
+      <div class="art-head"><a class="back" href="#/">← Back</a><div style="margin-top:22px">${tag(p)}</div>
+        <h1>${esc(p.title)}</h1>${p.excerpt ? `<p class="dek">${esc(p.excerpt)}</p>` : ""}
+        <div class="meta">${[p.author, fmtDate(p.date)].filter(Boolean).map(esc).join(" · ")}</div></div>
+      ${p.cover_image ? `<div class="art-cover">${media(p.cover_image, p.title, 1)}</div>` : ""}
+      <div class="prose">${renderBody(p.body)}
+        ${extra.map((u,i) => `<figure class="fig">${media(u, p.title, i)}</figure>`).join("")}</div>
+    </div></article>
+    ${more.length ? `<section class="block" style="margin-top:56px"><div class="wrap"><div class="head"><h2>More from ${esc(cluster(p.cluster)?.name || "the otlo")}</h2></div>
+      <div class="posts">${more.map(card).join("")}</div></div></section>` : ""}`;
+}
+function galleryPage(){
+  return `<div class="phead"><div class="wrap"><div class="gu">ચિત્રો</div><h1>Gallery</h1><p>Photographs and artwork from across the city.</p></div></div>
+    <section class="block"><div class="wrap">${galleryGrid(D.gallery)}</div></section>`;
+}
+function calendarPage(){
+  const ev = upcoming(D.calendar);
+  return `<div class="phead"><div class="wrap"><div class="gu">ઉત્સવ</div><h1>Around the city</h1><p>Festivals, walks and gatherings worth knowing about.</p></div></div>
+    <section class="block"><div class="wrap"><div class="cal">${ev.map(eventRow).join("") || `<div class="empty">Nothing coming up right now.</div>`}</div></div></section>`;
+}
+function aboutPage(){
+  const s = D.settings;
+  return `<div class="phead"><div class="wrap"><div class="gu">${esc(s.site_title || "ઓટલો")}</div><h1>About Otlo</h1></div></div>
+    <section class="block"><div class="wrap about">${String(s.about||"").split(/\n\s*\n/).map(t => `<p>${inline(t)}</p>`).join("")}
+    ${s.email ? `<p style="font-size:17px;font-family:var(--ui)">Write in: <a style="color:var(--red);border-bottom:1px solid" href="mailto:${esc(s.email)}">${esc(s.email)}</a></p>` : ""}</div></section>`;
+}
+function notFound(){
+  return `<div class="phead"><div class="wrap"><div class="gu">ઓટલો</div><h1>This step is empty</h1><p>The page you were looking for isn't here. <a class="more" href="#/">Go back</a></p></div></div>`;
+}
+function footer(){
+  const s = D.settings;
+  return `<div class="wrap">
+    <div><svg class="wm" style="width:200px;height:auto;display:block" aria-label="ઓટલો Otlo" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 682 320"><path transform="translate(55.0,235.0)" d="M228.4 0.0Q214.4 0.0 214.4 -18.2V-109.60000000000001Q214.4 -115.2 221.8 -117.60000000000001Q224.60000000000002 -118.60000000000001 225.70000000000002 -119.0Q226.8 -119.4 228.20000000000002 -120.30000000000001Q229.60000000000002 -121.2 230.8 -122.80000000000001V-21.0Q230.8 -13.4 237.20000000000002 -13.4Q242.4 -13.4 246.4 -21.0Q246.4 -11.4 241.8 -5.7Q237.20000000000002 0.0 228.4 0.0ZM95.4 -92.0Q95.4 -84.4 91.7 -78.4Q88.0 -72.4 81.2 -68.4Q74.4 -64.4 69.2 -62.300000000000004Q64.0 -60.2 56.6 -58.0Q61.800000000000004 -50.800000000000004 72.9 -43.5Q84.0 -36.2 94.80000000000001 -36.2Q105.0 -36.4 114.1 -41.5Q123.2 -46.6 128.0 -56.2Q121.0 -58.6 116.80000000000001 -66.4Q112.60000000000001 -74.2 112.60000000000001 -83.2Q112.60000000000001 -95.0 116.60000000000001 -102.30000000000001Q120.60000000000001 -109.60000000000001 127.4 -109.60000000000001Q134.6 -109.60000000000001 138.4 -101.80000000000001Q142.20000000000002 -94.0 142.20000000000002 -83.2Q142.20000000000002 -72.4 140.4 -63.0Q142.8 -62.400000000000006 144.6 -62.400000000000006Q152.6 -62.400000000000006 159.8 -66.4Q167.0 -70.4 171.20000000000002 -76.2V-110.0Q171.20000000000002 -115.60000000000001 177.4 -117.4Q180.8 -118.4 185.4 -120.4Q187.0 -122.0 187.4 -122.80000000000001V-21.0Q187.4 -13.4 194.20000000000002 -13.4Q199.4 -13.4 202.8 -21.0Q203.0 -20.0 203.0 -17.6Q203.0 -9.8 197.8 -4.9Q192.60000000000002 0.0 184.60000000000002 0.0Q171.20000000000002 0.0 171.20000000000002 -18.2V-61.6Q168.20000000000002 -58.2 162.0 -55.6Q155.8 -53.0 150.6 -53.0Q142.8 -53.0 138.8 -54.2Q133.4 -38.800000000000004 120.7 -29.6Q108.0 -20.400000000000002 94.80000000000001 -20.400000000000002Q82.2 -20.400000000000002 67.1 -30.800000000000004Q52.0 -41.2 45.2 -54.400000000000006Q16.2 -55.0 16.2 -70.60000000000001Q16.2 -75.0 20.5 -78.0Q24.8 -81.0 30.6 -81.0Q42.6 -81.0 52.6 -66.2Q63.2 -68.8 69.7 -75.2Q76.2 -81.60000000000001 76.4 -87.2Q76.4 -99.0 68.10000000000001 -106.0Q59.800000000000004 -113.0 49.800000000000004 -113.0Q42.0 -113.0 35.4 -111.30000000000001Q28.8 -109.60000000000001 25.8 -108.20000000000002Q22.8 -106.80000000000001 14.4 -102.4Q7.800000000000001 -99.0 6.6000000000000005 -99.0Q6.0 -99.0 6.0 -99.6Q6.0 -100.2 8.0 -102.2Q16.0 -111.2 29.400000000000002 -117.0Q42.800000000000004 -122.80000000000001 58.400000000000006 -122.80000000000001Q74.0 -122.80000000000001 84.7 -114.30000000000001Q95.4 -105.80000000000001 95.4 -92.0ZM126.60000000000001 -91.4Q122.4 -91.4 122.4 -82.60000000000001Q122.4 -69.0 130.20000000000002 -65.4Q131.4 -72.60000000000001 131.4 -81.60000000000001Q131.4 -91.4 126.60000000000001 -91.4ZM31.200000000000003 -72.8Q26.400000000000002 -72.8 26.400000000000002 -69.60000000000001Q26.400000000000002 -66.60000000000001 30.6 -65.0Q34.800000000000004 -63.400000000000006 40.2 -63.400000000000006Q36.800000000000004 -72.8 31.200000000000003 -72.8ZM214.4 -125.60000000000001Q206.4 -131.8 196.20000000000002 -149.20000000000002Q183.2 -171.20000000000002 174.60000000000002 -171.20000000000002Q172.8 -171.20000000000002 171.5 -170.90000000000003Q170.2 -170.60000000000002 168.7 -170.0Q167.2 -169.4 166.0 -169.20000000000002Q165.2 -169.0 164.8 -169.0Q164.2 -169.0 164.2 -169.60000000000002Q164.2 -170.0 165.2 -171.0Q168.2 -174.0 173.5 -177.0Q178.8 -180.0 183.60000000000002 -180.0Q190.0 -180.0 196.10000000000002 -173.4Q202.20000000000002 -166.8 206.20000000000002 -156.4Q213.0 -141.6 217.9 -135.6Q222.8 -129.6 230.8 -127.4Q227.8 -123.2 223.8 -123.2Q217.4 -123.2 214.4 -125.60000000000001Z M307.6 0.0Q287.0 0.0 274.7 -11.200000000000001Q262.4 -22.400000000000002 262.4 -41.2Q262.4 -56.800000000000004 273.6 -65.4Q284.8 -74.0 307.8 -81.2Q318.6 -84.60000000000001 324.4 -89.20000000000002Q330.2 -93.80000000000001 330.2 -102.4Q330.2 -115.2 313.8 -115.2Q309.4 -115.2 302.4 -113.0Q295.4 -110.80000000000001 293.4 -110.80000000000001Q291.4 -110.80000000000001 291.4 -111.80000000000001Q291.4 -114.60000000000001 298.8 -118.60000000000001Q307.4 -122.2 317.4 -122.2Q329.8 -122.2 338.6 -116.9Q347.4 -111.60000000000001 347.4 -102.0Q347.4 -97.0 345.2 -92.9Q343.0 -88.80000000000001 340.5 -86.30000000000001Q338.0 -83.80000000000001 332.2 -81.0Q326.4 -78.2 323.1 -77.0Q319.8 -75.8 312.2 -73.4Q310.2 -72.8 309.2 -72.4Q294.6 -67.2 287.6 -59.6Q280.6 -52.0 280.6 -39.800000000000004Q280.6 -26.8 291.0 -19.200000000000003Q301.4 -11.600000000000001 316.8 -11.600000000000001Q325.4 -11.600000000000001 335.4 -16.3Q345.4 -21.0 353.1 -25.700000000000003Q360.8 -30.400000000000002 364.0 -30.400000000000002Q364.8 -30.400000000000002 364.8 -29.6Q364.8 -28.6 362.9 -25.5Q361.0 -22.400000000000002 356.5 -18.0Q352.0 -13.600000000000001 345.7 -9.600000000000001Q339.4 -5.6000000000000005 329.29999999999995 -2.8000000000000003Q319.2 0.0 307.6 0.0Z M426.40000000000003 -123.60000000000001Q441.40000000000003 -123.60000000000001 452.20000000000005 -117.0Q458.20000000000005 -113.4 458.20000000000005 -110.2Q458.20000000000005 -108.60000000000001 455.20000000000005 -107.60000000000001Q446.6 -112.80000000000001 437.40000000000003 -112.80000000000001Q419.20000000000005 -112.80000000000001 407.6 -101.5Q396.0 -90.2 396.0 -74.2Q396.0 -57.0 413.3 -43.9Q430.6 -30.8 451.0 -28.8Q461.0 -27.8 461.20000000000005 -26.400000000000002Q461.20000000000005 -25.200000000000003 455.6 -23.6Q447.8 -21.400000000000002 440.40000000000003 -21.400000000000002Q415.6 -21.400000000000002 397.20000000000005 -37.300000000000004Q378.8 -53.2 378.8 -76.4Q378.8 -96.0 393.20000000000005 -109.80000000000001Q407.6 -123.60000000000001 426.40000000000003 -123.60000000000001ZM496.0 0.0Q482.0 0.0 482.0 -18.2V-75.60000000000001Q478.40000000000003 -76.2 474.6 -76.2Q455.6 -76.2 445.20000000000005 -68.2Q439.8 -64.0 436.8 -64.0Q435.20000000000005 -64.0 434.1 -65.4Q433.0 -66.8 433.0 -68.4Q433.0 -71.4 434.1 -73.0Q435.20000000000005 -74.60000000000001 438.40000000000003 -77.2Q457.40000000000003 -92.80000000000001 482.0 -93.60000000000001V-109.60000000000001Q482.0 -115.2 489.40000000000003 -117.60000000000001Q492.20000000000005 -118.60000000000001 493.30000000000007 -119.0Q494.40000000000003 -119.4 495.80000000000007 -120.30000000000001Q497.20000000000005 -121.2 498.40000000000003 -122.80000000000001V-21.0Q498.40000000000003 -13.4 504.8 -13.4Q510.0 -13.4 514.0 -21.0Q514.0 -11.4 509.4 -5.7Q504.8 0.0 496.0 0.0Z M530.4 -125.60000000000001Q522.4 -131.8 512.1999999999999 -149.20000000000002Q499.19999999999993 -171.20000000000002 490.59999999999997 -171.20000000000002Q488.79999999999995 -171.20000000000002 487.49999999999994 -170.90000000000003Q486.19999999999993 -170.60000000000002 484.69999999999993 -170.0Q483.19999999999993 -169.4 481.99999999999994 -169.20000000000002Q481.19999999999993 -169.0 480.79999999999995 -169.0Q480.19999999999993 -169.0 480.19999999999993 -169.60000000000002Q480.19999999999993 -170.0 481.19999999999993 -171.0Q484.19999999999993 -174.0 489.49999999999994 -177.0Q494.79999999999995 -180.0 499.59999999999997 -180.0Q505.99999999999994 -180.0 512.0999999999999 -173.4Q518.1999999999999 -166.8 522.1999999999999 -156.4Q529.0 -141.6 533.9 -135.6Q538.8 -129.6 546.8 -127.4Q543.8 -123.2 539.8 -123.2Q533.4 -123.2 530.4 -125.60000000000001ZM546.0 0.0Q532.0 0.0 532.0 -18.2V-109.60000000000001Q532.0 -115.2 539.4 -117.60000000000001Q542.2 -118.60000000000001 543.3 -119.0Q544.4 -119.4 545.8 -120.30000000000001Q547.2 -121.2 548.4 -122.80000000000001V-21.0Q548.4 -13.4 554.8 -13.4Q560.0 -13.4 564.0 -21.0Q564.0 -11.4 559.4 -5.7Q554.8 0.0 546.0 0.0Z" fill="#fff" stroke="#fff" stroke-width="9" stroke-linejoin="round"/><path transform="translate(267.4,295.0) scale(1)" d="M13.260000000000002 -25.194000000000003Q18.632 -25.194000000000003 21.93 -21.573Q25.228 -17.952 25.228 -12.036000000000001Q25.228 -6.5280000000000005 21.981 -2.873Q18.734 0.782 13.294 0.782Q7.888000000000001 0.782 4.6240000000000006 -2.8560000000000003Q1.36 -6.494000000000001 1.36 -12.206000000000001Q1.36 -17.918000000000003 4.641 -21.556000000000004Q7.922000000000001 -25.194000000000003 13.260000000000002 -25.194000000000003ZM13.294 -20.842000000000002Q10.200000000000001 -20.842000000000002 8.330000000000002 -18.479Q6.460000000000001 -16.116 6.460000000000001 -12.206Q6.460000000000001 -8.296000000000001 8.330000000000002 -5.933000000000001Q10.200000000000001 -3.5700000000000003 13.294 -3.5700000000000003Q16.354000000000003 -3.5700000000000003 18.241 -5.916Q20.128 -8.262 20.128 -12.07Q20.128 -16.082 18.275 -18.462000000000003Q16.422 -20.842000000000002 13.294 -20.842000000000002Z M57.222 -20.536V0.0H52.122V-20.536H44.608000000000004V-24.786H64.464V-20.536Z M90.304 -24.786V-4.25H102.17000000000002V0.0H85.20400000000001V-24.786Z M133.79000000000002 -25.194000000000003Q139.162 -25.194000000000003 142.46 -21.573Q145.758 -17.952 145.758 -12.036000000000001Q145.758 -6.5280000000000005 142.51100000000002 -2.873Q139.264 0.782 133.824 0.782Q128.418 0.782 125.15400000000001 -2.8560000000000003Q121.89000000000001 -6.494000000000001 121.89000000000001 -12.206000000000001Q121.89000000000001 -17.918000000000003 125.17100000000002 -21.556000000000004Q128.45200000000003 -25.194000000000003 133.79000000000002 -25.194000000000003ZM133.824 -20.842000000000002Q130.73000000000002 -20.842000000000002 128.86 -18.479Q126.99000000000001 -16.116 126.99000000000001 -12.206Q126.99000000000001 -8.296000000000001 128.86 -5.933000000000001Q130.73000000000002 -3.5700000000000003 133.824 -3.5700000000000003Q136.88400000000001 -3.5700000000000003 138.77100000000002 -5.916Q140.65800000000002 -8.262 140.65800000000002 -12.07Q140.65800000000002 -16.082 138.805 -18.462000000000003Q136.95200000000003 -20.842000000000002 133.824 -20.842000000000002Z" fill="#fff"/></svg><p style="margin-top:8px">${esc(s.tagline)}</p></div>
+    <div><h5>Explore</h5>${D.clusters.map(c => `<a href="#/c/${encodeURIComponent(c.id)}">${esc(c.name)}</a>`).join("")}</div>
+    <div><h5>Connect</h5>
+      ${s.email ? `<a href="mailto:${esc(s.email)}">${esc(s.email)}</a>` : ""}
+      ${imgUrl(s.instagram) ? `<a href="${esc(s.instagram)}" target="_blank" rel="noopener">Instagram</a>` : ""}
+      <a href="/">fenilpshah.com</a></div>
+    <div class="fine">${esc(s.footer_note || "A corner of fenilpshah.com")} · © ${new Date().getFullYear()} Fenil P. Shah</div></div>`;
+}
+
+/* ---------------- router ---------------- */
+/* Navigation works even inside sandboxed frames (Google Sites embeds, previews):
+   clicks are handled here instead of relying on the browser following "#/" links. */
+let current = null, stack = [];
+function hashPath(){ try{ return decodeURIComponent(location.hash.replace(/^#\/?/, "")); }catch(_){ return ""; } }
+function go(path, push){
+  path = String(path || "").replace(/^#?\/?/, "");
+  if(path === current) return;
+  if(push) stack.push(path); else stack = [path];
+  current = path;
+  if(push){ try{ history.pushState(null, "", "#/" + path); }catch(_){} }
+  render(path);
+}
+function route(){ go(hashPath(), false); }
+function render(h){
+  const [a, b] = h.split("/").map(x => { try{ return decodeURIComponent(x); }catch(_){ return x; } });
+  const views = {home, read, clusters:clustersPage, gallery:galleryPage, calendar:calendarPage, about:aboutPage};
+  let html;
+  if(a === "c" && b) html = clusterPage(b);
+  else if(a === "p" && b) html = postPage(b);
+  else html = (views[PAGE] || home)();
+  $("#app").innerHTML = html;
+  try{ window.scrollTo(0, 0); }catch(_){}
+  observe();
+}
+let io;
+function observe(){
+  if(!("IntersectionObserver" in window)){ document.querySelectorAll(".reveal").forEach(e => e.classList.add("in")); return; }
+  io && io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {rootMargin:"0px 0px -6% 0px"});
+  document.querySelectorAll(".reveal").forEach(e => io.observe(e));
+}
+
+/* chips + lightbox */
+document.addEventListener("click", e => {
+  const link = e.target.closest('a[href^="#/"], a[href="#"]');
+  if(link){
+    e.preventDefault();
+    if(link.classList.contains("back") && stack.length > 1){ stack.pop(); const prev = stack.pop(); go(prev, true); return; }
+    go(link.getAttribute("href").slice(1), true); return;
+  }
+  const chip = e.target.closest(".chip");
+  if(chip){ filter = chip.dataset.f; render(current || ""); return; }
+  const fig = e.target.closest(".gal figure");
+  if(fig){
+    const img = fig.querySelector("img"); if(!img) return;
+    $("#lb img").src = img.src; $("#lb p").textContent = fig.querySelector("figcaption")?.textContent || "";
+    $("#lb").classList.add("open"); return;
+  }
+  if(e.target.closest("#lb")) $("#lb").classList.remove("open");
+});
+document.addEventListener("keydown", e => { if(e.key === "Escape") $("#lb").classList.remove("open"); });
+
+(async () => {
+  D = await load();
+  window.addEventListener("hashchange", route);
+  window.addEventListener("popstate", route);
+  route();
+})();
+</script>
+</body>
+</html>

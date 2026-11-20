@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="/config.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Feedback — Fenil Pritesh Shah</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f3ee; --card:#ffffff; --ink:#1b1a17; --muted:#7d766b; --line:#e6e0d6;
+    --accent:#7a1f2b; --accent-soft:#f4e9ea; --ok:#2f6b3f;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:44px 20px 64px}
+  .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,6vw,46px);line-height:1.08;margin:10px 0 12px;letter-spacing:-.01em}
+  .lede{color:var(--muted)}
+  .rule{height:1px;background:var(--line);margin:28px 0}
+  .panel{background:var(--card);border:1px solid var(--line);padding:26px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .full{grid-column:1 / -1}
+  label,.lbl{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+  .opt{color:var(--muted);font-weight:400}
+  input,textarea{width:100%;font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);padding:11px 12px;border-radius:0;outline:none}
+  input:focus,textarea:focus{border-color:var(--ink)}
+  textarea{min-height:90px;resize:vertical}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .stars{display:flex;gap:8px}
+  .star{width:50px;height:50px;background:var(--card);border:1px solid var(--line);font-size:24px;line-height:1;color:#d2c9bc;cursor:pointer;transition:all .12s}
+  .star:hover{border-color:var(--accent)}
+  .star.on{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+  .rate-label{font-size:13px;color:var(--muted);margin-top:8px;min-height:20px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--card);border:1px solid var(--line);padding:10px 16px;font:inherit;font-size:14px;font-weight:500;color:inherit;cursor:pointer}
+  .chip:hover{border-color:var(--ink)}
+  .chip.sel{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;border:0;font:inherit;font-weight:500;padding:14px 26px;cursor:pointer;text-decoration:none}
+  .btn:disabled{opacity:.5;cursor:wait}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+  .note{font-size:13px;color:var(--muted)}
+  .msg{padding:12px 14px;font-size:14px;margin-top:16px;border-left:3px solid var(--accent);background:var(--accent-soft)}
+  .done{text-align:center;padding:48px 24px}
+  .tick{width:60px;height:60px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin:0 auto 20px;font-size:26px}
+  .done h2{font-family:var(--serif);font-weight:500;font-size:32px;margin-bottom:8px}
+  footer{margin-top:44px;font-size:12px;color:var(--muted);text-align:center}
+  footer a{color:inherit}
+  .hidden{display:none !important}
+  @media (max-width:600px){
+    .wrap{padding:32px 16px 48px}
+    .grid{grid-template-columns:1fr}
+    .panel{padding:20px}
+    .star{width:46px;height:46px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Your feedback</div>
+    <h1>How was our conversation?</h1>
+    <p class="lede">Thank you for taking the time to meet. A minute of your honest feedback helps me make every conversation more useful.</p>
+  </header>
+
+  <div class="rule"></div>
+
+  <form class="panel" id="fbForm" novalidate>
+    <div class="grid">
+      <div><label for="fbId">Booking ID</label><input id="fbId" placeholder="FB-XXXXXX" maxlength="12" style="text-transform:uppercase" autocomplete="off"></div>
+      <div><label for="fbEmail">Email you booked with</label><input id="fbEmail" type="email" maxlength="150" autocomplete="email"></div>
+      <div class="full note" style="margin-top:-6px">Both are in your confirmation and feedback emails.</div>
+
+      <div class="full">
+        <span class="lbl">Your rating</span>
+        <div class="stars" id="stars"></div>
+        <div class="rate-label" id="rateLabel"></div>
+      </div>
+      <div class="full"><label for="fbLiked">What went well? <span class="opt">(optional)</span></label><textarea id="fbLiked" maxlength="1500"></textarea></div>
+      <div class="full"><label for="fbImprove">What could have been better? <span class="opt">(optional)</span></label><textarea id="fbImprove" maxlength="1500"></textarea></div>
+      <div class="full">
+        <span class="lbl">Would you like a follow-up conversation?</span>
+        <div class="chips" id="followChips">
+          <button type="button" class="chip" data-v="Yes">Yes, please</button>
+          <button type="button" class="chip sel" data-v="No">Not right now</button>
+        </div>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="fbWebsite">Website</label><input id="fbWebsite" tabindex="-1" autocomplete="off"></div>
+    </div>
+    <div class="actions"><button class="btn" type="submit" id="fbBtn">Send feedback</button></div>
+    <div id="fbMsg" class="msg hidden"></div>
+  </form>
+
+  <div id="fbDone" class="panel done hidden"></div>
+
+  <footer>© <span id="yr"></span> Fenil Pritesh Shah &nbsp;·&nbsp; <a href="/book/">fenilpshah.com/book</a></footer>
+</div>
+
+<script>
+/* ====== YOUR APPS SCRIPT WEB APP URL (same as the booking page) ====== */
+const SCRIPT_URL = FPS.API + '/book';
+const BOOKING_PAGE = '/book/';
+
+const $=id=>document.getElementById(id);
+const state={rating:0,follow:'No'};
+const WORDS=['','Poor','Fair','Good','Very good','Excellent'];
+$('yr').textContent=new Date().getFullYear();
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function msg(text){ $('fbMsg').textContent=text||''; $('fbMsg').classList.toggle('hidden',!text); }
+function validEmail(e){return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)}
+
+// Stars
+(function(){
+  const box=$('stars');
+  for(let i=1;i<=5;i++){
+    const b=document.createElement('button'); b.type='button'; b.className='star'; b.textContent='★'; b.setAttribute('aria-label',i+' of 5');
+    b.onclick=()=>{ state.rating=i; paint(); msg(''); };
+    box.appendChild(b);
+  }
+})();
+function paint(){
+  document.querySelectorAll('#stars .star').forEach((s,i)=>s.classList.toggle('on',i<state.rating));
+  $('rateLabel').textContent=state.rating?state.rating+' / 5 — '+WORDS[state.rating]:'';
+}
+document.querySelectorAll('#followChips .chip').forEach(c=>c.onclick=()=>{
+  state.follow=c.dataset.v;
+  document.querySelectorAll('#followChips .chip').forEach(x=>x.classList.toggle('sel',x===c));
+});
+
+$('fbForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const id=$('fbId').value.trim().toUpperCase(), email=$('fbEmail').value.trim();
+  if(!id) return msg('Please enter your booking ID.');
+  if(!validEmail(email)) return msg('Please enter the email address you booked with.');
+  if(!state.rating) return msg('Please choose a rating.');
+  const btn=$('fbBtn'); btn.disabled=true; btn.textContent='Sending…'; msg('');
+  try{
+    let res;
+    try{
+      res=await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({
+        action:'feedback',id,email,rating:state.rating,liked:$('fbLiked').value.trim(),improve:$('fbImprove').value.trim(),
+        followUp:state.follow,website:$('fbWebsite').value})});
+    }catch(err){ throw new Error('Could not reach the server. Please try again. (code: NET)'); }
+    if(!res.ok) throw new Error('Could not reach the server. Please try again. (code: '+res.status+')');
+    let r; try{ r=JSON.parse(await res.text()); }catch(err){ throw new Error('The server is not responding correctly. Please try again later. (code: HTML)'); }
+    if(!r.ok) return msg(r.error||'Could not send your feedback.');
+    $('fbForm').classList.add('hidden');
+    $('fbDone').innerHTML='<div class="tick">✓</div><h2>Thank you'+(r.name?', '+esc(r.name.split(' ')[0]):'')+'</h2>'+
+      '<p class="note">Your feedback has been received. It genuinely helps.</p>'+
+      (state.follow==='Yes'?'<p class="note" style="margin-top:6px">I\'ll be in touch about a follow-up conversation.</p>':'')+
+      '<div class="actions" style="justify-content:center"><a class="btn ghost" href="'+BOOKING_PAGE+'" target="_top">Book another conversation</a></div>';
+    $('fbDone').classList.remove('hidden');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(err){ msg(err.message); }
+  finally{ btn.disabled=false; btn.textContent='Send feedback'; }
+});
+</script>
+</body>
+</html>
